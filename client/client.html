@@ -19,16 +19,34 @@
 </head>
 
 <body>
-  {{> content}}
+	{{> project}}
+	{{> header}}
+	{{> home}}
+	{{> skills}}
+	{{> projects}}
+	{{> blog}}
+	{{> about}}
+	{{> contact}}
+	{{> footer}}
 </body>
 
-<template name="hello">
-  <h1>Hello World!</h1>
-  {{greeting}}
-  <input type="button" value="Click" />
+
+<template name="project">
+	<section>
+	{{#each projects}}
+		<p>Desc: {{description}}, by {{addedBy}}</p>
+	{{/each}}
+	</section>
+	<section>
+	{{> addProject}}
+	</section>
 </template>
 
-<template name="content">
+<template name="addProject">
+	<p>Description: <input type="text" id="project"></p>
+</template>
+
+<template name="header">
 	<header class="pageheader">
 		<a name="top"></a>
 		<div class="logo"><h1>Jen Berry</h1></div>
@@ -51,6 +69,9 @@
 			</ul>
 		</nav>
 	</header>
+</template>
+
+<template name="home">
 	<section class="homesection">
 		<a name="home"></a>
 		<header class="homeheading"><h2>
@@ -62,6 +83,9 @@
 		</h2></header>
 		<div class="leaddown"><div></div><div></div><div></div></div>
 	</section>
+</template>
+
+<template name="skills">
 	<section>
 		<a name="skills"></a>
 		<div class="menubutton"><a href="#top" class="scroll">Menu</a></div>
@@ -79,6 +103,9 @@
 			</ul>
 		</div>
 	</section>
+</template>
+
+<template name="projects">
 	<section>
 		<a name="projects"></a>
 		<div class="menubutton"><a href="#top" class="scroll">Menu</a></div>
@@ -219,6 +246,9 @@
 			</ul>
 		</div>
 	</section>
+</template>
+
+<template name="blog">
 	<section>
 		<a name="blog"></a>
 		<div class="menubutton"><a href="#top" class="scroll">Menu</a></div>
@@ -558,6 +588,9 @@
 			</ul>
 		</div>
 	</section>
+</template>
+
+<template name="about">
 	<section>
 		<a name="about"></a>
 		<div class="menubutton"><a href="#top" class="scroll">Menu</a></div>
@@ -575,6 +608,9 @@
 			<p class="aboutjobtitle">Web Developer</p>
 		</div>
 	</section>
+</template>
+
+<template name="contact">
 	<section>
 		<a name="contact"></a>
 		<div class="menubutton"><a href="#top" class="scroll">Menu</a></div>
@@ -604,6 +640,8 @@
 			</div>
 		</div>
 	</section>
-	<footer class="sitefooter">Web Development by Jen Berry</footer>
+</template>
 
+<template name="footer">
+	<footer class="sitefooter">Web Development by Jen Berry</footer>
 </template>
