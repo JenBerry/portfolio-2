@@ -19,7 +19,6 @@
 </head>
 
 <body>
-	{{> project}}
 	{{> header}}
 	{{> home}}
 	{{> skills}}
@@ -29,22 +28,6 @@
 	{{> contact}}
 	{{> footer}}
 </body>
-
-
-<template name="project">
-	<section>
-	{{#each projects}}
-		<p>Desc: {{description}}, by {{addedBy}}</p>
-	{{/each}}
-	</section>
-	<section>
-	{{> addProject}}
-	</section>
-</template>
-
-<template name="addProject">
-	<p>Description: <input type="text" id="project"></p>
-</template>
 
 <template name="header">
 	<header class="pageheader">
@@ -253,341 +236,37 @@
 		<a name="blog"></a>
 		<div class="menubutton"><a href="#top" class="scroll">Menu</a></div>
 		<header><h2>Blog</h2></header>
+		{{> addBlog}}
 		<div class="sectioncontent">
 			<ul class="bloglist">
 				<li>
-					<article class="blogarticle">
-						<header class="blogsummary">
-							<time pubdate datetime="2014-01-25" class="blogdate">
-								<span class="day">25</span><span class="month">Jan</span>
-							</time>
-							<h3 class="blogtitle">Hello Meteor.js</h3>
-						</header>
-						<div class="blogdetails">
-							<p>
-								I came across this neat web-app platform called <a href="http://www.meteor.com" target="_blank">Meteor</a>, and it's quite exiting.
-							</p>
-							<p>
-								It's a JavaScript platform based in node.js. You could say that Meteor is to Node what Django is to Python, or Rails is to Ruby. It's still in development at version 0.7, but it can already do a lot. Start a new Meteor project and you can already run it in your browser, with access to a database right from your browser's console. Plus, when you modify any of your project's files, the changes get pushed straight to the browser, without having to refresh the page, even across multiple browser windows. It makes web development sound like a breeze. Watch the <a href="https://www.meteor.com/screencast" target="_blank">screencast</a> and you'll see what I mean. It almost seems to good to be true: I haven't played with it yet, but I will report back when I do!
-							</p>
-						</div>
-					</article>
-					<article class="blogarticle">
-						<header class="blogsummary">
-							<time pubdate datetime="2013-10-05" class="blogdate">
-								<span class="day">05</span><span class="month">OCT</span>
-							</time>
-							<h3 class="blogtitle">Setting up Wordpress with Nginx on Ubuntu 12</h3>
-						</header>
-						<div class="blogdetails">
-							<p>
-								<a href="http://www.wordpress.org" target="_blank">Wordpress</a> is a free content management system that is easy to set up to get websites up and running fast. To get it running on my home computer I needed a server. The main options are <a href="http://www.apache.org" target="_blank">Apache</a>, and <a href="http://www.nginx.org">Nginx</a>, I went with Nginx. My computer is running Kubuntu 12.04.
-							</p>
-							<p>First lets install Nginx
-								<code>sudo apt-get install nginx</code><code>sudo service nginx start</code></p>
-							<p>We can test if our Nginx install is working by pointing our browser to localhost, what you should see is the message "Welcome to nginx." By default the web root is in '/usr/share/nginx/www' and here you can find the index.html file that it is showing.</p>
-							<p>Now we need to make sure the necessary things are installed for wordpress to work.
-								<code>sudo apt-get install php5 php5-cgi php5-fpm mysql-server mysql-client php5-mysql</code>
-								</p>
-							<p>Then in MySQL make a database and user with a password, and grant all privileges on the database for that user
-								<code>CREATE DATABASE mydatabase;</code>
-								<code>CREATE USER 'user'@'localhost' IDENTIFIED BY 'password';</code>
-								<code>GRANT ALL PRIVILEGES ON mydatabase.* TO 'user'@'localhost';</code></p>
-							<p>We need to configure Nginx to work with php, so edit /etc/nginx/sites-available/default.</p> <ul>
-								<li>Add "index.php" to the indexes</li>
-								<li>Uncomment the "location ~ \.php$ {}" block.</li>
-							</ul>
-							<p>Then reload nginx</p>
-							<code>sudo /etc/init.d/nginx reload</code>
-							<p>Get the latest wordpress version from their website, and unzip it into the web root, or into a subfolder eg 'mywordpress/'.</p>
-							<p>copy the wp-config-sample.php file to wp-config.php, and edit it with your MySQL database settings.</p>
-							<p>Point your browser to your wordpress site (localhost/mywordpress), and follow the simple instructions.</p>
-							<p>Tadaa. localhost/mywordpress should display a wordpress website with "Hello world!". You can now to do everything you need to customise your site from the dashboard (localhost/mywordpress/wp-admin/)</p>
-						</div>
-					</article>
-					<article class="blogarticle">
-						<header class="blogsummary">
-							<time pubdate datetime="2013-11-03" class="blogdate">
-								<span class="day">03</span><span class="month">OCT</span>
-							</time>
-							<h3 class="blogtitle">Responsive web design</h3>
-						</header>
-						<div class="blogdetails">
-							<p>I have just redesigned my website to work better with mobile devices. The aim was to write one piece of code that would display correctly across all devices. Later I might add in some customisations to tailor the website more specifically to different devices. Here I will share the main things to know when designing a website in this way.</p>
-							<ul>
-								<li>By default, most devices will zoom the webpage out to fit the page to the screen, rather than resizing it, this results in the page being too small to read, and links too small to select with fingers. So the first thing we need to do is to tell it to fit the page to the width of the screen by adding this HTML into the head of the page: <code>&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;</code>
-								</li>
-								<li>Now we can test how the web page responds to the width of devices by simply resizing the browser window, however it is useful to get a simulator to get the right screen resolutions, and to see the different behaviour of the mobile browsers. Try <a href="http://www.opera.com/developer/mobile-emulator" target="_blank">Opera's Mobile Emulator</a>.</li>
-								<li>There's a large range of screen sizes for mobile devices, from the large tablet which can be 800px wide, through smartphones at around 320px, down to 240px and even 128px wide. We have to decide which sizes we are going to support. Is it feasible to support such a tiny screen that not many people use, or do we accept that it's not going to work at that resolution? I decided I wanted my website to display in a usable way on all screens, although I accepted that it would be clunky to use on very small screens.</li>
-								<li>So how do we make the website respond to the width of the device?</li>
-								<ul>
-									<li><mark>Relative widths:</mark> giving widths in %. For example setting the containing element to have a width of 100% will ensure it is always the width of the screen. Or we can set a border of 3%, and a width of 94% (remember margins, borders, paddings and width add up to give the total width.</li>
-									<li><mark>Max-width:</mark> when the screen gets really big, such as on a wide screen computer monitor, we might not want the element to be the full width of the screen, because it makes reading multiple lines of text difficult. To solve this, we can set the 'max-width' of an element. If the width is set to 100%, it will grow with the size of the screen, up to the max-width. At this point we probably want the element to display in the middle of the screen, so set the left and right margins to auto.</li>
-									<li><mark>Displaying with "block", "inline", and "inline-block".</mark> It's important to understand the different behaviours of the display property. It affects which elements will be displayed on the same line, and when they will be transferred onto a new line if there is no space for them. Have a look at this example:
-										<code>
-											&lt;div&gt;
-											<code>&lt;div class<wbr>=<wbr>"small"&gt;<wbr>0<wbr>&lt;/div&gt;</code>
-											<code>
-												&lt;div class<wbr>=<wbr>"block"&gt;
-												<code>&lt;div class<wbr>=<wbr>"small"&gt;<wbr>1<wbr>&lt;/div&gt;</code>
-												<code>&lt;div class<wbr>=<wbr>"small"&gt;<wbr>2<wbr>&lt;/div&gt;</code>
-												<code>&lt;div class<wbr>=<wbr>"small"&gt;<wbr>3<wbr>&lt;/div&gt;</code>
-												<code>&lt;div class<wbr>=<wbr>"small"&gt;<wbr>4<wbr>&lt;/div&gt;</code>
-												&lt;/div&gt;
-											</code>
-											&lt;/div&gt;
-										</code>
-										<code>
-											&lt;style&gt;
-											<code>div{ outline: 1px solid black; padding: 5px; margin: 5px;}</code>
-											<code>.small{ width: 10px; height: 10px;}</code>
-											&lt;/style&gt;
-										</code>
-										<style type="text/css">
-											.responsiveExampleContainer, .responsiveExampleContainer div{
-												outline: 1px solid black;
-												padding:5px; margin: 5px;
-											}
-											.small{
-												width:10px;
-												height:10px;
-												font-size: 10px;
-											}
-											.inlineBlock div{
-												display:inline-block;
-											}
-											.inline div{
-												display: inline;
-											}
-										</style>
-										<div class="responsiveExampleContainer">
-										  <div class="small">0</div>
-										  <div class="block">
-										     <div class="small">1</div>
-										     <div class="small">2</div>
-										     <div class="small">3</div>
-										     <div class="small">4</div>
-										  </div>
-										</div>
-										By default divs are "display:block", which means each goes on its own line, and if the width is not specified, they will fill the container, and automatically compensate for any margins and padding. Now lets see what happens if we change them all to "display:inline-block";
-										<div class="responsiveExampleContainer inlineBlock">
-										  <div class="small">0</div>
-										  <div class="block">
-										     <div class="small">1</div>
-										     <div class="small">2</div>
-										     <div class="small">3</div>
-										     <div class="small">4</div>
-										  </div>
-										</div>
-										They now all appear on the same line if there is room, and if there isn't room:
-										<div class="responsiveExampleContainer inlineBlock" style="width:180px;">
-										  <div class="small">0</div>
-										  <div class="block">
-										     <div class="small">1</div>
-										     <div class="small">2</div>
-										     <div class="small">3</div>
-										     <div class="small">4</div>
-										  </div>
-										</div>
-										The block moves onto the next line first, as a unit. If we decrease the width some more, then the small blocks move onto the next line:
-										<div class="responsiveExampleContainer inlineBlock" style="width:130px;">
-										  <div class="small">0</div>
-										  <div class="block">
-										     <div class="small">1</div>
-										     <div class="small">2</div>
-										     <div class="small">3</div>
-										     <div class="small">4</div>
-										  </div>
-										</div>
-										Finally what happens if we use "display: inline"? The block no longer behaves as a unit, and the small blocks move onto the next line one at a time. It also ignores the vertical margins between the lines
-										<div class="responsiveExampleContainer inline" style="width:100px;">
-										  <div class="small">0</div>
-										  <div class="block">
-										     <div class="small">1</div>
-										     <div class="small">2</div>
-										     <div class="small">3</div>
-										     <div class="small">4</div>
-										  </div>
-										</div>
-									</li>
-									<li><mark>Don't define heights for elements with dynamic content.</mark> As you can see in the example above, elements automatically resize their height to fit the contents. This will not happen if you define a fixed height, so it's best to leave it as "auto".</li>
-									<li><mark>Using columns.</mark> A new useful property in CSS3 is columns. Columns are great because the browser can adjust the number of columns depending on the width of the screen. if you set "columns:100px 3", you are telling your browser that the ideal column width is 100px, and the ideal number of columns is 3. If the container is wider than 3x100px, then the 3 columns will be stretched wider to fill the space, while if it is narrower, it will reduce the number of columns to 2 or 1. If the container is less than 100px wide, it will fit 1 column into the width of the container. Smart or what? Note this is a new feature and should be tested in different browsers to make sure it has the correct behaviour.</li>
-									<li><mark>Don't use "position:fixed". </mark>It's really nice to have that menu bar always on the top of the screen, but chances are it will not behave correctly on mobile devices. See this <a href="http://bradfrostweb.com/blog/mobile/fixed-position/" target="_blank">post by Bad Frost</a> for a more detailed explanation.</li>
-									<li><mark>Remember ":hover" is meaningless on touchscreens.</mark> It's nice to have mouse hover effects, but remember that these won't be effective on touchscreen devices. If you rely on the mouse changing to a pointer when it hovers over a link, you need to make sure there are other indicators of selectable content on touchscreens</li>
-									<li><mark>Using "@media" when you really do need different behaviour on different devices.</mark> CSS provides a method for checking the media it is being displayed on, and applying different styles accordingly. for example:
-									<code>@media only screen and (max-device-width : 480px) {<br>
-									    &nbsp;&nbsp;div {width: 100%;}<br>
-									}</code>
-									You can also link a whole new CSS file in the HTML depending on the media.
-									<code>&lt;link rel="stylesheet" type="text/css" media="only screen and (max-device-width: 480px)" href="small-device.css" /&gt;</code>
-									</li>
-									<li><mark>Image sizing.</mark> Using "width=100%" works to scale images too, the problem is that on small devices, you are still downloading the full size image, before scaling it to a fraction of the size. This is slow, may display a low quality image, and uses up unnecessary data. The solution is to have images of multiple sizes, and select the smallest one that will fill the screen. There is no way to do this directly with HTML, but we can use JavaScript to accomplish it. For background images we can use the @media method in the CSS, and if the background is a uniform pattern we should save its smallest unit and tile it.</li>
-								</ul>
-							</ul>
-							<p>So there's a glimpse of the techniques we can use to make a website responsive, and display nicely on the full range of devices out there</p>
-						</div>
-					</article>
-					<article class="blogarticle">
-						<header class="blogsummary">
-							<time pubdate datetime="2013-09-20" class="blogdate">
-								<span class="day">20</span><span class="month">SEP</span>
-							</time>
-							<h3 class="blogtitle">Setting up git version control with github</h3>
-						</header>
-						<div class="blogdetails">
-							<p><a href="http://git-scm.com/" target="_blank">Git</a> is a pretty simple, fast, yet powerful version control tool. It means you can keep track of all changes you make to a project and revert to earlier versions at any time. This gives you the peace of mind that everything you do is reversible, and is indispensable when working on live websites. You can also branch your code to do a side project in parallel and merge them together later, and allows for multiple people to work on the same project without worrying about interfering with each other.</p>
-							<p><a href="https://github.com/" target="_blank">Github</a> is an online community of git users that allows easy online code sharing and project collaboration.</p>
-							<p>How to set up git version control on your project.</p>
-							<ul>
-								<li>
-									Install git, I'm using Ubuntu, so I will type this into the terminal
-										<code>sudo apt-get install git</code>
-								</li>
-								<li>
-									Tell git your username and email - this information is saved with every commit and is especially important when sharing code. The following sets the global configuration, which will be used for everything you do. It is possible to set this for individual projects as well.
-										<code>git config --global user.name "Your Name"</code>
-										<code>git config --global user.email "your_email@example.com"</code>
-								</li>
-								<li>
-									Go to the working directory you would like to version control
-										<code>cd ~/workspace/myproject</code>
-								</li>
-								<li>
-									Initialise an empty repository (repo)
-										<code>git init</code>
-								</li>
-								<li>
-									Now you have to add the files you want to control in the staging area ready to be committed, this must be done before every commit. To add everything in the directory:
-										<code>git add .</code>
-								</li>
-								<li>
-									You can check the status of files that have changed, and add or remove files before committing.
-									<code>git status</code>
-								</li>
-								<li>
-									Finally, you commit them to the repo, with a description of the changes you are committing for later reference.
-										<code>git commit -m "description"</code>
-									You need to do a commit every time you want to save the current state of the project, if you don't commit regularly, it becomes useless.
-								</li>
-								<li>
-									Note: if files have been deleted and you want to remove them from the repository, use the -u option, then commit.
-										<code>git add -u .</code>
-								</li>
-							</ul>
-
-							<p>Setting up a github account.</p>
-
-							<ul>
-								<li>Go to <a href="www.gothub.com">github.com</a> and sign up for an account</li>
-								<li>
-									In order to connect to your account and upload your repo you will need a SSH key. Here is how to create a new one:
-									<code>ssh-keygen -t rsa -C "your_email@example.com"</code>
-									<code>ssh-add id_rsa</code>
-									Choose a passphrase
-								</li>
-								<li>
-									Now you can give your public key to github. Copy the contents of ~/.ssh/id_rsa.pub
-									<code>xclip -sel clip &lt; ~/.ssh/id_rsa.pub</code>
-									Go to your github account > account settings > SSH keys > add SSH key, and then paste in the key and save it.
-								</li>
-								<li>
-									To see if its working you can try to SSH into github
-									<code>ssh -T git@github.com</code>
-									Enter your passphrase, then you should see the following message:
-									<code>Hi [username]! You've successfully authenticated, but GitHub does not provide shell access.</code>
-								</li>
-								<li>
-									Next you need to create a repo on github to upload your project to.
-									Go you your github account, select 'create a new repo', and fill in the required information.
-									Your repo will have a HTTPS clone URL, copy this.
-								</li>
-								<li>
-									Now go back to your terminal in your project directory, and you will tell it where the online repositary is, and call it 'origin'
-									<code>git remote add origin [HTTPS clone URL]</code>
-								</li>
-								<li>
-									Finally you will push our git repo up to github
-									<code>git push origin master</code>
-								</li>
-								<li>
-									If there are changes in the github repo, (for example you created a readme file,) you will need to pull the changes to your local repo before you can push your files up
-									<code>git pull origin</code>
-								</li>
-							</ul>
-							<p>Useful resources</p>
-							<ul>
-								<li><a href="http://net.tutsplus.com/tutorials/other/easy-version-control-with-git/">Easy Version Control with Git</a></li>
-								<li><a href="http://net.tutsplus.com/tutorials/other/getting-the-hang-of-github/">Getting the Hang of GitHub</a></li>
-								<li><a href="https://help.github.com/articles/generating-ssh-keys">Generating SSH Keys</a></li>
-							</ul>
-						</div>
-					</article>
-					<article class="blogarticle">
-						<header class="blogsummary">
-							<time pubdate datetime="2013-09-13" class="blogdate">
-								<span class="day">13</span><span class="month">SEP</span>
-							</time>
-							<h3 class="blogtitle">Copying a Joomla! website using Akeeba backup and restore</h3>
-						</header>
-						<div class="blogdetails">
-							<p>These are the simple steps I should have taken today, if I had done it the easy way.</p>
-							<p>The task, to put a <a href="http://www.joomla.org/">Joomla!</a> website online from a .jpa file created with the Joomla extention <a href="https://www.akeebabackup.com"/>Akeeba backup</a>, working from the command line with SSH and SCP to interact with a server running Debian.</p>
-							<ul>
-								<li>Create a fresh install of Joomla! with a MySQL database</li>
-								<ul>
-									<li>Create a new MySQL database and user with a password, and grant all permissions to that user</li>
-									<li>Extract (unzip) the Joomla! download file into the web root on the server (for example into '/var/www/mysite/')</li>
-									<li>Go to the new Joomla! homepage by typing in the domain name (or server ip if you don't have a domain yet) of your website into your browser (eg www.yourdomain.com), and follow the instructions that should appear to install it.</li>
-								</ul>	
-								<li>Use <a href="https://www.akeebabackup.com/products/akeeba-kickstart.html">Akeeba Kickstart</a> to unpack the .jpa file and copy the website over the Joomla installation</li>
-								<ul>
-									<li>Extract the Kickstart download somewhere, and copy kickstart.php into your web root (the same place you extracted the Joomla file to)</li>
-									<li>Place the .jpa file in the same directory</li>
-									<li>Open the kickstart file in your browser by typing www.yourdomain.com/kickstart.php and follow the instructions to restore it. When connecting to the database select the option to drop any tables already in the database, or do it manually later</li>
-									<li>Make sure the '$live_site' in the Joomla configuration.php file is pointing to the right place (eg www.mydomain.com)</li>
-								</ul>
-							</ul>	
-						</div>
-					</article>
-					<article class="blogarticle">
-						<header class="blogsummary">
-							<time pubdate datetime="2013-09-10" class="blogdate">
-								<span class="day">10</span><span class="month">SEP</span>
-							</time>
-							<h3 class="blogtitle">The basics of search engine optimisation (SEO)</h3>
-						</header>
-						<div class="blogdetails">
-							<p>SEO is a huge topic, and companies invest huge amounts of money and effort researching and developing ways to improve their rankings on search engines. This makes it seem a very intimidating and intractable topic to hopeful young web developers like myself. But actually the basics are pretty simple, and mostly common sense.</p>
-							<p>The single most important thing is to have good content, content that users will want to find, will come back to, and will recomend to their friends. Without good content, no amount of SEO is going to improve your rankings.</p>
-							<p> Design for users, not for search engines.
-							There's been a kind of arms race between search engines and websites trying to increase traffic in any way they can. For example in the beginning search engines used helpful keyword information embedded in the html &lt;meta&gt; tags to determine the content of websites, but malicious websites would use that to promote their website by stuffing it with popular keywords that were nothing to do with the content of the website, and so the search engines had to get smarter. They are now very good at matching what uses are looking for to the actual content of a site, while also penalising sites that try to manipulate them.</p>
-							<p>However, search engines read your website as plain text, they can't see the amazing graphics, JavaScript special effects, or CSS that you might have created to lead the user around the page and highlight important information. (there are also some users who will prefer to view websites this way too). If you only had the HTML to your page, would your site still be understandable by a user? Have a look at your website through tools like <a href="http://www.seo-browser.com/">seo-browser.com</a> to try this out. </p>
-							<ul>
-								<li>Make sure all images have useful alt attributes to display when the images can't be seen.</li>
-								<li>Your HTML should have a good structure: make sure you are making correct use of heading tags &lt;h1&gt; to &lt;h6&gt;, and in HTML5 the new structural tags such as &lt;heading&gt;, &lt;section&gt;, and &lt;article&gt;.</li>
-								<li>Tip: Images can go in &lt;h1&gt; elements, and the alt text is seen as the heading when the image isn't displayed, this way you can have your fancy heading graphic, while also maintaing the document structure to be picked up by search engines.</li>
-								<li>You need to make sure your HTML, CSS and JavaScript code is valid and following best practices to help the search engine do its job. You could try <a href=”http://www.w3.org/QA/Tools/”>W3C’s validation tools</a>, <a href=”http://csslint.net/”>Lint</a>, and <a href=”http://www.jshint.com/”>JSHint</a> to check your site.</li>
-							</ul>
-							<p>Lets talk about keywords. Keywords are just as important for a user browsing your webpage looking for information, as they are for search engine rankings. Again, if you design for the user, the search engines will take care of themselves.</p>
-							<p>What appears in search engine results is the title and meta description of your page, so make sure these are sensible to ensure people will click you when you do appear in search engines.</p>
-						</div>
-					</article>
-					<article class="blogarticle">
-						<header class="blogsummary">
-							<time pubdate datetime="2013-09-05" class="blogdate">
-								<span class="day">05</span><span class="month">SEP</span>
-							</time>
-							<h3 class="blogtitle">Getting back in the game</h3>
-						</header>
-						<div class="blogdetails">
-							<p>After a year galavanting around the world, my web skills were a little rusty, and any web developer worth their salt needs a good website, so the obvious thing to do was to build myself a website and get stuck in to coding again. The artist in me wanted to design it too, but in the end I decided that time was of the essence, and I opted to buy a photoshop template I liked the look of, although I made a few customisations. I became familliar with HTML5, CSS3, and JQuery, all of which proved to be more straight forward than I was expecting, although they have their quirks of course, I even threw in a little SVG animation. And all this took about 8 working days. Win</p>
-						<p><mark>Next step: optimise for mobile phones as well</mark></p>
-						</div>
-					</article>
+					{{> blogArticle}}
 				</li>
 			</ul>
 		</div>
 	</section>
+</template>
+
+<template name="blogArticle">
+	{{#each blog}}
+		<article class="blogarticle">
+			<header class="blogsummary">
+				<time pubdate datetime="{{datetime}}" class="blogdate">
+					<span class="day">{{day}}</span><span class="month">{{month}}</span>
+				</time>
+				<h3 class="blogtitle">{{title}}</h3>
+			</header>
+			<div class="blogdetails">
+				{{{blogText}}}
+			</div>
+		</article>
+	{{/each}}
+</template>
+
+<template name = "addBlog">
+	<p>Title: <input type="text" id="title" required></p>
+	<p>Text: <textarea id="blogText" required></textarea></p>
+	<input type="submit" id='submitBlog'>
 </template>
 
 <template name="about">

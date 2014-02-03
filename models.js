@@ -1,4 +1,4 @@
 /**
 * Models
 */
-Projects = new Meteor.Collection('projects');
+Blog = new Meteor.Collection('blog');
