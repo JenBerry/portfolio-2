@@ -1,5 +1,3 @@
-/* CSS declarations go here */
-
 /* style.scss */
 /*{outline: 1px solid red;}*/
 body {
@@ -289,6 +287,12 @@ section {
   color: #828282; }
 
 /*blog*/
+#blogTitleInput, #blogTextInput {
+  width: 90%; }
+
+#blogTextInput {
+  height: 200px; }
+
 .blogarticle {
   margin: 5px 0; }
 

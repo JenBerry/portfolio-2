@@ -236,8 +236,8 @@
 		<a name="blog"></a>
 		<div class="menubutton"><a href="#top" class="scroll">Menu</a></div>
 		<header><h2>Blog</h2></header>
-		{{> addBlog}}
 		<div class="sectioncontent">
+			{{> addBlog}}
 			<ul class="bloglist">
 				<li>
 					{{> blogArticle}}
@@ -264,9 +264,19 @@
 </template>
 
 <template name = "addBlog">
-	<p>Title: <input type="text" id="title" required></p>
-	<p>Text: <textarea id="blogText" required></textarea></p>
-	<input type="submit" id='submitBlog'>
+	<p>
+		<label for 'title'>Title:</label>
+	</p>
+	<p>
+		<input type="text" id="blogTitleInput" required>
+	</p>
+	<p>
+		<label>Text:</label>
+	</p>
+	<p>
+		<textarea id="blogTextInput" required></textarea>
+	</p>
+	<input type="submit" id='submitBlog' value = "Submit new blog artical">
 </template>
 
 <template name="about">

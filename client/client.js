@@ -13,8 +13,8 @@ Template.addBlog.events = {
 		var monthNames = ['Jan','Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 		var month = monthNames[date.getMonth()];
 		var datetime = date.getFullYear()+'-'+date.getMonth()+'-'+day;
-		var title = document.getElementById('title');
-		var text = document.getElementById('blogText');
+		var title = document.getElementById('blogTitleInput');
+		var text = document.getElementById('blogTextInput');
 
 		var addedBy;
 		if (Meteor.user()){
@@ -24,7 +24,7 @@ Template.addBlog.events = {
 			addedBy = "Anonymous";
 		}
 
-		if (title.value != '' && blogText.value != ''){
+		if (title.value != '' && text.value != ''){
 			Blog.insert({
 				datetime: datetime,
 				day: day,
@@ -33,8 +33,8 @@ Template.addBlog.events = {
 				blogText: text.value,
 				addedBy: addedBy,
 			});
-			document.getElementById('title').value = '';
-			document.getElementById('blogText').value = '';
+			document.getElementById('blogTitleInput').value = '';
+			document.getElementById('blogTextInput').value = '';
 
 			datetime='';
 			day='';

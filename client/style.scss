@@ -238,6 +238,13 @@ section{
 	}
 
 /*blog*/
+	#blogTitleInput, #blogTextInput{
+		width:90%;
+	}
+	#blogTextInput{
+		height: 200px
+	}
+
 	.blogarticle{
 		margin: 5px 0;
 	}
