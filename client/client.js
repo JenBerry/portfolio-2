@@ -44,3 +44,9 @@ Template.addBlog.events = {
 		}
 	}
 }
+
+Template.blogArticle.events = {
+	'click .deleteBlog' : function() {
+		Blog.remove(this._id);
+	}
+}

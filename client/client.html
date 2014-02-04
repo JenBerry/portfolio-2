@@ -237,7 +237,7 @@
 		<div class="menubutton"><a href="#top" class="scroll">Menu</a></div>
 		<header><h2>Blog</h2></header>
 		<div class="sectioncontent">
-			{{> addBlog}}
+			<div class="editMode">{{> addBlog}}</div>
 			<ul class="bloglist">
 				<li>
 					{{> blogArticle}}
@@ -255,6 +255,7 @@
 					<span class="day">{{day}}</span><span class="month">{{month}}</span>
 				</time>
 				<h3 class="blogtitle">{{title}}</h3>
+				<span class="deleteBlog editMode">X</span>
 			</header>
 			<div class="blogdetails">
 				{{{blogText}}}
