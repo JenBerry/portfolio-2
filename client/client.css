@@ -287,10 +287,10 @@ section {
   color: #828282; }
 
 /*blog*/
-#blogTitleInput, #blogTextInput {
+.blogTitleInput, .blogTextInput {
   width: 90%; }
 
-#blogTextInput {
+.blogTextInput {
   height: 200px; }
 
 .deleteBlog {
