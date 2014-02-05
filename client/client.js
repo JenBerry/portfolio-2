@@ -1,7 +1,7 @@
 /**
 * Templates
 */
-Template.blogArticle.blog = function () {
+Template.blog.blog = function () {
 	return Blog.find({}, {sort: {date: -1}});
 }
 
@@ -42,11 +42,10 @@ Template.addBlog.events = {
 				blogText: text.value,
 				addedBy: addedBy,
 			});
+
+			//clear the form
 			document.getElementById('blogTitleInput').value = '';
 			document.getElementById('blogTextInput').value = '';
-
-			title.value='';
-			text.value='';
 		}
 	}
 }
@@ -55,7 +54,6 @@ Template.updateBlog.events = {
 	'click input.updateBlog' : function(){
 		id = this._id;
 		var newDate = new Date(document.getElementById(id+'_date').value);
-		console.log(newDate);
 		var newTitle = document.getElementById(id+'_title').value;
 		var newText = document.getElementById(id+'_text').value;
 
@@ -67,9 +65,6 @@ Template.updateBlog.events = {
 					blogText: newText,
 				}}
 			);
-
-			newTitle='';
-			newText='';
 		}
 	}
 }

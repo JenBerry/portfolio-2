@@ -240,7 +240,9 @@
 			<div class="editMode">{{> addBlog}}</div>
 			<ul class="bloglist">
 				<li>
-					{{> blogArticle}}
+					{{#each blog}}
+						{{> blogArticle}}
+					{{/each}}
 				</li>
 			</ul>
 		</div>
@@ -248,7 +250,6 @@
 </template>
 
 <template name="blogArticle">
-	{{#each blog}}
 		<article class="blogarticle">
 			<header class="blogsummary">
 				<time pubdate datetime="{{datetime date 'date'}}" class="blogdate">
@@ -266,7 +267,6 @@
 				</div>
 			</div>
 		</article>
-	{{/each}}
 </template>
 
 <template name="updateBlog">
@@ -274,7 +274,7 @@
 	<p><label for 'title'>Title:</label></p>
 	<p><input type="text" id="{{_id}}_title" class="blogTitleInput" value = "{{title}}" required></p>
 	<p><label>Text:</label></p>
-	<p><textarea id="{{_id}}_text" class="blogTextInput" id="{{_id}}" required>{{{blogText}}}</textarea></p>
+	<p><textarea id="{{_id}}_text" class="blogTextInput" id="{{_id}}" required>{{blogText}}</textarea></p>
 	<input type="submit" class="updateBlog" value = "Update blog artical">
 </template>
 
