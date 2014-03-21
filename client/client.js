@@ -8,6 +8,7 @@ Template.blog.allBlog = function () {
 	return Blog.find({}, {sort: {date: -1}});
 }
 
+//helpers
 Handlebars.registerHelper('datetime', function(date, format){
 	if (format=="day"){
 		return date.getDate()
@@ -24,6 +25,7 @@ Handlebars.registerHelper('datetime', function(date, format){
 	}
 })
 
+//blog
 Template.addBlog.events = {
 	'click input#submitBlog' : function () {
 		

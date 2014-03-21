@@ -54,10 +54,12 @@ $(document).ready(function(){
 	$(".viewproject").on('click', function (){
 		articleClicked($(this).parent().parent(), "project");
 	});
-	$(".blogsummary").on("click", function (){
+		//detect click on bloglist, since blogsummary elements may be dynamically created
+	$(".bloglist").on("click", '.blogsummary', function (){
 		articleClicked($(this).parent(), "blog");
 	});
 
+	//prevent default action of link
 	$('a.do-nothing').on('click',function(event){
 		event.preventDefault();
 	});
