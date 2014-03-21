@@ -241,7 +241,7 @@
 			<div class="editMode">{{> addBlog}}</div>
 			<ul class="bloglist">
 				<li>
-					{{#each blog}}
+					{{#each allBlog}}
 						{{> blogArticle}}
 					{{/each}}
 				</li>
@@ -251,7 +251,7 @@
 </template>
 
 <template name="blogArticle">
-		<article class="blogarticle">
+		<article class="blogarticle pub{{published}}">
 			<header class="blogsummary">
 				<time pubdate datetime="{{datetime date 'date'}}" class="blogdate">
 					<span class="day">
@@ -277,6 +277,7 @@
 	<p><label>Text:</label></p>
 	<p><textarea id="{{_id}}_text" class="blogTextInput" id="{{_id}}" required>{{blogText}}</textarea></p>
 	<input type="submit" class="updateBlog" value = "Update blog artical">
+	<input type="submit" class="deleteForever" value = "Delete blog artical">
 </template>
 
 <template name = "addBlog">

@@ -2,6 +2,9 @@
 * Templates
 */
 Template.blog.blog = function () {
+	return Blog.find({published : {$nin: [false]}}, {sort: {date: -1}});
+}
+Template.blog.allBlog = function () {
 	return Blog.find({}, {sort: {date: -1}});
 }
 
@@ -40,6 +43,7 @@ Template.addBlog.events = {
 				date: date,
 				title: title.value,
 				blogText: text.value,
+				published: false,
 				addedBy: addedBy,
 			});
 
@@ -66,11 +70,25 @@ Template.updateBlog.events = {
 				}}
 			);
 		}
+	},
+	'click input.deleteForever' : function(){
+		var r=confirm("Are you sure you want to delete forever?");
+		if (r==true)
+		{
+			Blog.remove(this._id);
+		}
 	}
 }
 
 Template.blogArticle.events = {
 	'click .deleteBlog' : function() {
-		Blog.remove(this._id);
+		id = this._id;
+		published = !this.published;
+		console.log('delete clicked');
+		Blog.update({_id: id},
+			{$set:{
+				published: published,
+			}}
+		);
 	}
 }
