@@ -1,16 +1,16 @@
 /* blog */
-.blogTitleInput, .blogTextInput {
+.blogTitleInput, .blogTextInput, .projectTitleInput, .projectDescInput, .projectSkillsInput, .projectWebsiteInput, .projectDetailsInput {
   width: 90%; }
 
-.blogTextInput {
-  height: 200px; }
+.blogTextInput, .projectDescInput, .projectSkillsInput, .projectDetailsInput {
+  height: 100px; }
 
-.deleteBlog {
+.deleteBlog, .deleteProject {
   position: absolute;
   right: 10px;
   top: 10px;
   color: red;
   cursor: pointer; }
 
-.pubfalse .blogsummary {
+.pubfalse .blogsummary, .pubfalse .projectsummary {
   background-color: darkgray; }

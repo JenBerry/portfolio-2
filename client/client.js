@@ -92,8 +92,56 @@ Template.blogArticle.events = {
 	'click .deleteBlog' : function() {
 		id = this._id;
 		published = !this.published;
-		console.log('delete clicked');
 		Blog.update({_id: id},
+			{$set:{
+				published: published,
+			}}
+		);
+	}
+}
+
+//Projects
+Template.addProject.events = {
+	'click input#submitProject' : function () {
+		
+		var date = new Date();
+		var title = document.getElementById('projectTitleInput');
+		var description = document.getElementById('projectDescInput');
+		var skills = document.getElementById('projectSkillsInput');
+		var live_website = document.getElementById('projectWebsiteInput');
+		var details = document.getElementById('projectDetailsInput');
+		var addedBy;
+		if (Meteor.user()){
+			addedBy = Meteor.user().profile.name;
+		}
+		else{
+			addedBy = "Anonymous";
+		}
+
+		if (title.value != ''){
+			Projects.insert({
+				date: date,
+				title: title.value,
+				description: description.value,
+				skills: skills.value,
+				live_website: live_website.value,
+				details: details.value,
+				published: false,
+				addedBy: addedBy,
+			});
+
+			//clear the form
+			document.getElementById('blogTitleInput').value = '';
+			document.getElementById('blogTextInput').value = '';
+		}
+	}
+}
+
+Template.projectArticle.events = {
+	'click .deleteProject' : function() {
+		id = this._id;
+		published = !this.published;
+		Projects.update({_id: id},
 			{$set:{
 				published: published,
 			}}

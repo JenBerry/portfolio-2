@@ -51,16 +51,16 @@ $(document).ready(function(){
 		}
 	}
 
-	$(".viewproject").on('click', function (){
+		//detect click on list, since summary elements may be dynamically created
+	$(".projectlist").on('click', '.viewproject', function (){
 		articleClicked($(this).parent().parent(), "project");
 	});
-		//detect click on bloglist, since blogsummary elements may be dynamically created
 	$(".bloglist").on("click", '.blogsummary', function (){
 		articleClicked($(this).parent(), "blog");
 	});
 
 	//prevent default action of link
-	$('a.do-nothing').on('click',function(event){
+	$(document).on('click','a.do-nothing',function(event){
 		event.preventDefault();
 	});
 

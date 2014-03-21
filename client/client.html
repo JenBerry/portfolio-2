@@ -94,6 +94,7 @@
 		<a name="projects"></a>
 		<div class="menubutton"><a href="#top" class="scroll">Menu</a></div>
 		<header><h2>Projects</h2></header>
+		{{> addProject}}
 		<div class="sectioncontent">
 			<ul class="projectlist">
 				<li>
@@ -107,11 +108,11 @@
 </template>
 
 <template name="projectArticle">
-
-	<article class="projectarticle">
+	<article class="projectarticle pub{{published}}">
 		<header class="projectsummary">
 			<h3>{{title}}</h3>
 			{{{description}}}
+			<span class="deleteProject editMode">X</span>
 		</header>
 		<footer class="projectfooter">
 			<ul class="projectskills">
@@ -124,6 +125,26 @@
 			{{{details}}}
 		</div>
 	</article>
+</template>
+
+<template name = "addProject">
+	<p><label for 'title'>Title:</label></p>
+	<p><input type="text" class="projectTitleInput" id="projectTitleInput" required></p>
+	<p><label>Description:</label></p>
+	<p><textarea class="projectDescInput" id="projectDescInput">
+		&lt;p class="projectdescription"&gt;I worked a 5 week contract with &lt;a href="http://u-dox.com" target="_blank"&gt;U-dox creative ltd&lt;/a&gt;. Finishing/bug-fixing an e-commerce website for the record label: &lt;a href="http://defected.com" target="_blank"&gt;Defected.com&lt;/a&gt;. Using Django web framework, Oscar e-commerce framework,  and Bootstrap layout framework. Coding in HTML, LESS, and JavaScript. Working with git version control, virtual environments, and Redmine project management.&lt;/p&gt;
+	</textarea></p>
+	<p><label>Skills:</label></p>
+	<p><textarea class="projectSkillsInput" id="projectSkillsInput">
+		&lt;li style="position: relative;"&gt;&lt;p class="verticalcenter" style="position: absolute; top: 14px;"&gt;HTML&lt;wbr&gt; LESS&lt;/p&gt;&lt;/li&gt;&lt;li style="position: relative;"&gt;&lt;p class="verticalcenter" style="position: absolute; top: 22px;"&gt;Django&lt;/p&gt;&lt;/li&gt;&lt;li style="position: relative;"&gt;&lt;p class="verticalcenter" style="position: absolute; top: 14px;"&gt;Java&lt;wbr&gt; Script&lt;/p&gt;&lt;/li&gt;
+	</textarea></p>
+	<p><label for 'title'>live_website:</label></p>
+	<p><input type="text" class="projectWebsiteInput" id="projectWebsiteInput" value="http://store.def003.defected.u-dox.com/catalogue/list"></p>
+	<p><label>Details:</label></p>
+	<p><textarea class="projectDetailsInput" id="projectDetailsInput">
+		&lt;img src="img/defected-website.png" alt="Defected website screenshot" title="Screenshot of www.defected.com, Web Design by Jen Berry"&gt;
+	</textarea></p>
+	<input type="submit" id='submitProject' value = "Submit new project">
 </template>
 
 <template name="blog">
