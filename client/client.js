@@ -1,6 +1,8 @@
 /**
 * Templates
 */
+
+
 Template.blog.blog = function () {
 	return Blog.find({published : {$nin: [false]}}, {sort: {date: -1}});
 }
@@ -13,6 +15,8 @@ Template.projects.project = function () {
 Template.projects.allProject = function() {
 	return Projects.find({},{sort: {date: -1}});
 }
+
+
 
 //helpers
 Handlebars.registerHelper('datetime', function(date, format){
@@ -29,6 +33,10 @@ Handlebars.registerHelper('datetime', function(date, format){
 		var day = ("0" + date.getDate()).slice(-2)
 		return year+'-'+month+'-'+day;
 	}
+})
+Handlebars.registerHelper('editMode', function(){
+	editMode = true;
+	return editMode;
 })
 
 //blog

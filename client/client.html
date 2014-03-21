@@ -94,6 +94,7 @@
 		<a name="projects"></a>
 		<div class="menubutton"><a href="#top" class="scroll">Menu</a></div>
 		<header><h2>Projects</h2></header>
+		<input type="submit" id='editMode' value = "Toggle Edit mode">
 		<div class="sectioncontent">
 			<ul class="projectlist">
 				<li>
@@ -103,7 +104,9 @@
 				</li>
 			</ul>
 		</div>
-		{{> addProject}}
+		{{#if editMode}}
+			{{> addProject}}
+		{{/if}}
 	</section>
 </template>
 
@@ -112,7 +115,9 @@
 		<header class="projectsummary">
 			<h3>{{title}}</h3>
 			{{{description}}}
-			<span class="deleteProject editMode">X</span>
+			{{#if editMode}}
+				<span class="deleteProject editMode">X</span>
+			{{/if}}
 		</header>
 		<footer class="projectfooter">
 			<ul class="projectskills">
@@ -123,7 +128,9 @@
 		</footer>
 		<div class="projectdetails">
 			{{{details}}}
-			{{> updateProject}}
+			{{#if editMode}}
+				{{> updateProject}}
+			{{/if}}
 		</div>
 	</article>
 </template>
@@ -183,7 +190,9 @@
 				</li>
 			</ul>
 		</div>
-		<div class="editMode">{{> addBlog}}</div>
+		{{#if editMode}}
+			{{> addBlog}}
+		{{/if}}
 	</section>
 </template>
 
@@ -196,13 +205,15 @@
 					</span><span class="month">{{datetime date 'monthName'}}</span>
 				</time>
 				<h3 class="blogtitle">{{title}}</h3>
-				<span class="deleteBlog editMode">X</span>
+				{{#if editMode}}
+					<span class="deleteBlog editMode">X</span>
+				{{/if}}
 			</header>
 			<div class="blogdetails">
 				{{{blogText}}}
-				<div class="editMode">
+				{{#if editMode}}
 					{{> updateBlog}}
-				</div>
+				{{/if}}
 			</div>
 		</article>
 </template>
