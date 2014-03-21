@@ -7,6 +7,12 @@ Template.blog.blog = function () {
 Template.blog.allBlog = function () {
 	return Blog.find({}, {sort: {date: -1}});
 }
+Template.projects.project = function () {
+	return Projects.find({published : {$nin: [false]}}, {sort: {date: -1}})
+}
+Template.projects.allProject = function() {
+	return Projects.find({},{sort: {date: -1}});
+}
 
 //helpers
 Handlebars.registerHelper('datetime', function(date, format){
