@@ -94,7 +94,6 @@
 		<a name="projects"></a>
 		<div class="menubutton"><a href="#top" class="scroll">Menu</a></div>
 		<header><h2>Projects</h2></header>
-		{{> addProject}}
 		<div class="sectioncontent">
 			<ul class="projectlist">
 				<li>
@@ -104,6 +103,7 @@
 				</li>
 			</ul>
 		</div>
+		{{> addProject}}
 	</section>
 </template>
 
@@ -123,6 +123,7 @@
 		</footer>
 		<div class="projectdetails">
 			{{{details}}}
+			{{> updateProject}}
 		</div>
 	</article>
 </template>
@@ -147,13 +148,33 @@
 	<input type="submit" id='submitProject' value = "Submit new project">
 </template>
 
+<template name="updateProject">
+	<p><label for 'title'>Title:</label></p>
+	<p><input type="text" class="projectTitleInput" id="{{_id}}_projectTitleInput" value="{{title}}"></p>
+	<p><label>Description:</label></p>
+	<p><textarea class="projectDescInput" id="{{_id}}_projectDescInput">
+		{{description}}
+	</textarea></p>
+	<p><label>Skills:</label></p>
+	<p><textarea class="projectSkillsInput" id="{{_id}}_projectSkillsInput">
+		{{skills}}
+	</textarea></p>
+	<p><label for 'title'>live_website:</label></p>
+	<p><input type="text" class="projectWebsiteInput" id="{{_id}}_projectWebsiteInput" value="{{live_website}}"></p>
+	<p><label>Details:</label></p>
+	<p><textarea class="projectDetailsInput" id="{{_id}}_projectDetailsInput">
+		{{details}}
+	</textarea></p>
+	<input type="submit" id='updateProject' value = "Update project">
+	<input type="submit" class='deleteForever' value = "Delete project">
+</template>
+
 <template name="blog">
 	<section>
 		<a name="blog"></a>
 		<div class="menubutton"><a href="#top" class="scroll">Menu</a></div>
 		<header><h2>Blog</h2></header>
 		<div class="sectioncontent">
-			<div class="editMode">{{> addBlog}}</div>
 			<ul class="bloglist">
 				<li>
 					{{#each allBlog}}
@@ -162,6 +183,7 @@
 				</li>
 			</ul>
 		</div>
+		<div class="editMode">{{> addBlog}}</div>
 	</section>
 </template>
 
@@ -190,7 +212,7 @@
 	<p><label for 'title'>Title:</label></p>
 	<p><input type="text" id="{{_id}}_title" class="blogTitleInput" value = "{{title}}" required></p>
 	<p><label>Text:</label></p>
-	<p><textarea id="{{_id}}_text" class="blogTextInput" id="{{_id}}" required>{{blogText}}</textarea></p>
+	<p><textarea id="{{_id}}_text" class="blogTextInput" required>{{blogText}}</textarea></p>
 	<input type="submit" class="updateBlog" value = "Update blog artical">
 	<input type="submit" class="deleteForever" value = "Delete blog artical">
 </template>

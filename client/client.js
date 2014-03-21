@@ -132,7 +132,35 @@ Template.addProject.events = {
 
 			//clear the form
 			document.getElementById('blogTitleInput').value = '';
-			document.getElementById('blogTextInput').value = '';
+			document.getElementById('projectDescInput').value = '';
+			document.getElementById('projectSkillsInput').value='';
+			document.getElementById('projectWebsiteInput').value='';
+			document.getElementById('projectDetailsInput').value='';
+		}
+	}
+}
+
+Template.updateProject.events = {
+	'click input#updateProject' : function () {
+		console.log('update clicked');
+		id = this._id;
+		var title = document.getElementById(id+'_projectTitleInput');
+		var description = document.getElementById(id+'_projectDescInput');
+		var skills = document.getElementById(id+'_projectSkillsInput');
+		var live_website = document.getElementById(id+'_projectWebsiteInput');
+		var details = document.getElementById(id+'_projectDetailsInput');
+		console.log('title ' + title.value);
+		if (title.value != ''){
+			console.log('performing update');
+			Projects.update({_id: id},
+				{$set:{
+					title: title.value,
+					description: description.value,
+					skills: skills.value,
+					live_website: live_website.value,
+					details: details.value,
+				}}
+			);
 		}
 	}
 }
@@ -146,5 +174,12 @@ Template.projectArticle.events = {
 				published: published,
 			}}
 		);
+	},
+	'click input.deleteForever' : function(){
+		var r=confirm("Are you sure you want to delete forever?");
+		if (r==true)
+		{
+			Projects.remove(this._id);
+		}
 	}
 }
