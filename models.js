@@ -1,3 +1,4 @@
+/********** SERVER ***********/
 /**
 * Models
 */
@@ -7,7 +8,7 @@ Projects = new Meteor.Collection('projects');
 //publish collections to client
 //If user is signed in get all articles
 //If user not signed in only get published articles
-Meteor.publish('blog', function() {
+Meteor.publish(null, function() {
 	if (this.userId){
 		return Blog.find();
 	}
@@ -15,7 +16,7 @@ Meteor.publish('blog', function() {
 		return Blog.find({published : {$nin: [false]}});
 	}
 });
-Meteor.publish('projects', function() {
+Meteor.publish(null, function() {
 	if (this.userId)
 	{
 		return Projects.find();

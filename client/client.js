@@ -1,8 +1,7 @@
+/********** CLIENT ***********/
 /**
 * Templates
 */
-Meteor.subscribe("blog");
-Meteor.subscribe("projects");
 
 Template.blog.blog = function () {
 	return Blog.find({}, {sort: {date: -1}});
