@@ -1,35 +1,32 @@
 /**
 * Templates
 */
+Meteor.subscribe("blog");
+Meteor.subscribe("projects");
+
 Template.blog.blog = function () {
-	return Blog.find({published : {$nin: [false]}}, {sort: {date: -1}});
-}
-Template.blog.allBlog = function () {
 	return Blog.find({}, {sort: {date: -1}});
-}
-Template.projects.project = function () {
-	return Projects.find({published : {$nin: [false]}}, {sort: {date: -1}})
-}
-Template.projects.allProject = function() {
+};
+Template.projects.project = function() {
 	return Projects.find({},{sort: {date: -1}});
-}
+};
 
 //helpers
 Handlebars.registerHelper('datetime', function(date, format){
 	if (format=="day"){
-		return date.getDate()
+		return date.getDate();
 	}
 	if (format=="monthName"){
-		var monthNames = ['Jan','Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-		return monthNames[date.getMonth()]
+		var monthNames = ['Jan','Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+		return monthNames[date.getMonth()];
 	}
 	if (format == "date"){
-		var year = date.getFullYear()
-		var month = ("0" + (date.getMonth()+1)).slice(-2)
-		var day = ("0" + date.getDate()).slice(-2)
+		var year = date.getFullYear();
+		var month = ("0" + (date.getMonth()+1)).slice(-2);
+		var day = ("0" + date.getDate()).slice(-2);
 		return year+'-'+month+'-'+day;
 	}
-})
+});
 
 //blog
 Template.addBlog.events = {
@@ -60,7 +57,7 @@ Template.addBlog.events = {
 			document.getElementById('blogTextInput').value = '';
 		}
 	}
-}
+};
 
 Template.updateBlog.events = {
 	'click input.updateBlog' : function(){
@@ -86,7 +83,7 @@ Template.updateBlog.events = {
 			Blog.remove(this._id);
 		}
 	}
-}
+};
 
 Template.blogArticle.events = {
 	'click .deleteBlog' : function() {
@@ -98,7 +95,7 @@ Template.blogArticle.events = {
 			}}
 		);
 	}
-}
+};
 
 //Projects
 Template.addProject.events = {
@@ -138,7 +135,7 @@ Template.addProject.events = {
 			document.getElementById('projectDetailsInput').value='';
 		}
 	}
-}
+};
 
 Template.updateProject.events = {
 	'click input#updateProject' : function () {
@@ -163,7 +160,7 @@ Template.updateProject.events = {
 			);
 		}
 	}
-}
+};
 
 Template.projectArticle.events = {
 	'click .deleteProject' : function() {
@@ -182,4 +179,4 @@ Template.projectArticle.events = {
 			Projects.remove(this._id);
 		}
 	}
-}
+};
