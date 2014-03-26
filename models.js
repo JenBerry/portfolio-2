@@ -13,7 +13,7 @@ Meteor.publish(null, function() {
 		return Blog.find();
 	}
 	else{
-		return Blog.find({published : {$nin: [false]}});
+		return Blog.find({published : true});
 	}
 });
 Meteor.publish(null, function() {
@@ -22,7 +22,7 @@ Meteor.publish(null, function() {
 		return Projects.find();
 	}
 	else{
-		return Projects.find({published : {$nin: [false]}});
+		return Projects.find({published : true});
 	}
 });
 

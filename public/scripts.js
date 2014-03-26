@@ -58,6 +58,18 @@ $(document).ready(function(){
 	$(document).on("click", '.blogsummary', function (){
 		articleClicked($(this).parent(), "blog");
 	});
+	$(document).on('click', '.add-project-btn', function(){
+		$('.add-project').slideToggle();
+	});
+	$(document).on('click', '.update-project-btn', function(){
+		$(this).next().slideToggle();
+	});
+	$(document).on('click', '.add-blog-btn', function(){
+		$('.add-blog').slideToggle();
+	});
+	$(document).on('click', '.update-blog-btn', function(){
+		$(this).next().slideToggle();
+	});
 
 	//prevent default action of link
 	$(document).on('click','a.prevent-default',function(event){

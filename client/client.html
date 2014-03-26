@@ -94,6 +94,9 @@
 		<a name="projects"></a>
 		<div class="menubutton"><a href="#top" class="scroll">Menu</a></div>
 		<header><h2>Projects</h2></header>
+		{{#if editMode}}
+			{{> addProject}}
+		{{/if}}
 		<div class="sectioncontent">
 			<ul class="projectlist">
 				<li>
@@ -103,9 +106,6 @@
 				</li>
 			</ul>
 		</div>
-		{{#if editMode}}
-			{{> addProject}}
-		{{/if}}
 	</section>
 </template>
 
@@ -113,6 +113,9 @@
 	<article class="projectarticle pub{{published}}">
 		<header class="projectsummary">
 			<h3>{{title}}</h3>
+			{{#if editMode}}
+				{{> updateProject}}
+			{{/if}}
 			{{{description}}}
 			{{#if editMode}}
 				<span class="deleteProject">X</span>
@@ -127,16 +130,14 @@
 		</footer>
 		<div class="projectdetails">
 			{{{details}}}
-
-			{{#if editMode}}
-				{{> updateProject}}
-			{{/if}}
 		</div>
 	</article>
 </template>
 
 <template name = "addProject">
-	<div>
+	<div class="add-project-btn"><a class="prevent-default" href="#">Add Project</a></div>
+	<div class="add-project">
+		<h3>Add a new project</h3>
 		<p><label for 'title'>Title:</label></p>
 		<p><input type="text" class="projectTitleInput" id="projectTitleInput" required></p>
 		<p><label>Description:</label></p>
@@ -158,24 +159,27 @@
 </template>
 
 <template name="updateProject">
-	<p><label for 'title'>Title:</label></p>
-	<p><input type="text" class="projectTitleInput" id="{{_id}}_projectTitleInput" value="{{title}}"></p>
-	<p><label>Description:</label></p>
-	<p><textarea class="projectDescInput" id="{{_id}}_projectDescInput">
-		{{description}}
-	</textarea></p>
-	<p><label>Skills:</label></p>
-	<p><textarea class="projectSkillsInput" id="{{_id}}_projectSkillsInput">
-		{{skills}}
-	</textarea></p>
-	<p><label for 'title'>live_website:</label></p>
-	<p><input type="text" class="projectWebsiteInput" id="{{_id}}_projectWebsiteInput" value="{{live_website}}"></p>
-	<p><label>Details:</label></p>
-	<p><textarea class="projectDetailsInput" id="{{_id}}_projectDetailsInput">
-		{{details}}
-	</textarea></p>
-	<input type="submit" id='updateProject' value = "Update project">
-	<input type="submit" class='deleteForever' value = "Delete project">
+	<div class="update-project-btn"><a class="prevent-default" href="#">Update Project</a></div>
+	<div class="update-project">
+		<p><label for 'title'>Title:</label></p>
+		<p><input type="text" class="projectTitleInput" id="{{_id}}_projectTitleInput" value="{{title}}"></p>
+		<p><label>Description:</label></p>
+		<p><textarea class="projectDescInput" id="{{_id}}_projectDescInput">
+			{{description}}
+		</textarea></p>
+		<p><label>Skills:</label></p>
+		<p><textarea class="projectSkillsInput" id="{{_id}}_projectSkillsInput">
+			{{skills}}
+		</textarea></p>
+		<p><label for 'title'>live_website:</label></p>
+		<p><input type="text" class="projectWebsiteInput" id="{{_id}}_projectWebsiteInput" value="{{live_website}}"></p>
+		<p><label>Details:</label></p>
+		<p><textarea class="projectDetailsInput" id="{{_id}}_projectDetailsInput">
+			{{details}}
+		</textarea></p>
+		<input type="submit" id='updateProject' value = "Update project">
+		<input type="submit" class='deleteForever' value = "Delete project">
+	</div>
 </template>
 
 <template name="blog">
@@ -183,6 +187,9 @@
 		<a name="blog"></a>
 		<div class="menubutton"><a href="#top" class="scroll">Menu</a></div>
 		<header><h2>Blog</h2></header>
+		{{#if editMode}}
+			{{> addBlog}}
+		{{/if}}
 		<div class="sectioncontent">
 			<ul class="bloglist">
 				<li>
@@ -192,9 +199,6 @@
 				</li>
 			</ul>
 		</div>
-		{{#if editMode}}
-			{{> addBlog}}
-		{{/if}}
 	</section>
 </template>
 
@@ -212,26 +216,30 @@
 				{{/if}}
 			</header>
 			<div class="blogdetails">
-				{{{blogText}}}
 				{{#if editMode}}
 					{{> updateBlog}}
 				{{/if}}
+				{{{blogText}}}
 			</div>
 		</article>
 </template>
 
 <template name="updateBlog">
-	<p><label>Date</label><input type="date" id="{{_id}}_date" value="{{datetime date 'date'}}" required></p>
-	<p><label for 'title'>Title:</label></p>
-	<p><input type="text" id="{{_id}}_title" class="blogTitleInput" value = "{{title}}" required></p>
-	<p><label>Text:</label></p>
-	<p><textarea id="{{_id}}_text" class="blogTextInput" required>{{blogText}}</textarea></p>
-	<input type="submit" class="updateBlog" value = "Update blog artical">
-	<input type="submit" class="deleteForever" value = "Delete blog artical">
+	<div class="update-blog-btn"><a href="#" class="prevent-default">Update Blog</a></div>
+	<div class="update-blog">
+		<p><label>Date</label><input type="date" id="{{_id}}_date" value="{{datetime date 'date'}}" required></p>
+		<p><label for 'title'>Title:</label></p>
+		<p><input type="text" id="{{_id}}_title" class="blogTitleInput" value = "{{title}}" required></p>
+		<p><label>Text:</label></p>
+		<p><textarea id="{{_id}}_text" class="blogTextInput" required>{{blogText}}</textarea></p>
+		<input type="submit" class="updateBlog" value = "Update blog artical">
+		<input type="submit" class="deleteForever" value = "Delete blog artical">
+	</div>
 </template>
 
 <template name = "addBlog">
-	<div>
+	<a href="#" class="prevent-default add-blog-btn">Add Blog</a>
+	<div class="add-blog">
 		<p><label for 'title'>Title:</label></p>
 		<p><input type="text" class="blogTitleInput" id="blogTitleInput" required></p>
 		<p><label>Text:</label></p>
