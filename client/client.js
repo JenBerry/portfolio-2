@@ -122,12 +122,15 @@ Template.addProject.events = {
 			addedBy = "Anonymous";
 		}
 
+		var skillsString = skills.value;
+		var skillArray = $.map(skillsString.split(','), $.trim);
+
 		if (title.value != ''){
 			Projects.insert({
 				date: date,
 				title: title.value,
 				description: description.value,
-				skills: skills.value,
+				skills: skillArray,
 				live_website: live_website.value,
 				details: details.value,
 				published: false,
@@ -154,13 +157,17 @@ Template.updateProject.events = {
 		var live_website = document.getElementById(id+'_projectWebsiteInput');
 		var details = document.getElementById(id+'_projectDetailsInput');
 		console.log('title ' + title.value);
+
+		var skillsString = skills.value;
+		var skillArray = $.map(skillsString.split(','), $.trim);
+
 		if (title.value != ''){
 			console.log('performing update');
 			Projects.update({_id: id},
 				{$set:{
 					title: title.value,
 					description: description.value,
-					skills: skills.value,
+					skills: skillArray,
 					live_website: live_website.value,
 					details: details.value,
 				}}
