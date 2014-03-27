@@ -109,7 +109,7 @@ Template.addProject.events = {
 		var description = document.getElementById('projectDescInput');
 		var skills = document.getElementById('projectSkillsInput');
 		var live_website = document.getElementById('projectWebsiteInput');
-		var details = document.getElementById('projectDetailsInput');
+		
 		var addedBy;
 		if (Meteor.user()){
 			addedBy = Meteor.user();
@@ -119,7 +119,20 @@ Template.addProject.events = {
 		}
 
 		var skillsString = skills.value;
-		var skillArray = $.map(skillsString.split(','), $.trim);
+		if (skillsString != ""){
+			var skillArray = $.map(skillsString.split(','), $.trim);
+		}else{
+			var skillArray = [];
+		}
+
+		var screenshots = [];
+		$('.add-screenshot').each(function(index){
+			var src = $(this).find('.ss-src').val();
+			var title = $(this).find('.ss-title').val();
+			var caption = $(this).find('.ss-caption').val();
+			screenshots.push({src: src, title: title, caption: caption})
+		});
+
 
 		if (title.value != ''){
 			Projects.insert({
@@ -129,17 +142,17 @@ Template.addProject.events = {
 				description: description.value,
 				skills: skillArray,
 				live_website: live_website.value,
-				details: details.value,
+				screenshots: screenshots,
 				published: false,
 				addedBy: addedBy,
 			});
 
 			//clear the form
-			document.getElementById('blogTitleInput').value = '';
-			document.getElementById('projectDescInput').value = '';
-			document.getElementById('projectSkillsInput').value='';
-			document.getElementById('projectWebsiteInput').value='';
-			document.getElementById('projectDetailsInput').value='';
+			title.value = '';
+			description.value = '';
+			skills.value='';
+			live_website.value='';
+			
 		}
 	}
 };
@@ -152,12 +165,23 @@ Template.updateProject.events = {
 		var description = document.getElementById(id+'_projectDescInput');
 		var skills = document.getElementById(id+'_projectSkillsInput');
 		var live_website = document.getElementById(id+'_projectWebsiteInput');
-		var details = document.getElementById(id+'_projectDetailsInput');
 		var updated = new Date();
 		console.log('title ' + title.value);
 
 		var skillsString = skills.value;
-		var skillArray = $.map(skillsString.split(','), $.trim);
+		if (skillsString != ""){
+			var skillArray = $.map(skillsString.split(','), $.trim);
+		}else{
+			var skillArray = [];
+		}
+
+		var screenshots = [];
+		$('.update-screenshot-'+ id +' .update-screenshot').each(function(index){
+			var src = $(this).find('.ss-src').val();
+			var title = $(this).find('.ss-title').val();
+			var caption = $(this).find('.ss-caption').val();
+			screenshots.push({src: src, title: title, caption: caption})
+		});
 
 		if (title.value != ''){
 			console.log('performing update');
@@ -168,7 +192,7 @@ Template.updateProject.events = {
 					description: description.value,
 					skills: skillArray,
 					live_website: live_website.value,
-					details: details.value,
+					screenshots: screenshots
 				}}
 			);
 		}

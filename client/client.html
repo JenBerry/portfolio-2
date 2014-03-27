@@ -133,7 +133,10 @@
 			<div class="viewproject"><a href="#projects" class="prevent-default">View Screenshot</a><div class="viewprojectarrow"></div></div>
 		</footer>
 		<div class="projectdetails">
-			{{{details}}}
+			{{#each screenshots}}
+				<img src="{{this.src}}" alt="Screenshot of '{{this.title}}'" title="'{{this.title}}' by Jen Berry">
+				<p>{{this.caption}}</p>
+			{{/each}}
 		</div>
 	</article>
 </template>
@@ -150,8 +153,14 @@
 		<p><textarea class="projectSkillsInput" id="projectSkillsInput"></textarea></p>
 		<p><label for 'title'>live_website:</label></p>
 		<p><input type="text" class="projectWebsiteInput" id="projectWebsiteInput" value="http://store.def003.defected.u-dox.com/catalogue/list"></p>
-		<p><label>Details:</label></p>
-		<p><textarea class="projectDetailsInput" id="projectDetailsInput">&lt;img src="img/defected-website.png" alt="Defected website screenshot" title="Screenshot of www.defected.com, Web Design by Jen Berry"&gt;</textarea></p>
+		<p><label for="screenshots">Screenshots</label></p>
+		<ul>
+			<li class="add-screenshot">
+				<input class="ss-title" type="text" placeholder="title">
+				<input class="ss-src" type="url" placeholder="src">
+				<input class="ss-caption" type="text" placeholder="Caption">
+			</li>
+		</ul>
 		<input type="submit" id='submitProject' value = "Submit new project">
 	</div>
 </template>
@@ -167,8 +176,16 @@
 		<p><textarea class="projectSkillsInput" id="{{_id}}_projectSkillsInput">{{skills}}</textarea></p>
 		<p><label for 'title'>live_website:</label></p>
 		<p><input type="text" class="projectWebsiteInput" id="{{_id}}_projectWebsiteInput" value="{{live_website}}"></p>
-		<p><label>Details:</label></p>
-		<p><textarea class="projectDetailsInput" id="{{_id}}_projectDetailsInput">{{details}}</textarea></p>
+		<p><label for="screenshots">Screenshots</label></p>
+		<ul class="update-screenshot-{{_id}}">
+			{{#each screenshots}}
+				<li class="update-screenshot">
+					<input class="ss-title" type="text" value="{{this.title}}">
+					<input class="ss-src" type="url" value="{{this.src}}">
+					<input class="ss-caption" type="text" value="{{this.caption}}">
+				</li>
+			{{/each}}
+		</ul>
 		<input type="submit" id='updateProject' value = "Update project">
 		<input type="submit" class='deleteForever' value = "Delete project">
 	</div>
