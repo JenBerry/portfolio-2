@@ -26,14 +26,6 @@ Handlebars.registerHelper('datetime', function(date, format){
 		return year+'-'+month+'-'+day;
 	}
 });
-Handlebars.registerHelper('editMode', function(){
-	if (Meteor.user()){
-		return true;
-	}
-	else{
-		return false;
-	}
-});
 
 //blog
 Template.addBlog.events = {

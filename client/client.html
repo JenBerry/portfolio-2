@@ -94,7 +94,7 @@
 		<a name="projects"></a>
 		<div class="menubutton"><a href="#top" class="scroll">Menu</a></div>
 		<header><h2>Projects</h2></header>
-		{{#if editMode}}
+		{{#if currentUser}}
 			{{> addProject}}
 		{{/if}}
 		<div class="sectioncontent">
@@ -113,11 +113,11 @@
 	<article class="projectarticle pub{{published}}">
 		<header class="projectsummary">
 			<h3>{{title}}</h3>
-			{{#if editMode}}
+			{{#if currentUser}}
 				{{> updateProject}}
 			{{/if}}
 			{{{description}}}
-			{{#if editMode}}
+			{{#if currentUser}}
 				<span class="deleteProject">X</span>
 			{{/if}}
 		</header>
@@ -179,7 +179,7 @@
 		<a name="blog"></a>
 		<div class="menubutton"><a href="#top" class="scroll">Menu</a></div>
 		<header><h2>Blog</h2></header>
-		{{#if editMode}}
+		{{#if currentUser}}
 			{{> addBlog}}
 		{{/if}}
 		<div class="sectioncontent">
@@ -203,12 +203,12 @@
 					</span><span class="month">{{datetime date 'monthName'}}</span>
 				</time>
 				<h3 class="blogtitle">{{title}}</h3>
-				{{#if editMode}}
+				{{#if currentUser}}
 					<span class="deleteBlog">X</span>
 				{{/if}}
 			</header>
 			<div class="blogdetails">
-				{{#if editMode}}
+				{{#if currentUser}}
 					{{> updateBlog}}
 				{{/if}}
 				{{{blogText}}}
