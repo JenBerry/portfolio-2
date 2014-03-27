@@ -44,6 +44,7 @@ Template.addBlog.events = {
 
 		if (title.value != '' && text.value != ''){
 			Blog.insert({
+				creationDate: date,
 				date: date,
 				title: title.value,
 				blogText: text.value,
@@ -61,6 +62,7 @@ Template.addBlog.events = {
 Template.updateBlog.events = {
 	'click input.updateBlog' : function(){
 		id = this._id;
+		var updated = new Date();
 		var newDate = new Date(document.getElementById(id+'_date').value);
 		var newTitle = document.getElementById(id+'_title').value;
 		var newText = document.getElementById(id+'_text').value;
@@ -68,6 +70,7 @@ Template.updateBlog.events = {
 		if (newTitle.value != '' && newText.value != ''){
 			Blog.update({_id: id},
 				{$set:{
+					lastUpdated: updated,
 					date: newDate,
 					title: newTitle,
 					blogText: newText,
@@ -120,6 +123,7 @@ Template.addProject.events = {
 
 		if (title.value != ''){
 			Projects.insert({
+				creationDate: date,
 				date: date,
 				title: title.value,
 				description: description.value,
@@ -149,6 +153,7 @@ Template.updateProject.events = {
 		var skills = document.getElementById(id+'_projectSkillsInput');
 		var live_website = document.getElementById(id+'_projectWebsiteInput');
 		var details = document.getElementById(id+'_projectDetailsInput');
+		var updated = new Date();
 		console.log('title ' + title.value);
 
 		var skillsString = skills.value;
@@ -158,6 +163,7 @@ Template.updateProject.events = {
 			console.log('performing update');
 			Projects.update({_id: id},
 				{$set:{
+					lastUpdated: updated,
 					title: title.value,
 					description: description.value,
 					skills: skillArray,
