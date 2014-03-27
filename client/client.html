@@ -94,18 +94,18 @@
 		<a name="projects"></a>
 		<div class="menubutton"><a href="#top" class="scroll">Menu</a></div>
 		<header><h2>Projects</h2></header>
+		{{#if editMode}}
+			{{> addProject}}
+		{{/if}}
 		<div class="sectioncontent">
 			<ul class="projectlist">
 				<li>
-					{{#each allProject}}
+					{{#each project}}
 						{{> projectArticle}}
 					{{/each}}
 				</li>
 			</ul>
 		</div>
-		{{#if editMode}}
-			{{> addProject}}
-		{{/if}}
 	</section>
 </template>
 
@@ -113,66 +113,65 @@
 	<article class="projectarticle pub{{published}}">
 		<header class="projectsummary">
 			<h3>{{title}}</h3>
+			{{#if editMode}}
+				{{> updateProject}}
+			{{/if}}
 			{{{description}}}
 			{{#if editMode}}
-				<span class="deleteProject editMode">X</span>
+				<span class="deleteProject">X</span>
 			{{/if}}
 		</header>
 		<footer class="projectfooter">
 			<ul class="projectskills">
-				{{{skills}}}
+				{{#each skills}}
+					<li style="position: relative;">
+						<p class="verticalcenter" style="position: absolute; top: 14px;">{{this}}</p>
+					</li>
+				{{/each}}
 			</ul>
 			<div class="viewlive"><a href="{{live_website}}" target="_blank">View live Website</a></div>
-			<div class="viewproject"><a href="#projects" class="do-nothing">View Screenshot</a><div class="viewprojectarrow"></div></div>
+			<div class="viewproject"><a href="#projects" class="prevent-default">View Screenshot</a><div class="viewprojectarrow"></div></div>
 		</footer>
 		<div class="projectdetails">
 			{{{details}}}
-			{{#if editMode}}
-				{{> updateProject}}
-			{{/if}}
 		</div>
 	</article>
 </template>
 
 <template name = "addProject">
-	<p><label for 'title'>Title:</label></p>
-	<p><input type="text" class="projectTitleInput" id="projectTitleInput" required></p>
-	<p><label>Description:</label></p>
-	<p><textarea class="projectDescInput" id="projectDescInput">
-		&lt;p class="projectdescription"&gt;I worked a 5 week contract with &lt;a href="http://u-dox.com" target="_blank"&gt;U-dox creative ltd&lt;/a&gt;. Finishing/bug-fixing an e-commerce website for the record label: &lt;a href="http://defected.com" target="_blank"&gt;Defected.com&lt;/a&gt;. Using Django web framework, Oscar e-commerce framework,  and Bootstrap layout framework. Coding in HTML, LESS, and JavaScript. Working with git version control, virtual environments, and Redmine project management.&lt;/p&gt;
-	</textarea></p>
-	<p><label>Skills:</label></p>
-	<p><textarea class="projectSkillsInput" id="projectSkillsInput">
-		&lt;li style="position: relative;"&gt;&lt;p class="verticalcenter" style="position: absolute; top: 14px;"&gt;HTML&lt;wbr&gt; LESS&lt;/p&gt;&lt;/li&gt;&lt;li style="position: relative;"&gt;&lt;p class="verticalcenter" style="position: absolute; top: 22px;"&gt;Django&lt;/p&gt;&lt;/li&gt;&lt;li style="position: relative;"&gt;&lt;p class="verticalcenter" style="position: absolute; top: 14px;"&gt;Java&lt;wbr&gt; Script&lt;/p&gt;&lt;/li&gt;
-	</textarea></p>
-	<p><label for 'title'>live_website:</label></p>
-	<p><input type="text" class="projectWebsiteInput" id="projectWebsiteInput" value="http://store.def003.defected.u-dox.com/catalogue/list"></p>
-	<p><label>Details:</label></p>
-	<p><textarea class="projectDetailsInput" id="projectDetailsInput">
-		&lt;img src="img/defected-website.png" alt="Defected website screenshot" title="Screenshot of www.defected.com, Web Design by Jen Berry"&gt;
-	</textarea></p>
-	<input type="submit" id='submitProject' value = "Submit new project">
+	<div class="add-project-btn"><a class="prevent-default" href="#">Add Project</a></div>
+	<div class="add-project">
+		<h3>Add a new project</h3>
+		<p><label for 'title'>Title:</label></p>
+		<p><input type="text" class="projectTitleInput" id="projectTitleInput" required></p>
+		<p><label>Description:</label></p>
+		<p><textarea class="projectDescInput" id="projectDescInput">&lt;p class="projectdescription"&gt;I worked a 5 week contract with &lt;a href="http://u-dox.com" target="_blank"&gt;U-dox creative ltd&lt;/a&gt;. Finishing/bug-fixing an e-commerce website for the record label: &lt;a href="http://defected.com" target="_blank"&gt;Defected.com&lt;/a&gt;. Using Django web framework, Oscar e-commerce framework,  and Bootstrap layout framework. Coding in HTML, LESS, and JavaScript. Working with git version control, virtual environments, and Redmine project management.&lt;/p&gt;</textarea></p>
+		<p><label>Skills:</label></p>
+		<p><textarea class="projectSkillsInput" id="projectSkillsInput"></textarea></p>
+		<p><label for 'title'>live_website:</label></p>
+		<p><input type="text" class="projectWebsiteInput" id="projectWebsiteInput" value="http://store.def003.defected.u-dox.com/catalogue/list"></p>
+		<p><label>Details:</label></p>
+		<p><textarea class="projectDetailsInput" id="projectDetailsInput">&lt;img src="img/defected-website.png" alt="Defected website screenshot" title="Screenshot of www.defected.com, Web Design by Jen Berry"&gt;</textarea></p>
+		<input type="submit" id='submitProject' value = "Submit new project">
+	</div>
 </template>
 
 <template name="updateProject">
-	<p><label for 'title'>Title:</label></p>
-	<p><input type="text" class="projectTitleInput" id="{{_id}}_projectTitleInput" value="{{title}}"></p>
-	<p><label>Description:</label></p>
-	<p><textarea class="projectDescInput" id="{{_id}}_projectDescInput">
-		{{description}}
-	</textarea></p>
-	<p><label>Skills:</label></p>
-	<p><textarea class="projectSkillsInput" id="{{_id}}_projectSkillsInput">
-		{{skills}}
-	</textarea></p>
-	<p><label for 'title'>live_website:</label></p>
-	<p><input type="text" class="projectWebsiteInput" id="{{_id}}_projectWebsiteInput" value="{{live_website}}"></p>
-	<p><label>Details:</label></p>
-	<p><textarea class="projectDetailsInput" id="{{_id}}_projectDetailsInput">
-		{{details}}
-	</textarea></p>
-	<input type="submit" id='updateProject' value = "Update project">
-	<input type="submit" class='deleteForever' value = "Delete project">
+	<div class="update-project-btn"><a class="prevent-default" href="#">Update Project</a></div>
+	<div class="update-project">
+		<p><label for 'title'>Title:</label></p>
+		<p><input type="text" class="projectTitleInput" id="{{_id}}_projectTitleInput" value="{{title}}"></p>
+		<p><label>Description:</label></p>
+		<p><textarea class="projectDescInput" id="{{_id}}_projectDescInput">{{description}}</textarea></p>
+		<p><label>Skills:</label></p>
+		<p><textarea class="projectSkillsInput" id="{{_id}}_projectSkillsInput">{{skills}}</textarea></p>
+		<p><label for 'title'>live_website:</label></p>
+		<p><input type="text" class="projectWebsiteInput" id="{{_id}}_projectWebsiteInput" value="{{live_website}}"></p>
+		<p><label>Details:</label></p>
+		<p><textarea class="projectDetailsInput" id="{{_id}}_projectDetailsInput">{{details}}</textarea></p>
+		<input type="submit" id='updateProject' value = "Update project">
+		<input type="submit" class='deleteForever' value = "Delete project">
+	</div>
 </template>
 
 <template name="blog">
@@ -180,18 +179,18 @@
 		<a name="blog"></a>
 		<div class="menubutton"><a href="#top" class="scroll">Menu</a></div>
 		<header><h2>Blog</h2></header>
+		{{#if editMode}}
+			{{> addBlog}}
+		{{/if}}
 		<div class="sectioncontent">
 			<ul class="bloglist">
 				<li>
-					{{#each allBlog}}
+					{{#each blog}}
 						{{> blogArticle}}
 					{{/each}}
 				</li>
 			</ul>
 		</div>
-		{{#if editMode}}
-			{{> addBlog}}
-		{{/if}}
 	</section>
 </template>
 
@@ -205,34 +204,40 @@
 				</time>
 				<h3 class="blogtitle">{{title}}</h3>
 				{{#if editMode}}
-					<span class="deleteBlog editMode">X</span>
+					<span class="deleteBlog">X</span>
 				{{/if}}
 			</header>
 			<div class="blogdetails">
-				{{{blogText}}}
 				{{#if editMode}}
 					{{> updateBlog}}
 				{{/if}}
+				{{{blogText}}}
 			</div>
 		</article>
 </template>
 
 <template name="updateBlog">
-	<p><label>Date</label><input type="date" id="{{_id}}_date" value="{{datetime date 'date'}}" required></p>
-	<p><label for 'title'>Title:</label></p>
-	<p><input type="text" id="{{_id}}_title" class="blogTitleInput" value = "{{title}}" required></p>
-	<p><label>Text:</label></p>
-	<p><textarea id="{{_id}}_text" class="blogTextInput" required>{{blogText}}</textarea></p>
-	<input type="submit" class="updateBlog" value = "Update blog artical">
-	<input type="submit" class="deleteForever" value = "Delete blog artical">
+	<div class="update-blog-btn"><a href="#" class="prevent-default">Update Blog</a></div>
+	<div class="update-blog">
+		<p><label>Date</label><input type="date" id="{{_id}}_date" value="{{datetime date 'date'}}" required></p>
+		<p><label for 'title'>Title:</label></p>
+		<p><input type="text" id="{{_id}}_title" class="blogTitleInput" value = "{{title}}" required></p>
+		<p><label>Text:</label></p>
+		<p><textarea id="{{_id}}_text" class="blogTextInput" required>{{blogText}}</textarea></p>
+		<input type="submit" class="updateBlog" value = "Update blog artical">
+		<input type="submit" class="deleteForever" value = "Delete blog artical">
+	</div>
 </template>
 
 <template name = "addBlog">
-	<p><label for 'title'>Title:</label></p>
-	<p><input type="text" class="blogTitleInput" id="blogTitleInput" required></p>
-	<p><label>Text:</label></p>
-	<p><textarea class="blogTextInput" id="blogTextInput" required></textarea></p>
-	<input type="submit" id='submitBlog' value = "Submit new blog artical">
+	<a href="#" class="prevent-default add-blog-btn">Add Blog</a>
+	<div class="add-blog">
+		<p><label for 'title'>Title:</label></p>
+		<p><input type="text" class="blogTitleInput" id="blogTitleInput" required></p>
+		<p><label>Text:</label></p>
+		<p><textarea class="blogTextInput" id="blogTextInput" required></textarea></p>
+		<input type="submit" id='submitBlog' value = "Submit new blog artical">
+	</div>
 </template>
 
 <template name="about">

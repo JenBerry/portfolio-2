@@ -1,43 +1,39 @@
+/********** CLIENT ***********/
 /**
 * Templates
 */
 
-
 Template.blog.blog = function () {
-	return Blog.find({published : {$nin: [false]}}, {sort: {date: -1}});
-}
-Template.blog.allBlog = function () {
 	return Blog.find({}, {sort: {date: -1}});
-}
-Template.projects.project = function () {
-	return Projects.find({published : {$nin: [false]}}, {sort: {date: -1}})
-}
-Template.projects.allProject = function() {
+};
+Template.projects.project = function() {
 	return Projects.find({},{sort: {date: -1}});
-}
-
-
+};
 
 //helpers
 Handlebars.registerHelper('datetime', function(date, format){
 	if (format=="day"){
-		return date.getDate()
+		return date.getDate();
 	}
 	if (format=="monthName"){
-		var monthNames = ['Jan','Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-		return monthNames[date.getMonth()]
+		var monthNames = ['Jan','Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+		return monthNames[date.getMonth()];
 	}
 	if (format == "date"){
-		var year = date.getFullYear()
-		var month = ("0" + (date.getMonth()+1)).slice(-2)
-		var day = ("0" + date.getDate()).slice(-2)
+		var year = date.getFullYear();
+		var month = ("0" + (date.getMonth()+1)).slice(-2);
+		var day = ("0" + date.getDate()).slice(-2);
 		return year+'-'+month+'-'+day;
 	}
-})
+});
 Handlebars.registerHelper('editMode', function(){
-	editMode = true;
-	return editMode;
-})
+	if (Meteor.user()){
+		return true;
+	}
+	else{
+		return false;
+	}
+});
 
 //blog
 Template.addBlog.events = {
@@ -48,7 +44,7 @@ Template.addBlog.events = {
 		var text = document.getElementById('blogTextInput');
 		var addedBy;
 		if (Meteor.user()){
-			addedBy = Meteor.user();
+			addedBy = Meteor.user().profile.name;
 		}
 		else{
 			addedBy = "Anonymous";
@@ -68,7 +64,7 @@ Template.addBlog.events = {
 			document.getElementById('blogTextInput').value = '';
 		}
 	}
-}
+};
 
 Template.updateBlog.events = {
 	'click input.updateBlog' : function(){
@@ -94,7 +90,7 @@ Template.updateBlog.events = {
 			Blog.remove(this._id);
 		}
 	}
-}
+};
 
 Template.blogArticle.events = {
 	'click .deleteBlog' : function() {
@@ -106,7 +102,7 @@ Template.blogArticle.events = {
 			}}
 		);
 	}
-}
+};
 
 //Projects
 Template.addProject.events = {
@@ -120,18 +116,21 @@ Template.addProject.events = {
 		var details = document.getElementById('projectDetailsInput');
 		var addedBy;
 		if (Meteor.user()){
-			addedBy = Meteor.user();
+			addedBy = Meteor.user().profile.name;
 		}
 		else{
 			addedBy = "Anonymous";
 		}
+
+		var skillsString = skills.value;
+		var skillArray = $.map(skillsString.split(','), $.trim);
 
 		if (title.value != ''){
 			Projects.insert({
 				date: date,
 				title: title.value,
 				description: description.value,
-				skills: skills.value,
+				skills: skillArray,
 				live_website: live_website.value,
 				details: details.value,
 				published: false,
@@ -146,7 +145,7 @@ Template.addProject.events = {
 			document.getElementById('projectDetailsInput').value='';
 		}
 	}
-}
+};
 
 Template.updateProject.events = {
 	'click input#updateProject' : function () {
@@ -158,20 +157,24 @@ Template.updateProject.events = {
 		var live_website = document.getElementById(id+'_projectWebsiteInput');
 		var details = document.getElementById(id+'_projectDetailsInput');
 		console.log('title ' + title.value);
+
+		var skillsString = skills.value;
+		var skillArray = $.map(skillsString.split(','), $.trim);
+
 		if (title.value != ''){
 			console.log('performing update');
 			Projects.update({_id: id},
 				{$set:{
 					title: title.value,
 					description: description.value,
-					skills: skills.value,
+					skills: skillArray,
 					live_website: live_website.value,
 					details: details.value,
 				}}
 			);
 		}
 	}
-}
+};
 
 Template.projectArticle.events = {
 	'click .deleteProject' : function() {
@@ -190,4 +193,4 @@ Template.projectArticle.events = {
 			Projects.remove(this._id);
 		}
 	}
-}
+};

@@ -14,8 +14,8 @@ $(document).ready(function(){
 			1000);
 	}
 
-	$('a.scroll').on('click',function(event) {
-			//event.preventDefault();
+	$(document).on('click', 'a.scroll', function(event) {
+			event.preventDefault();
 			var href=$(this).attr('href');
 			href = href.replace("#","");
 			scrollToTop($('a[name='+href+']'), 50);
@@ -52,15 +52,27 @@ $(document).ready(function(){
 	}
 
 		//detect click on list, since summary elements may be dynamically created
-	$(".projectlist").on('click', '.viewproject', function (){
+	$(document).on('click', '.viewproject', function (){
 		articleClicked($(this).parent().parent(), "project");
 	});
-	$(".bloglist").on("click", '.blogsummary', function (){
+	$(document).on("click", '.blogsummary', function (){
 		articleClicked($(this).parent(), "blog");
+	});
+	$(document).on('click', '.add-project-btn', function(){
+		$('.add-project').slideToggle();
+	});
+	$(document).on('click', '.update-project-btn', function(){
+		$(this).next().slideToggle();
+	});
+	$(document).on('click', '.add-blog-btn', function(){
+		$('.add-blog').slideToggle();
+	});
+	$(document).on('click', '.update-blog-btn', function(){
+		$(this).next().slideToggle();
 	});
 
 	//prevent default action of link
-	$(document).on('click','a.do-nothing',function(event){
+	$(document).on('click','a.prevent-default',function(event){
 		event.preventDefault();
 	});
 
@@ -70,11 +82,11 @@ $(document).ready(function(){
 		$elements.each(function(){
 			var elementHeight = $( this ).height();
 			var parentHeight = $( this ).parent().height();
-			var offset = parentHeight/2 - elementHeight/2
+			var offset = parentHeight/2 - elementHeight/2;
 			$( this ).parent().css('position', 'relative');
 			$( this ).css('position','absolute');
 			$( this ).css('top', offset);
-		})
+		});
 	}
 	verticalCenter($('.verticalcenter'));
 
