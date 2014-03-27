@@ -78,7 +78,7 @@ Template.updateBlog.events = {
 			);
 		}
 	},
-	'click input.deleteForever' : function(){
+	'click input.deleteBlogForever' : function(){
 		var r=confirm("Are you sure you want to delete forever?");
 		if (r==true)
 		{
@@ -109,6 +109,13 @@ Template.addProject.events = {
 		var description = document.getElementById('projectDescInput');
 		var skills = document.getElementById('projectSkillsInput');
 		var live_website = document.getElementById('projectWebsiteInput');
+		var screenshotsLis = $('.add-screenshot')
+
+		if (live_website.value === ""){
+			var hasLive = 'no'
+		}else{
+			var hasLive=""
+		}
 		
 		var addedBy;
 		if (Meteor.user()){
@@ -126,11 +133,13 @@ Template.addProject.events = {
 		}
 
 		var screenshots = [];
-		$('.add-screenshot').each(function(index){
+		screenshotsLis.each(function(index){
 			var src = $(this).find('.ss-src').val();
 			var title = $(this).find('.ss-title').val();
 			var caption = $(this).find('.ss-caption').val();
-			screenshots.push({src: src, title: title, caption: caption})
+			if (src != "" || caption != ""){
+				screenshots.push({src: src, title: title, caption: caption})
+			}
 		});
 
 
@@ -142,6 +151,7 @@ Template.addProject.events = {
 				description: description.value,
 				skills: skillArray,
 				live_website: live_website.value,
+				hasLive: hasLive,
 				screenshots: screenshots,
 				published: false,
 				addedBy: addedBy,
@@ -152,6 +162,7 @@ Template.addProject.events = {
 			description.value = '';
 			skills.value='';
 			live_website.value='';
+			screenshotsLis.find('input').val("");
 			
 		}
 	}
@@ -166,7 +177,12 @@ Template.updateProject.events = {
 		var skills = document.getElementById(id+'_projectSkillsInput');
 		var live_website = document.getElementById(id+'_projectWebsiteInput');
 		var updated = new Date();
-		console.log('title ' + title.value);
+
+		if (live_website.value === ""){
+			var hasLive = 'no'
+		}else{
+			var hasLive=""
+		}
 
 		var skillsString = skills.value;
 		if (skillsString != ""){
@@ -180,7 +196,9 @@ Template.updateProject.events = {
 			var src = $(this).find('.ss-src').val();
 			var title = $(this).find('.ss-title').val();
 			var caption = $(this).find('.ss-caption').val();
-			screenshots.push({src: src, title: title, caption: caption})
+			if (src != "" || caption != ""){
+				screenshots.push({src: src, title: title, caption: caption})
+			}
 		});
 
 		if (title.value != ''){
@@ -192,6 +210,7 @@ Template.updateProject.events = {
 					description: description.value,
 					skills: skillArray,
 					live_website: live_website.value,
+					hasLive: hasLive,
 					screenshots: screenshots
 				}}
 			);
@@ -209,7 +228,7 @@ Template.projectArticle.events = {
 			}}
 		);
 	},
-	'click input.deleteForever' : function(){
+	'click input.deleteProjectForever' : function(){
 		var r=confirm("Are you sure you want to delete forever?");
 		if (r==true)
 		{

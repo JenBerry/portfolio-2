@@ -258,9 +258,8 @@ section {
   .viewlive > a, .viewproject > a {
     color: white; }
 
-.noviewlive {
-  background-color: transparent;
-  color: transparent; }
+.projectfooter > div.noviewlive {
+  display: none; }
 
 .viewprojectarrow {
   background-color: #fc5703;

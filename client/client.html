@@ -4,9 +4,21 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="Jen Berry's web development portfolio, skilled in JavaScript, HTML5, CSS3 and more">
 	<title>Jen Berry, Web Developer</title>
+	<link rel="shortcut icon" href="img/favicon.ico">
+	<link rel="stylesheet" href="FlexSlider/flexslider.css">
+	<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 	<!--
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>-->
 	<script src="scripts.js"></script>
+	<script src="FlexSlider/jquery.flexslider-min.js"></script>
+	<script type="text/javascript">
+		$(window).load(function() {
+			$('.flexslider').flexslider({
+				slideshowSpeed: 3000,
+				pauseOnAction: false,
+			});
+		});
+	</script>
 	<script>
 		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -61,7 +73,7 @@
 		<header class="homeheading"><h2>
 			<a class="scroll" href="#skills">
 			<img class="titleimage" src="img/title-i-am.png" alt="I am a" />
-			<img class="titleimage" src="img/title-web-developer.png" alt="Web Developer" title="Web Developer title image" />
+			<img class="titleimage" src="img/title-web-developer.png" alt="Frontend Developer" title="Frontend Developer title image" />
 			<img class="titleimage" src="img/title-obsessed.png" alt="obsessed with clean, elegant code" />
 			</a>
 		</h2></header>
@@ -129,13 +141,17 @@
 					</li>
 				{{/each}}
 			</ul>
-			<div class="viewlive"><a href="{{live_website}}" target="_blank">View live Website</a></div>
+			<div class="{{hasLive}}viewlive"><a href="{{live_website}}" target="_blank">View live Website</a></div>
 			<div class="viewproject"><a href="#projects" class="prevent-default">View Screenshot</a><div class="viewprojectarrow"></div></div>
 		</footer>
 		<div class="projectdetails">
 			{{#each screenshots}}
-				<img src="{{this.src}}" alt="Screenshot of '{{this.title}}'" title="'{{this.title}}' by Jen Berry">
-				<p>{{this.caption}}</p>
+				{{#if this.src}}
+					<img src="{{this.src}}" alt="Screenshot of '{{this.title}}'" title="'{{this.title}}' by Jen Berry">
+				{{/if}}
+				{{#if this.caption}}
+					<p>{{this.caption}}</p>
+				{{/if}}
 			{{/each}}
 		</div>
 	</article>
@@ -148,11 +164,11 @@
 		<p><label for 'title'>Title:</label></p>
 		<p><input type="text" class="projectTitleInput" id="projectTitleInput" required></p>
 		<p><label>Description:</label></p>
-		<p><textarea class="projectDescInput" id="projectDescInput">&lt;p class="projectdescription"&gt;I worked a 5 week contract with &lt;a href="http://u-dox.com" target="_blank"&gt;U-dox creative ltd&lt;/a&gt;. Finishing/bug-fixing an e-commerce website for the record label: &lt;a href="http://defected.com" target="_blank"&gt;Defected.com&lt;/a&gt;. Using Django web framework, Oscar e-commerce framework,  and Bootstrap layout framework. Coding in HTML, LESS, and JavaScript. Working with git version control, virtual environments, and Redmine project management.&lt;/p&gt;</textarea></p>
+		<p><textarea class="projectDescInput" id="projectDescInput"></textarea></p>
 		<p><label>Skills:</label></p>
 		<p><textarea class="projectSkillsInput" id="projectSkillsInput"></textarea></p>
 		<p><label for 'title'>live_website:</label></p>
-		<p><input type="text" class="projectWebsiteInput" id="projectWebsiteInput" value="http://store.def003.defected.u-dox.com/catalogue/list"></p>
+		<p><input type="text" class="projectWebsiteInput" id="projectWebsiteInput"></p>
 		<p><label for="screenshots">Screenshots</label></p>
 		<ul>
 			<li class="add-screenshot">
@@ -187,7 +203,7 @@
 			{{/each}}
 		</ul>
 		<input type="submit" id='updateProject' value = "Update project">
-		<input type="submit" class='deleteForever' value = "Delete project">
+		<input type="submit" class='deleteProjectForever' value = "Delete project">
 	</div>
 </template>
 
@@ -241,8 +257,8 @@
 		<p><input type="text" id="{{_id}}_title" class="blogTitleInput" value = "{{title}}" required></p>
 		<p><label>Text:</label></p>
 		<p><textarea id="{{_id}}_text" class="blogTextInput" required>{{blogText}}</textarea></p>
-		<input type="submit" class="updateBlog" value = "Update blog artical">
-		<input type="submit" class="deleteForever" value = "Delete blog artical">
+		<input type="submit" class="updateBlog" value = "Update blog article">
+		<input type="submit" class="deleteBlogForever" value = "Delete blog article">
 	</div>
 </template>
 
@@ -253,7 +269,7 @@
 		<p><input type="text" class="blogTitleInput" id="blogTitleInput" required></p>
 		<p><label>Text:</label></p>
 		<p><textarea class="blogTextInput" id="blogTextInput" required></textarea></p>
-		<input type="submit" id='submitBlog' value = "Submit new blog artical">
+		<input type="submit" id='submitBlog' value = "Submit new blog article">
 	</div>
 </template>
 
