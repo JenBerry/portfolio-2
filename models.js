@@ -27,6 +27,21 @@ Meteor.publish(null, function() {
 });
 
 //security
+//Don't allow people to create accounts
+Accounts.config({
+	forbidClientAccountCreation: true,
+})
+//If I don't already have an account, create one for me
+var userExists = Meteor.users.findOne({emails: {$elemMatch: {address: "jenberrymail@gmail.com"}}})
+if (!userExists){
+	console.log('creating admin user jenberymail@gmail.com, Remember to change your password');
+	Accounts.createUser({
+		username: "Jen Berry",
+		email: "jenberrymail@gmail.com",
+		password: "changeme",
+	})
+}
+//Allow changes to the database when I'm signed in
 Blog.allow({
 	'insert': function(userId) {
 		if (userId){return true;}

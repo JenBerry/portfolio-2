@@ -36,7 +36,7 @@ Template.addBlog.events = {
 		var text = document.getElementById('blogTextInput');
 		var addedBy;
 		if (Meteor.user()){
-			addedBy = Meteor.user().profile.name;
+			addedBy = Meteor.user();
 		}
 		else{
 			addedBy = "Anonymous";
@@ -96,6 +96,7 @@ Template.blogArticle.events = {
 	}
 };
 
+
 //Projects
 Template.addProject.events = {
 	'click input#submitProject' : function () {
@@ -108,7 +109,7 @@ Template.addProject.events = {
 		var details = document.getElementById('projectDetailsInput');
 		var addedBy;
 		if (Meteor.user()){
-			addedBy = Meteor.user().profile.name;
+			addedBy = Meteor.user();
 		}
 		else{
 			addedBy = "Anonymous";
