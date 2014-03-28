@@ -97,7 +97,7 @@ section {
   left: 10px; }
 
 /*home*/
-.homesection {
+#home-section {
   background-image: url("img/home-background-tile.png"); }
 
 .homeheading {

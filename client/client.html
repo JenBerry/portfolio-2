@@ -32,12 +32,24 @@
 
 <body>
 	{{> header}}
-	{{> home}}
-	{{> skills}}
-	{{> projects}}
-	{{> blog}}
-	{{> about}}
-	{{> contact}}
+	<section id="home-section">
+		{{> home}}
+	</section>
+	<section id="skills-section">
+		{{> skills}}
+	</section>
+	<section id="projects-section">
+		{{> projects}}
+	</section>
+	<section id="blog-section">
+		{{> blog}}
+	</section>
+	<section id="about-section">
+		{{> about}}
+	</section>
+	<section id="contact-section">
+		{{> contact}}
+	</section>
 	{{> footer}}
 </body>
 
@@ -68,57 +80,51 @@
 </template>
 
 <template name="home">
-	<section class="homesection">
-		<a name="home"></a>
-		<header class="homeheading"><h2>
-			<a class="scroll" href="#skills">
-			<img class="titleimage" src="img/title-i-am.png" alt="I am a" />
-			<img class="titleimage" src="img/title-web-developer.png" alt="Frontend Developer" title="Frontend Developer title image" />
-			<img class="titleimage" src="img/title-obsessed.png" alt="obsessed with clean, elegant code" />
-			</a>
-		</h2></header>
-		<div class="leaddown"><div></div><div></div><div></div></div>
-	</section>
+	<a name="home"></a>
+	<header class="homeheading"><h2>
+		<a class="scroll" href="#skills">
+		<img class="titleimage" src="img/title-i-am.png" alt="I am a" />
+		<img class="titleimage" src="img/title-web-developer.png" alt="Frontend Developer" title="Frontend Developer title image" />
+		<img class="titleimage" src="img/title-obsessed.png" alt="obsessed with clean, elegant code" />
+		</a>
+	</h2></header>
+	<div class="leaddown"><div></div><div></div><div></div></div>
 </template>
 
 <template name="skills">
-	<section>
-		<a name="skills"></a>
-		<div class="menubutton"><a href="#top" class="scroll">Menu</a></div>
-		<header><h2>Skills</h2></header>
-		<div class="sectioncontent">
-			<p class="skillstitle">
-				Primary Skills
-			</p>
-			<ul class="skillslist">
-				<li>HTML(5)</li><li>CSS(3)</li><li>JavaScript</li><li>jQuery</li><li>MySQL</li><li>Qt Quick</li>
-			</ul>
-			<p class="secondskillstitle">Further skills</p>
-			<ul class="secondskillslist">
-				<li>Django</li><li>Python</li><li>Joomla!</li><li>WordPress</li><li>PHP</li><li>Git</li><li>Google Analytics</li><li>SEO</li><li>W3C &amp; Lint coding standards</li><li>User Experience Design</li><li>Graphic Design</li><li>PhotoShop</li><li>Intelligence</li><li>Reliability</li><li>Creativity</li>
-			</ul>
-		</div>
-	</section>
+	<a name="skills"></a>
+	<div class="menubutton"><a href="#top" class="scroll">Menu</a></div>
+	<header><h2>Skills</h2></header>
+	<div class="sectioncontent">
+		<p class="skillstitle">
+			Primary Skills
+		</p>
+		<ul class="skillslist">
+			<li>HTML(5)</li><li>CSS(3)</li><li>JavaScript</li><li>jQuery</li><li>MySQL</li><li>Qt Quick</li>
+		</ul>
+		<p class="secondskillstitle">Further skills</p>
+		<ul class="secondskillslist">
+			<li>Django</li><li>Python</li><li>Joomla!</li><li>WordPress</li><li>PHP</li><li>Git</li><li>Google Analytics</li><li>SEO</li><li>W3C &amp; Lint coding standards</li><li>User Experience Design</li><li>Graphic Design</li><li>PhotoShop</li><li>Intelligence</li><li>Reliability</li><li>Creativity</li>
+		</ul>
+	</div>
 </template>
 
 <template name="projects">
-	<section>
-		<a name="projects"></a>
-		<div class="menubutton"><a href="#top" class="scroll">Menu</a></div>
-		<header><h2>Projects</h2></header>
-		{{#if currentUser}}
-			{{> addProject}}
-		{{/if}}
-		<div class="sectioncontent">
-			<ul class="projectlist">
-				<li>
-					{{#each project}}
-						{{> projectArticle}}
-					{{/each}}
-				</li>
-			</ul>
-		</div>
-	</section>
+	<a name="projects"></a>
+	<div class="menubutton"><a href="#top" class="scroll">Menu</a></div>
+	<header><h2>Projects</h2></header>
+	{{#if currentUser}}
+		{{> addProject}}
+	{{/if}}
+	<div class="sectioncontent">
+		<ul class="projectlist">
+			<li>
+				{{#each project}}
+					{{> projectArticle}}
+				{{/each}}
+			</li>
+		</ul>
+	</div>
 </template>
 
 <template name="projectArticle">
@@ -208,23 +214,21 @@
 </template>
 
 <template name="blog">
-	<section>
-		<a name="blog"></a>
-		<div class="menubutton"><a href="#top" class="scroll">Menu</a></div>
-		<header><h2>Blog</h2></header>
-		{{#if currentUser}}
-			{{> addBlog}}
-		{{/if}}
-		<div class="sectioncontent">
-			<ul class="bloglist">
-				<li>
-					{{#each blog}}
-						{{> blogArticle}}
-					{{/each}}
-				</li>
-			</ul>
-		</div>
-	</section>
+	<a name="blog"></a>
+	<div class="menubutton"><a href="#top" class="scroll">Menu</a></div>
+	<header><h2>Blog</h2></header>
+	{{#if currentUser}}
+		{{> addBlog}}
+	{{/if}}
+	<div class="sectioncontent">
+		<ul class="bloglist">
+			<li>
+				{{#each blog}}
+					{{> blogArticle}}
+				{{/each}}
+			</li>
+		</ul>
+	</div>
 </template>
 
 <template name="blogArticle">
@@ -274,55 +278,50 @@
 </template>
 
 <template name="about">
-	<section>
-		<a name="about"></a>
-		<div class="menubutton"><a href="#top" class="scroll">Menu</a></div>
-		<header><h2>About Me</h2></header>
-		<div class="sectioncontent">
-			<p class="aboutdescription">I graduated from Cambridge University in 2009 with an upper second class degree in Natural Sciences. It was during my time at Cambridge that I got into making websites in my spare time. My first real job was as a User Experience Designer for an international printer manufacturing company. They liked me because I learned quickly, could write good code, and also had an Intuitive eye for design. In 2012 I left the office to go out and see the world for a year, and had many amazing and wonderful experiences. Now I have settled down in London and earn my living making websites.</p>
-			<img src="img/jenberry.jpg" alt="Picture of Jen Berry" class="portrait">
-			<a href="http://www.linkedin.com/pub/jennifer-berry/1b/240/233" target="_blank">
-				<img src="img/LinkedIn_Logo30px.png" alt="LinkedIn" class="socialmedia"></a>
-			<a href="https://twitter.com/jennnen" target="_blank">
-				<img src="img/twitter-bird-dark-bgs.png" alt="Twitter" class="socialmedia"></a>
-			<a href="https://github.com/JenBerry" target="_blank">
-				<img src="img/GitHub-Mark-32px-inverted.png" alt="GitHub" class="socialmedia"></a>
-			<p class="aboutname">Jen Berry</p>
-			<p class="aboutjobtitle">Web Developer</p>
-		</div>
-	</section>
+	<a name="about"></a>
+	<div class="menubutton"><a href="#top" class="scroll">Menu</a></div>
+	<header><h2>About Me</h2></header>
+	<div class="sectioncontent">
+		<p class="aboutdescription">I graduated from Cambridge University in 2009 with an upper second class degree in Natural Sciences. It was during my time at Cambridge that I got into making websites in my spare time. My first real job was as a User Experience Designer for an international printer manufacturing company. They liked me because I learned quickly, could write good code, and also had an Intuitive eye for design. In 2012 I left the office to go out and see the world for a year, and had many amazing and wonderful experiences. Now I have settled down in London and earn my living making websites.</p>
+		<img src="img/jenberry.jpg" alt="Picture of Jen Berry" class="portrait">
+		<a href="http://www.linkedin.com/pub/jennifer-berry/1b/240/233" target="_blank">
+			<img src="img/LinkedIn_Logo30px.png" alt="LinkedIn" class="socialmedia"></a>
+		<a href="https://twitter.com/jennnen" target="_blank">
+			<img src="img/twitter-bird-dark-bgs.png" alt="Twitter" class="socialmedia"></a>
+		<a href="https://github.com/JenBerry" target="_blank">
+			<img src="img/GitHub-Mark-32px-inverted.png" alt="GitHub" class="socialmedia"></a>
+		<p class="aboutname">Jen Berry</p>
+		<p class="aboutjobtitle">Web Developer</p>
+	</div>
 </template>
 
 <template name="contact">
-	<section>
-		<a name="contact"></a>
-		<div class="menubutton"><a href="#top" class="scroll">Menu</a></div>
-		<header><h2>Contact Me</h2></header>
-		<div class="sectioncontent">
+	<div class="menubutton"><a href="#top" class="scroll">Menu</a></div>
+	<header><h2>Contact Me</h2></header>
+	<div class="sectioncontent">
 <!-- 			<iframe class="googleMap" src=
-			"https://maps.google.co.uk/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=nw10+6aw&amp;aq=&amp;sll=51.528642,-0.101599&amp;sspn=0.762093,1.967926&amp;ie=UTF8&amp;hq=&amp;hnear=London+NW10+6AW,+United+Kingdom&amp;ll=51.530386,-0.233484&amp;spn=0.76517,1.967926&amp;t=m&amp;z=10&amp;output=embed">
-			</iframe> -->
-			<div class="contactcontainer">
-				<div class="call">
-					<div class="iconbg"><img src="img/phone-icon.png" alt="phone icon"></div>
-					<p>Give me a call</p>
-					<img src="img/phone.png" alt="Phone Number" class="phonenumber">
-				</div>
-				<div class="email">
-					<div class="iconbg"><img src="img/email-icon.png" alt="email icon"></div>
-					<p>Send me a message</p>
-					<form class="contact-form" method="post" action="mailto:jenberrymail+website@gmail.com?subject=Contact_form" enctype="text/plain">
-						<div class="form-fieldset">
-							<input type="text" name="name" placeholder="Name" required />
-							<input type="email" name="email" placeholder="E-mail" required />
-						</div>
-						<textarea class="message-area" name="message" placeholder="Message" required></textarea>
-						<input class="send-button" type="submit" name="submit" value="Send" />
-					</form>
-				</div>
+		"https://maps.google.co.uk/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=nw10+6aw&amp;aq=&amp;sll=51.528642,-0.101599&amp;sspn=0.762093,1.967926&amp;ie=UTF8&amp;hq=&amp;hnear=London+NW10+6AW,+United+Kingdom&amp;ll=51.530386,-0.233484&amp;spn=0.76517,1.967926&amp;t=m&amp;z=10&amp;output=embed">
+		</iframe> -->
+		<div class="contactcontainer">
+			<div class="call">
+				<div class="iconbg"><img src="img/phone-icon.png" alt="phone icon"></div>
+				<p>Give me a call</p>
+				<img src="img/phone.png" alt="Phone Number" class="phonenumber">
+			</div>
+			<div class="email">
+				<div class="iconbg"><img src="img/email-icon.png" alt="email icon"></div>
+				<p>Send me a message</p>
+				<form class="contact-form" method="post" action="mailto:jenberrymail+website@gmail.com?subject=Contact_form" enctype="text/plain">
+					<div class="form-fieldset">
+						<input type="text" name="name" placeholder="Name" required />
+						<input type="email" name="email" placeholder="E-mail" required />
+					</div>
+					<textarea class="message-area" name="message" placeholder="Message" required></textarea>
+					<input class="send-button" type="submit" name="submit" value="Send" />
+				</form>
 			</div>
 		</div>
-	</section>
+	</div>
 </template>
 
 <template name="footer">

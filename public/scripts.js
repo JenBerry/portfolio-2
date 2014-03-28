@@ -52,22 +52,22 @@ $(document).ready(function(){
 	}
 
 		//detect click on list, since summary elements may be dynamically created
-	$(document).on('click', '.viewproject', function (){
+	$("#projects-section").on('click', '.viewproject', function (){
 		articleClicked($(this).parent().parent(), "project");
 	});
-	$(document).on("click", '.blogsummary', function (){
+	$("#blog-section").on("click", '.blogsummary', function (){
 		articleClicked($(this).parent(), "blog");
 	});
-	$(document).on('click', '.add-project-btn', function(){
+	$("#projects-section").on('click', '.add-project-btn', function(){
 		$('.add-project').slideToggle();
 	});
-	$(document).on('click', '.update-project-btn', function(){
+	$("#projects-section").on('click', '.update-project-btn', function(){
 		$(this).next().slideToggle();
 	});
-	$(document).on('click', '.add-blog-btn', function(){
+	$("#blog-section").on('click', '.add-blog-btn', function(){
 		$('.add-blog').slideToggle();
 	});
-	$(document).on('click', '.update-blog-btn', function(){
+	$("#blog-section").on('click', '.update-blog-btn', function(){
 		$(this).next().slideToggle();
 	});
 
