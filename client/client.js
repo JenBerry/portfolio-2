@@ -11,7 +11,7 @@ Template.projects.project = function() {
 };
 
 //helpers
-Handlebars.registerHelper('datetime', function(date, format){
+UI.registerHelper('datetime', function(date, format){
 	if (format=="day"){
 		return date.getDate();
 	}
@@ -163,6 +163,7 @@ Template.addProject.events = {
 			skills.value='';
 			live_website.value='';
 			screenshotsLis.find('input').val("");
+
 			
 		}
 	}
