@@ -180,6 +180,7 @@ section{
 	        columns:295px 3;
 		position: relative;
 		top:-23px;
+		min-height: 74px;
 
 		&>ul, &>div{display:inline-block;margin:2px}
 	}
@@ -209,7 +210,13 @@ section{
 		}
 
 		.projectfooter > div.noviewlive{
-			display:none
+			color:transparent;
+			background-color: transparent;
+			width:170px;
+			height:42px;
+			a{
+				display:none;
+			}
 		}
 			.viewprojectarrow{
 				background-color: $highlight-color;

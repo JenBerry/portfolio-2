@@ -13,7 +13,7 @@ Meteor.publish(null, function() {
 		return Blog.find();
 	}
 	else{
-		return Blog.find({published : true});
+		return Blog.find({published : 'yes'});
 	}
 });
 Meteor.publish(null, function() {
@@ -22,7 +22,7 @@ Meteor.publish(null, function() {
 		return Projects.find();
 	}
 	else{
-		return Projects.find({published : true});
+		return Projects.find({published : 'yes'});
 	}
 });
 

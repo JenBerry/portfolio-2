@@ -1,19 +1,32 @@
 /* blog */
 .blogTitleInput, .blogTextInput, .projectTitleInput, .projectDescInput, .projectSkillsInput, .projectWebsiteInput, .projectDetailsInput {
-  width: 90%; }
+  width: 100%; }
 
 .blogTextInput, .projectDescInput, .projectSkillsInput, .projectDetailsInput {
-  height: 100px; }
+  height: 100px;
+  resize: vertical; }
 
-.deleteBlog, .deleteProject {
+.deleteProject {
   position: absolute;
   right: 10px;
   top: 10px;
   color: red;
   cursor: pointer; }
 
-.pubfalse .blogsummary, .pubfalse .projectsummary {
-  background-color: darkgray; }
+.pubyes {
+  color: green; }
+
+.pubno {
+  color: gray; }
+
+.edit-buttons {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+  color: white; }
+  .edit-buttons i:hover {
+    color: yellow; }
 
 .add-project {
   display: none;
@@ -23,20 +36,14 @@
 
 .update-project {
   display: none;
-  background-color: white;
   padding: 5px 3% 30px 3%;
   color: black; }
 
-.add-project-btn, .update-project-btn {
-  width: 150px;
-  height: 22px;
-  margin: auto;
-  background-color: #fc5703;
-  border-radius: 5px;
-  padding: 10px;
-  margin-bottom: 20px; }
-  .add-project-btn > a, .update-project-btn > a {
-    color: white; }
+.add-project-btn {
+  cursor: pointer; }
 
 .add-blog, .update-blog {
   display: none; }
+
+.green {
+  color: green; }

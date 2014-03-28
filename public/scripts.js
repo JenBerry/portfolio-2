@@ -53,22 +53,26 @@ $(document).ready(function(){
 
 		//detect click on list, since summary elements may be dynamically created
 	$("#projects-section").on('click', '.viewproject', function (){
-		articleClicked($(this).parent().parent(), "project");
+		articleClicked($(this).closest('.projectarticle'), "project");
 	});
 	$("#blog-section").on("click", '.blogsummary', function (){
 		articleClicked($(this).parent(), "blog");
 	});
-	$("#projects-section").on('click', '.add-project-btn', function(){
-		$('.add-project').slideToggle();
+	$("#projects-section").on('click', '.add-project-btn', function (){
+		$(this).closest('.projectarticle').find('.add-project').slideToggle();
 	});
 	$("#projects-section").on('click', '.update-project-btn', function(){
-		$(this).next().slideToggle();
+		$(this).closest('.projectarticle').find(".update-project").slideToggle();
+		return false;
 	});
 	$("#blog-section").on('click', '.add-blog-btn', function(){
 		$('.add-blog').slideToggle();
 	});
 	$("#blog-section").on('click', '.update-blog-btn', function(){
-		$(this).next().slideToggle();
+		$(this).closest('.blogarticle').find(".update-blog").slideToggle(function(){
+			$(this).closest('.blogarticle').find(".blogdetails").slideDown();
+		});
+		return false;
 	});
 
 	//prevent default action of link

@@ -78,24 +78,30 @@ Template.updateBlog.events = {
 			);
 		}
 	},
-	'click input.deleteBlogForever' : function(){
-		var r=confirm("Are you sure you want to delete forever?");
-		if (r==true)
-		{
-			Blog.remove(this._id);
-		}
-	}
+	
 };
 
 Template.blogArticle.events = {
-	'click .deleteBlog' : function() {
+	'click .togglePublishBlog' : function() {
 		id = this._id;
-		published = !this.published;
+		if (this.published === 'yes'){
+			var published = 'no';
+		}
+		else{var published = 'yes';}
 		Blog.update({_id: id},
 			{$set:{
 				published: published,
 			}}
 		);
+		return false;
+	},
+	'click i.deleteBlogForever' : function(){
+		var r=confirm("Are you sure you want to delete forever?");
+		if (r==true)
+		{
+			Blog.remove(this._id);
+		}
+		return false;
 	}
 };
 
@@ -220,16 +226,19 @@ Template.updateProject.events = {
 };
 
 Template.projectArticle.events = {
-	'click .deleteProject' : function() {
+	'click .togglePublishProject' : function() {
 		id = this._id;
-		published = !this.published;
+		if (this.published === 'yes'){
+			var published = 'no';
+		}
+		else{var published = 'yes';}
 		Projects.update({_id: id},
 			{$set:{
 				published: published,
 			}}
 		);
 	},
-	'click input.deleteProjectForever' : function(){
+	'click i.deleteProjectForever' : function(){
 		var r=confirm("Are you sure you want to delete forever?");
 		if (r==true)
 		{

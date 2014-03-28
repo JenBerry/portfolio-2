@@ -1,15 +1,15 @@
 <head>
-  <meta charset="utf-8">
+	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="Jen Berry's web development portfolio, skilled in JavaScript, HTML5, CSS3 and more">
 	<title>Jen Berry, Web Developer</title>
 	<link rel="shortcut icon" href="img/favicon.ico">
+	<script src="scripts.js"></script>
+	
+	<!-- third party stuff: FontAwesome, FlexSlider, GoogleAnalytics-->
 	<link rel="stylesheet" href="FlexSlider/flexslider.css">
 	<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-	<!--
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>-->
-	<script src="scripts.js"></script>
 	<script src="FlexSlider/jquery.flexslider-min.js"></script>
 	<script type="text/javascript">
 		$(window).load(function() {
@@ -113,12 +113,12 @@
 	<a name="projects"></a>
 	<div class="menubutton"><a href="#top" class="scroll">Menu</a></div>
 	<header><h2>Projects</h2></header>
-	{{#if currentUser}}
-		{{> addProject}}
-	{{/if}}
 	<div class="sectioncontent">
 		<ul class="projectlist">
 			<li>
+				{{#if currentUser}}
+					{{> addProject}}
+				{{/if}}
 				{{#each project}}
 					{{> projectArticle}}
 				{{/each}}
@@ -128,7 +128,7 @@
 </template>
 
 <template name="projectArticle">
-	<article class="projectarticle pub{{published}}">
+	<article class="projectarticle">
 		<header class="projectsummary">
 			<h3>{{title}}</h3>
 			{{#if currentUser}}
@@ -136,7 +136,11 @@
 			{{/if}}
 			{{{description}}}
 			{{#if currentUser}}
-				<span class="deleteProject">X</span>
+				<span class="edit-buttons">
+					<i class="fa fa-trash-o fa-fw deleteProjectForever" title="delete"></i> 
+					<i class="fa fa-edit fa-fw update-project-btn" title="edit"></i>
+					<i class="fa fa-fw fa-check pub{{published}} togglePublishProject" title="published: {{published}}"></i>
+				</span>
 			{{/if}}
 		</header>
 		<footer class="projectfooter">
@@ -164,41 +168,39 @@
 </template>
 
 <template name = "addProject">
-	<div class="add-project-btn"><a class="prevent-default" href="#">Add Project</a></div>
-	<div class="add-project">
-		<h3>Add a new project</h3>
-		<p><label for='title'>Title:</label></p>
-		<p><input type="text" class="projectTitleInput" id="projectTitleInput" required></p>
-		<p><label>Description:</label></p>
-		<p><textarea class="projectDescInput" id="projectDescInput"></textarea></p>
-		<p><label>Skills:</label></p>
-		<p><textarea class="projectSkillsInput" id="projectSkillsInput"></textarea></p>
-		<p><label for='title'>live_website:</label></p>
-		<p><input type="text" class="projectWebsiteInput" id="projectWebsiteInput"></p>
-		<p><label for="screenshots">Screenshots</label></p>
-		<ul>
-			<li class="add-screenshot">
-				<input class="ss-title" type="text" placeholder="title">
-				<input class="ss-src" type="url" placeholder="src">
-				<input class="ss-caption" type="text" placeholder="Caption">
-			</li>
-		</ul>
-		<input type="submit" id='submitProject' value = "Submit new project">
-	</div>
+	<article class="projectarticle pub{{published}}">
+		<header class="projectsummary">
+			<h3 class="add-project-btn"><i class="fa fa-plus green"></i> Add Project</h3>
+			<div class="add-project">
+				<p><label for='title'>Title:</label><input type="text" class="projectTitleInput" id="projectTitleInput" required></p>
+				<p><label>Description:</label><textarea class="projectDescInput" id="projectDescInput"></textarea></p>
+				<p><label>Skills:</label><textarea class="projectSkillsInput" id="projectSkillsInput"></textarea></p>
+				<p><label for='title'>Live website URL:</label><input type="text" class="projectWebsiteInput" id="projectWebsiteInput"></p>
+				<p><label for="screenshots">Screenshots</label>
+					<ul>
+						<li class="add-screenshot">
+							<input class="ss-title" type="text" placeholder="title">
+							<input class="ss-src" type="url" placeholder="src">
+							<input class="ss-caption" type="text" placeholder="Caption">
+						</li>
+					</ul>
+				</p>
+				<input type="submit" id='submitProject' value = "Submit new project">
+				<input type="submit" class="add-project-btn" value = "Close">
+			</div>
+		</header>
+		<footer class="projectfooter">
+		</footer>
+	</article>
 </template>
 
 <template name="updateProject">
-	<div class="update-project-btn"><a class="prevent-default" href="#">Update Project</a></div>
 	<div class="update-project">
-		<p><label for='title'>Title:</label></p>
-		<p><input type="text" class="projectTitleInput" id="{{_id}}_projectTitleInput" value="{{title}}"></p>
-		<p><label>Description:</label></p>
-		<p><textarea class="projectDescInput" id="{{_id}}_projectDescInput">{{description}}</textarea></p>
-		<p><label>Skills:</label></p>
-		<p><textarea class="projectSkillsInput" id="{{_id}}_projectSkillsInput">{{skills}}</textarea></p>
-		<p><label for='title'>live_website:</label></p>
-		<p><input type="text" class="projectWebsiteInput" id="{{_id}}_projectWebsiteInput" value="{{live_website}}"></p>
-		<p><label for="screenshots">Screenshots</label></p>
+		<p><label for='title'>Title:</label><input type="text" class="projectTitleInput" id="{{_id}}_projectTitleInput" value="{{title}}"></p>
+		<p><label>Description:</label><textarea class="projectDescInput" id="{{_id}}_projectDescInput">{{description}}</textarea></p>
+		<p><label>Skills:</label><textarea class="projectSkillsInput" id="{{_id}}_projectSkillsInput">{{skills}}</textarea></p>
+		<p><label for='title'>live_website:</label><input type="text" class="projectWebsiteInput" id="{{_id}}_projectWebsiteInput" value="{{live_website}}"></p>
+		<p><label for="screenshots">Screenshots</label>
 		<ul class="update-screenshot-{{_id}}">
 			{{#each screenshots}}
 				<li class="update-screenshot">
@@ -208,8 +210,10 @@
 				</li>
 			{{/each}}
 		</ul>
+		</p>
 		<input type="submit" id='updateProject' value = "Update project">
-		<input type="submit" class='deleteProjectForever' value = "Delete project">
+		<input type="submit" class="update-project-btn" value = "Close">
+		<hr>
 	</div>
 </template>
 
@@ -217,12 +221,12 @@
 	<a name="blog"></a>
 	<div class="menubutton"><a href="#top" class="scroll">Menu</a></div>
 	<header><h2>Blog</h2></header>
-	{{#if currentUser}}
-		{{> addBlog}}
-	{{/if}}
 	<div class="sectioncontent">
 		<ul class="bloglist">
 			<li>
+				{{#if currentUser}}
+					{{> addBlog}}
+				{{/if}}
 				{{#each blog}}
 					{{> blogArticle}}
 				{{/each}}
@@ -232,7 +236,7 @@
 </template>
 
 <template name="blogArticle">
-		<article class="blogarticle pub{{published}}">
+		<article class="blogarticle">
 			<header class="blogsummary">
 				<time pubdate datetime="{{datetime date 'date'}}" class="blogdate">
 					<span class="day">
@@ -241,7 +245,11 @@
 				</time>
 				<h3 class="blogtitle">{{title}}</h3>
 				{{#if currentUser}}
-					<span class="deleteBlog">X</span>
+					<span class="edit-buttons">
+						<i class="fa fa-trash-o fa-fw deleteBlogForever" title="delete"></i> 
+						<i class="fa fa-edit fa-fw update-blog-btn" title="edit"></i>
+						<i class="fa fa-fw fa-check pub{{published}} togglePublishBlog" title="published: {{published}}"></i>
+					</span>
 				{{/if}}
 			</header>
 			<div class="blogdetails">
@@ -254,27 +262,30 @@
 </template>
 
 <template name="updateBlog">
-	<div class="update-blog-btn"><a href="#" class="prevent-default">Update Blog</a></div>
 	<div class="update-blog">
-		<p><label>Date</label><input type="date" id="{{_id}}_date" value="{{datetime date 'date'}}" required></p>
-		<p><label for='title'>Title:</label></p>
-		<p><input type="text" id="{{_id}}_title" class="blogTitleInput" value = "{{title}}" required></p>
-		<p><label>Text:</label></p>
-		<p><textarea id="{{_id}}_text" class="blogTextInput" required>{{blogText}}</textarea></p>
-		<input type="submit" class="updateBlog" value = "Update blog article">
-		<input type="submit" class="deleteBlogForever" value = "Delete blog article">
+		<p><label>Date: </label><input type="date" id="{{_id}}_date" value="{{datetime date 'date'}}" required></p>
+		<p>
+			<label for='title'>Title:</label>
+			<input type="text" id="{{_id}}_title" class="blogTitleInput" value = "{{title}}" required>
+		</p>
+		<p><label>Blog HTML:</label><textarea id="{{_id}}_text" class="blogTextInput" required>{{blogText}}</textarea></p>
+		<input type="submit" class="updateBlog" value = "Save">
+		<input type="submit" class="update-blog-btn" value = "Close">
+		<hr>
 	</div>
 </template>
 
 <template name = "addBlog">
-	<a href="#" class="prevent-default add-blog-btn">Add Blog</a>
-	<div class="add-blog">
-		<p><label for='title'>Title:</label></p>
-		<p><input type="text" class="blogTitleInput" id="blogTitleInput" required></p>
-		<p><label>Text:</label></p>
-		<p><textarea class="blogTextInput" id="blogTextInput" required></textarea></p>
-		<input type="submit" id='submitBlog' value = "Submit new blog article">
-	</div>
+	<article class="blogarticle pubfalse">
+		<header class="blogsummary">
+			<h3 class="blogtitle"><i class="fa fa-plus green"></i> Add New Blog Article</h3>
+		</header>
+		<div class="blogdetails">
+			<p><label for="blogTitleInput">Title: </label><input type="text" class="blogTitleInput" id="blogTitleInput" required></p>
+			<p><label for="blogTextInput">Blog HTML: </label><textarea class="blogTextInput" id="blogTextInput" required></textarea></p>
+			<input type="submit" id='submitBlog' value = "Submit new blog article">
+		</div>
+	</article>
 </template>
 
 <template name="about">

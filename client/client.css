@@ -225,7 +225,8 @@ section {
   -o-columns: 295px 3;
   columns: 295px 3;
   position: relative;
-  top: -23px; }
+  top: -23px;
+  min-height: 74px; }
   .projectfooter > ul, .projectfooter > div {
     display: inline-block;
     margin: 2px; }
@@ -259,7 +260,12 @@ section {
     color: white; }
 
 .projectfooter > div.noviewlive {
-  display: none; }
+  color: transparent;
+  background-color: transparent;
+  width: 170px;
+  height: 42px; }
+  .projectfooter > div.noviewlive a {
+    display: none; }
 
 .viewprojectarrow {
   background-color: #fc5703;
