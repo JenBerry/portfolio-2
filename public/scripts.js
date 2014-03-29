@@ -74,6 +74,11 @@ $(document).ready(function(){
 		});
 		return false;
 	});
+	$("#blog-section").on('click', '.show-more-blog', function(){
+		var limit = Session.get('limit') || 5;
+		console.log('showmore ' + limit);
+		Session.set('limit',limit+5);
+	})
 
 	//prevent default action of link
 	$(document).on('click','a.prevent-default',function(event){

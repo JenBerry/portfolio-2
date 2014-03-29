@@ -2,6 +2,9 @@
 /**
 * Templates
 */
+Deps.autorun(function(){
+	Meteor.subscribe("blog", Session.get('limit'));
+})
 
 Template.blog.blog = function () {
 	return Blog.find({}, {sort: {date: -1}});

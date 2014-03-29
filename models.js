@@ -8,12 +8,13 @@ Projects = new Meteor.Collection('projects');
 //publish collections to client
 //If user is signed in get all articles
 //If user not signed in only get published articles
-Meteor.publish(null, function() {
+Meteor.publish('blog', function(limit) {
+	var dl = limit || 5;
 	if (this.userId){
-		return Blog.find();
+		return Blog.find({}, {sort: {date: -1}, limit: dl});
 	}
 	else{
-		return Blog.find({published : 'yes'});
+		return Blog.find({published : 'yes'},{sort: {date: -1}, limit: dl});
 	}
 });
 Meteor.publish(null, function() {
