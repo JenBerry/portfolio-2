@@ -225,8 +225,7 @@ section {
   -o-columns: 295px 3;
   columns: 295px 3;
   position: relative;
-  top: -23px;
-  min-height: 74px; }
+  top: -23px; }
   .projectfooter > ul, .projectfooter > div {
     display: inline-block;
     margin: 2px; }
