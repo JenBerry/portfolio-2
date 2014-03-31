@@ -14,8 +14,7 @@
 	<script type="text/javascript">
 		$(window).load(function() {
 			$('.flexslider').flexslider({
-				slideshowSpeed: 3000,
-				pauseOnAction: false,
+				slideshowSpeed: 6000,
 			});
 		});
 	</script>
@@ -151,17 +150,23 @@
 				{{/each}}
 			</ul>
 			<div class="{{hasLive}}viewlive"><a href="{{live_website}}" target="_blank">View live Website</a></div>
-			<div class="viewproject"><a href="#projects" class="prevent-default">View Screenshot</a><div class="viewprojectarrow"></div></div>
+			<div class="viewproject"><a href="#projects" class="prevent-default">View Screenshots</a><div class="viewprojectarrow"></div></div>
 		</footer>
 		<div class="projectdetails">
-			{{#each screenshots}}
-				{{#if this.src}}
-					<img src="{{this.src}}" alt="Screenshot of '{{this.title}}'" title="'{{this.title}}' by Jen Berry">
-				{{/if}}
-				{{#if this.caption}}
-					<p>{{this.caption}}</p>
-				{{/if}}
-			{{/each}}
+			<div class="flexslider">
+				<ul class="slides">
+				{{#each screenshots}}
+					<li>
+						{{#if this.src}}
+							<img src="{{this.src}}" alt="Screenshot of '{{this.title}}'" title="'{{this.title}}' by Jen Berry">
+						{{/if}}
+						{{#if this.caption}}
+							<p>{{this.caption}}</p>
+						{{/if}}
+					</li>
+				{{/each}}
+				</ul>
+			</div>
 		</div>
 	</article>
 </template>
@@ -208,6 +213,11 @@
 					<input class="ss-caption" type="text" value="{{this.caption}}">
 				</li>
 			{{/each}}
+			<li class="update-screenshot">
+				<input class="ss-title" type="text">
+				<input class="ss-src" type="url">
+				<input class="ss-caption" type="text">
+			</li>
 		</ul>
 		</p>
 		<input type="submit" id='updateProject' value = "Update project">

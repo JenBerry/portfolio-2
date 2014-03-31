@@ -11,7 +11,7 @@ a {
   text-decoration: none;
   color: #fc5703; }
   a:hover {
-    font-weight: bold; }
+    text-decoration: underline; }
 
 h1 {
   margin: 10px 0; }
@@ -418,3 +418,12 @@ section {
   background-color: #313131;
   color: #828282;
   padding: 10px; }
+
+.projectdetails .flexslider {
+  border: 0;
+  border-radius: 0;
+  background-color: #525252; }
+  .projectdetails .flexslider .slides img {
+    width: auto;
+    max-width: 100%;
+    margin: auto; }
