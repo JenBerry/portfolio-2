@@ -27,6 +27,9 @@ $(document).ready(function(){
 	{
 		function openArticle($details){
 			$details.slideDown("slow",function(){
+				$details.find('.flexslider').flexslider({
+					slideshowSpeed: 6000,
+				});
 			});
 		}
 		function closeArticle($details){
@@ -76,7 +79,6 @@ $(document).ready(function(){
 	});
 	$("#blog-section").on('click', '.show-more-blog', function(){
 		var limit = Session.get('limit') || 5;
-		console.log('showmore ' + limit);
 		Session.set('limit',limit+5);
 	})
 
