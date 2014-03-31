@@ -427,3 +427,5 @@ section {
     width: auto;
     max-width: 100%;
     margin: auto; }
+  .projectdetails .flexslider .flex-active {
+    background-color: #525252; }

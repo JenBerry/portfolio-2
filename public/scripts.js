@@ -28,7 +28,8 @@ $(document).ready(function(){
 		function openArticle($details){
 			$details.slideDown("slow",function(){
 				$details.find('.flexslider').flexslider({
-					slideshowSpeed: 6000,
+					slideshowSpeed: 5000,
+					animation: "slide",
 				});
 			});
 		}
