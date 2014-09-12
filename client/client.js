@@ -180,7 +180,6 @@ Template.addProject.events = {
 
 Template.updateProject.events = {
 	'click input#updateProject' : function () {
-		console.log('update clicked');
 		id = this._id;
 		var title = document.getElementById(id+'_projectTitleInput');
 		var description = document.getElementById(id+'_projectDescInput');
@@ -212,7 +211,6 @@ Template.updateProject.events = {
 		});
 
 		if (title.value != ''){
-			console.log('performing update');
 			Projects.update({_id: id},
 				{$set:{
 					lastUpdated: updated,
