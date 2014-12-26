@@ -4,7 +4,7 @@
 */
 Deps.autorun(function(){
 	Meteor.subscribe("blog", Session.get('limit'));
-})
+});
 
 Template.blog.blog = function () {
 	return Blog.find({}, {sort: {date: -1}});
@@ -118,12 +118,12 @@ Template.addProject.events = {
 		var description = document.getElementById('projectDescInput');
 		var skills = document.getElementById('projectSkillsInput');
 		var live_website = document.getElementById('projectWebsiteInput');
-		var screenshotsLis = $('.add-screenshot')
+		var screenshotsLis = $('.add-screenshot');
 
 		if (live_website.value === ""){
-			var hasLive = 'no'
+			var hasLive = 'no';
 		}else{
-			var hasLive=""
+			var hasLive="";
 		}
 		
 		var addedBy;
@@ -147,7 +147,7 @@ Template.addProject.events = {
 			var title = $(this).find('.ss-title').val();
 			var caption = $(this).find('.ss-caption').val();
 			if (src != "" || caption != ""){
-				screenshots.push({src: src, title: title, caption: caption})
+				screenshots.push({src: src, title: title, caption: caption});
 			}
 		});
 
@@ -188,9 +188,9 @@ Template.updateProject.events = {
 		var updated = new Date();
 
 		if (live_website.value === ""){
-			var hasLive = 'no'
+			var hasLive = 'no';
 		}else{
-			var hasLive=""
+			var hasLive="";
 		}
 
 		var skillsString = skills.value;
@@ -206,7 +206,7 @@ Template.updateProject.events = {
 			var title = $(this).find('.ss-title').val();
 			var caption = $(this).find('.ss-caption').val();
 			if (src != "" || caption != ""){
-				screenshots.push({src: src, title: title, caption: caption})
+				screenshots.push({src: src, title: title, caption: caption});
 			}
 		});
 
