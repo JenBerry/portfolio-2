@@ -187,9 +187,9 @@ section {
   margin: auto; }
   .skillslist li {
     display: inline-block;
-    width: 90px;
-    height: 90px;
-    line-height: 90px;
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
     border-radius: 90px;
     margin: 3px;
     border: 10px solid #d5d5d5;
