@@ -135,15 +135,23 @@
 			{{/if}}
 		</header>
 		<footer class="projectfooter">
-			<ul class="projectskills">
+			<div class="columnskills"><ul class="projectskills">
 				{{#each skills}}
 					<li style="position: relative;">
 						<p class="verticalcenter" style="position: absolute; top: 14px;">{{this}}</p>
 					</li>
 				{{/each}}
-			</ul>
-			<div class="{{hasLive}}viewlive"><a href="{{live_website}}" target="_blank">View live Website</a></div>
-			<div class="viewproject"><a href="#projects" class="prevent-default">View Screenshots</a><div class="viewprojectarrow"></div></div>
+			</ul></div>
+			<div class="columnbutton">
+				<div class="{{hasLive}}viewlive"><a href="{{live_website}}" target="_blank">View live Website</a></div>
+			</div>
+			<div class="columnbutton">
+				<div class="viewproject">
+					<a href="#projects" class="prevent-default">View Screenshots</a>
+					<div class="viewprojectarrow"></div>
+				</div>
+			</div>
+			<div class="clear"></div>
 		</footer>
 		<div class="projectdetails">
 			<div class="flexslider">

@@ -1,5 +1,5 @@
 /* style.scss */
-/*{outline: 1px solid red;}*/
+/**{outline: 1px solid red;}*/
 body {
   font-family: sans-serif;
   font-size: 18px;
@@ -35,6 +35,10 @@ code {
 
 ul {
   padding: 0 0 0 3%; }
+
+.clear{
+  clear:both;
+}
 
 /*remove list styles from lists*/
 .projectlist, .projectskills, .bloglist, .skillslist, .secondskillslist {
@@ -211,6 +215,10 @@ section {
   border-radius: 5px; }
 
 /*projects*/
+.projectarticle{
+  margin-bottom: 50px;
+}
+
 .projectsummary {
   background-color: #525252;
   padding: 5px 3% 30px 3%;
@@ -219,19 +227,20 @@ section {
   position: relative; }
 
 .projectfooter {
-  -webkit-columns: 295px 3;
-  -moz-columns: 295px 3;
-  -ms-columns: 295px 3;
-  -o-columns: 295px 3;
-  columns: 295px 3;
-  position: relative;
-  top: -23px; }
-  .projectfooter > ul, .projectfooter > div {
-    display: inline-block;
-    margin: 2px; }
+  margin: -25px auto 0px;
+}
+    .projectfooter .viewlive,
+    .projectfooter .viewproject{
+      display: inline-block;
+      margin: 5px 0 0;
+    }
+    .projectfooter > ul{
+      margin: auto;
+    }
 
 .projectskills {
-  width: 295px; }
+  width: 295px; 
+  margin:auto;}
   .projectskills li {
     display: inline-block;
     width: 60px;
@@ -258,13 +267,9 @@ section {
   .viewlive > a, .viewproject > a {
     color: white; }
 
-.projectfooter > div.noviewlive {
-  color: transparent;
-  background-color: transparent;
-  width: 170px;
-  height: 42px; }
-  .projectfooter > div.noviewlive a {
-    display: none; }
+.projectfooter .noviewlive {
+  display:none;
+}
 
 .viewprojectarrow {
   background-color: #fc5703;
@@ -272,6 +277,7 @@ section {
   height: 20px;
   position: absolute;
   left: 75px;
+  z-index: 1;
   -webkit-transform: rotate(45deg);
   -moz-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
@@ -290,6 +296,32 @@ section {
 .projectsummary p {
   text-align: left;
   color: #828282; }
+
+@media screen and (min-width:372px) {
+  .projectfooter{
+    width:350px;
+  }
+  .projectfooter .columnbutton{
+    float:left;
+    width:50%;
+    text-align: center;
+    min-height:1px;
+  }
+}
+@media screen and (min-width: 950px) {
+  .projectfooter{
+    width: auto;
+    margin-bottom: 15px;
+  }
+  .projectfooter .columnskills,
+  .projectfooter .columnbutton{
+    width:33.3%;
+  }
+  .projectfooter .columnskills{
+    float:left;
+    text-align: center;
+  }
+}
 
 /*blog*/
 .blogarticle {
