@@ -6,12 +6,16 @@ Deps.autorun(function(){
 	Meteor.subscribe("blog", Session.get('limit'));
 });
 
-Template.blog.blog = function () {
-	return Blog.find({}, {sort: {date: -1}});
-};
-Template.projects.project = function() {
-	return Projects.find({},{sort: {date: -1}});
-};
+Template.blog.helpers({
+	blog: function(){
+		return Blog.find({}, {sort: {date: -1}});
+	}
+});
+Template.projects.helpers({
+	project: function(){
+		return Projects.find({},{sort: {date: -1}});
+	}
+});
 
 //helpers
 UI.registerHelper('datetime', function(date, format){
