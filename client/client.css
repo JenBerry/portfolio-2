@@ -368,6 +368,10 @@ section {
   text-align: left; }
 
 /*about*/
+.aboutdescription{
+  line-height: 1.5em;
+}
+
 .portrait {
   display: block;
   margin: auto;
