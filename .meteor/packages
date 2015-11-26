@@ -7,3 +7,4 @@ standard-app-packages
 jquery
 accounts-password
 accounts-ui
+standard-minifiers
