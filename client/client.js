@@ -1,5 +1,11 @@
 /********** CLIENT ***********/
 /**
+* Models
+*/
+Blog = new Meteor.Collection('blog');
+Projects = new Meteor.Collection('projects');
+
+/**
 * Templates
 */
 Deps.autorun(function(){
