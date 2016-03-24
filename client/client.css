@@ -228,7 +228,7 @@ section {
   text-align: left;
   position: relative;
   top:-20px;
-  transition: height 0.5s;
+  transition: height 1s;
   overflow: hidden;
 }
   .skilldesc p{
