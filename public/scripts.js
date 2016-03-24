@@ -21,6 +21,17 @@ $(document).ready(function(){
 			scrollToTop($('a[name='+href+']'), 50);
 		});
 
+	//viewing skill details
+	$('.skillslist').on('click', 'li', function(event) {
+		var desc = $(this).attr('data-desc');
+		var $skilldesc = $('.skilldesc');
+		var $skilldescp = $skilldesc.find('p');
+		var $skillstitle = $('.skillstitle');
+		$skilldesc.css('height',  $skilldescp.height());
+		$skillstitle.html($(this).html());
+		$skilldescp.html(desc);
+		$skilldesc.css('height',  $skilldescp.height());
+	});
 
 	//opening and closing projects & blogs
 	function articleClicked($article, category)

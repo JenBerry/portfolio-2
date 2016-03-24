@@ -10,6 +10,13 @@
 	<!-- third party stuff: FontAwesome, FlexSlider, GoogleAnalytics-->
 	<link rel="stylesheet" href="FlexSlider/flexslider.css">
 	<link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+	<link rel="stylesheet" href="jquery-ui-1.11.4.custom/jquery-ui.min.css">
+	<script src="jquery-ui-1.11.4.custom/jquery-ui.min.js"></script>
+	<script>
+		$(function() {
+			$( document ).tooltip();
+		});
+	</script>
 	<script src="FlexSlider/jquery.flexslider-min.js"></script>
 	<script>
 		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -93,6 +100,7 @@
 		<p class="skillstitle">
 			Primary Skills
 		</p>
+		<div class="skilldesc"><p>Select a skill to see information</p></div>
 		<ul class="skillslist">
 			<li data-desc="I've been using HTML for well over 10 years. It all started when I was at school. Back then I was an avid artist, and I thought it would be an excellent idea to display my art on the World Wide Web. MS FrontPage express was the WYSIWYG web page builder I had at the time, and I found it so diffucult to get it to do what I wanted it to do that I found myself hacking at the code. What I very quicky discovered was that FrontPage wrote really terrible code, and me being a perfectionist and enjoying a challenge, I ended up writing it all myself. Since then I've been very wary of anything that wants to write my code for me. Over the years I've been through the XHTML 1.0 Strict phase, and to the blessed waters of HTML5. If there's one thing that makes me twitch, it's having to repeat myself in code, so HTML templating languages like TWIG are a must have. And now I'm moving onto the new and exiting world of React.js which completely changes the way we write websites.">
 				HTML(5)
@@ -115,61 +123,61 @@
 		</ul>
 		<p class="secondskillstitle">Further skills</p>
 		<ul class="secondskillslist">
-			<li data-desc="To do all those little bits of interactivity that CSS3 hasn't managed to do yet">
+			<li title="To do all those little bits of interactivity that CSS3 hasn't managed to do yet">
 				jQuery
 			</li>
-			<li data-desc="Yes please">
+			<li title="Yes please">
 				SASS
 			</li>
-			<li data-desc="If I must">
+			<li title="If I must">
 				LESS
 			</li>
-			<li data-desc="Excellent, shame it doesn't work in ie8, and hasn't quite figured out the modular JS thing yet">
+			<li title="Excellent, shame it doesn't work in ie8, and hasn't quite figured out the modular JS thing yet">
 				Foundation
 			</li>
-			<li data-desc="Off we go">
+			<li title="Off we go">
 				Bootstrap
 			</li>
-			<li data-desc="Kapooow the web is upside down">
+			<li title="Kapooow the web is upside down">
 				React.js
 			</li>
-			<li data-desc="But I don't understand, is it magic?">
+			<li title="But I don't understand, is it magic?">
 				Meteor.js
 			</li>
-			<li data-desc="Shit how do I get React to handle data senesibly?">
+			<li title="Shit how do I get React to handle data senesibly?">
 				Redux
 			</li>
-			<li data-desc="It's ok, I got this">
+			<li title="It's ok, I got this">
 				Webpack
 			</li>
-			<li data-desc="npm install happiness">
+			<li title="npm install happiness">
 				Node.js
 			</li>
-			<li data-desc="Commit, commit, always commit">
+			<li title="Commit, commit, always commit">
 				Git
 			</li>
-			<li data-desc="Now I can use SASS with no fuss">
+			<li title="Now I can use SASS with no fuss">
 				Gulp
 			</li>
-			<li data-desc="The joy of DRY!">
+			<li title="The joy of DRY!">
 				Twig templates
 			</li>
-			<li data-desc="Dreamy documentation">
+			<li title="Dreamy documentation">
 				Django
 			</li>
-			<li data-desc="SELECT annoying FROM syntax">
+			<li title="SELECT annoying FROM syntax">
 				MySQL
 			</li>
-			<li data-desc="magic">
+			<li title="magic">
 				MongoDB
 			</li>
-			<li data-desc="Why are we maintaining ie8? All our customers are on iphones!">
+			<li title="Why are we maintaining ie8? All our customers are on iphones!">
 				Google Analytics
 			</li>
-			<li data-desc="That bit of scaffolding we used to use before Node">
+			<li title="That bit of scaffolding we used to use before Node">
 				PHP
 			</li>
-			<li data-desc="No big secret, just have good content, search engines are smart... oh and make sure you are accessable">
+			<li title="No big secret, just have good content, search engines are smart... oh and make sure you are accessable">
 				SEO
 			</li>
 			<li>W3C &amp; Lint coding standards</li>

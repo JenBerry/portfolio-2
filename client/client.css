@@ -199,6 +199,7 @@ section {
     border: 10px solid #d5d5d5;
     background-color: #313131;
     color: whitesmoke;
+    cursor: pointer;
     transition: border-color 0.5s; }
     .skillslist li:hover {
       border-color: #fc5703; }
@@ -212,7 +213,28 @@ section {
   margin: 2px 5px;
   padding: 5px;
   background-color: #d5d5d5;
-  border-radius: 5px; }
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.5s; }
+  .secondskillslist li:hover {
+      background-color: #fc5703; }
+
+.skilldesc{
+  background-color: #d5d5d5;
+  padding: 20px;
+  border-radius: 20px;
+  max-width:342px;
+  margin: auto;
+  text-align: left;
+  position: relative;
+  top:-20px;
+  transition: height 0.5s;
+  overflow: hidden;
+}
+  .skilldesc p{
+    margin: 0;
+    transition: opacity 0.5s;
+  }
 
 /*projects*/
 .projectarticle{
