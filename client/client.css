@@ -100,6 +100,11 @@ section {
   top: 10px;
   left: 10px; }
 
+.mainparagraph{
+  line-height: 1.8em;
+  margin-bottom: 50px;
+}
+
 /*home*/
 #home-section {
   background-image: url("img/home-background-tile.png"); }
@@ -390,9 +395,6 @@ section {
   text-align: left; }
 
 /*about*/
-.aboutdescription{
-  line-height: 1.5em;
-}
 
 .portrait {
   display: block;
