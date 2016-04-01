@@ -23,12 +23,16 @@ $(document).ready(function(){
 
 	//viewing skill details
 	$('.skillslist').on('click', 'li', function(event) {
+		var $skillstitle = $('.skillstitle');
+		if ($skillstitle.offset().top < window.scrollY)
+			{scrollToTop($skillstitle, 0);}
+
 		var desc = $(this).attr('data-desc');
 		var $skilldesc = $('.skilldesc');
 		var $skilldescp = $skilldesc.find('p');
-		var $skillstitle = $('.skillstitle');
-		$skilldesc.css('height',  $skilldescp.height());
 		$skillstitle.html($(this).html());
+
+		$skilldesc.css('height',  $skilldescp.height());
 		$skilldescp.html(desc);
 		$skilldesc.css('height',  $skilldescp.height());
 	});
