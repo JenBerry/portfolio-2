@@ -1,4 +1,6 @@
 .DS_Store
 client/.sass-cache/*
+.sass-cache/
 dump/
 public/video/.directory
+*.map

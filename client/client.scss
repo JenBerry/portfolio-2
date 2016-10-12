@@ -125,32 +125,11 @@ section {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#33ffffff', endColorstr='#00ffffff',GradientType=1 );
   /* IE6-9 fallback on horizontal gradient */
   display: inline-block;
-  overflow: hidden;
   position: relative;
   margin: auto;
-  margin-top: 40px;
   max-width: 900px;
   transition: opacity 2s;
   opacity: 0; }
-
-.titleimage {
-  opacity: 0;
-  width: 100%; }
-  .titleimage:nth-child(1) {
-    position: absolute;
-    top: 0;
-    transition: opacity 2s, left 2s;
-    transition-delay: 1s;
-    left: -300px; }
-  .titleimage:nth-child(2) {
-    transition: opacity 2s;
-    transition-delay: 3s; }
-  .titleimage:nth-child(3) {
-    position: absolute;
-    top: 0;
-    transition: opacity 2s, left 2s;
-    transition-delay: 3s;
-    left: 300px; }
 
 .leaddown {
   height: 80px;
@@ -489,3 +468,6 @@ section {
     margin: auto; }
   .projectdetails .flexslider .flex-active {
     background-color: #525252; }
+
+@import 'updates';
+@import 'edit';
