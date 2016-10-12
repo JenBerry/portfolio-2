@@ -5,19 +5,8 @@
 	<meta name="description" content="Jen Berry's web development portfolio, skilled in JavaScript, HTML5, CSS3 and more">
 	<title>Jen Berry, Web Developer</title>
 	<link rel="shortcut icon" href="img/favicon.ico">
-	<script src="scripts.js"></script>
 	
-	<!-- third party stuff: FontAwesome, FlexSlider, GoogleAnalytics-->
 	<link rel="stylesheet" href="FlexSlider/flexslider.css">
-	<link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-	<link rel="stylesheet" href="jquery-ui-1.11.4.custom/jquery-ui.min.css">
-	<script src="jquery-ui-1.11.4.custom/jquery-ui.min.js"></script>
-	<script>
-		$(function() {
-			$( '.secondskillslist' ).tooltip();
-		});
-	</script>
-	<script src="FlexSlider/jquery.flexslider-min.js"></script>
 	<script>
 		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -30,26 +19,29 @@
 </head>
 
 <body>
-	{{> header}}
-	<section id="home-section">
-		{{> home}}
-	</section>
-	<section id="skills-section">
-		{{> skills}}
-	</section>
-	<section id="projects-section">
-		{{> projects}}
-	</section>
-	<section id="blog-section">
-		{{> blog}}
-	</section>
-	<section id="about-section">
-		{{> about}}
-	</section>
-	<section id="contact-section">
-		{{> contact}}
-	</section>
-	{{> footer}}
+	<script src="FlexSlider/jquery.flexslider-min.js"></script>
+	<div>
+		{{> header}}
+		<section id="home-section">
+			{{> home}}
+		</section>
+		<section id="skills-section">
+			{{> skills}}
+		</section>
+		<section id="projects-section">
+			{{> projects}}
+		</section>
+		<section id="blog-section">
+			{{> blog}}
+		</section>
+		<section id="about-section">
+			{{> about}}
+		</section>
+		<section id="contact-section">
+			{{> contact}}
+		</section>
+		{{> footer}}
+	</div>
 </body>
 
 <template name="header">

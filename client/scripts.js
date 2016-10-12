@@ -117,5 +117,7 @@ $(document).ready(function(){
 	}
 	verticalCenter($('.verticalcenter'));
 
+	//tooltips on skill list
+	$( '.secondskillslist' ).tooltip();
 
 });
