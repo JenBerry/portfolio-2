@@ -39,6 +39,7 @@ less@2.6.5
 livedata@1.0.18
 localstorage@1.0.11
 logging@1.1.15_1
+markdown@1.0.10
 meteor@1.2.17_1
 meteor-platform@1.2.6
 minifier-css@1.2.14_1

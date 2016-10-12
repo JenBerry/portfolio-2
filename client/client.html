@@ -206,7 +206,7 @@
 			{{#if currentUser}}
 				{{> updateProject}}
 			{{/if}}
-			{{{description}}}
+			{{#markdown}}{{description}}{{/markdown}}
 			{{#if currentUser}}
 				<span class="edit-buttons">
 					<i class="fa fa-trash-o fa-fw deleteProjectForever" title="delete"></i> 
