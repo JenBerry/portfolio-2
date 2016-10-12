@@ -1,4 +1,7 @@
 /* blog */
+input, textarea{
+	font-size: inherit;
+}
 .blogTitleInput, .blogTextInput, .projectTitleInput, .projectDescInput, .projectSkillsInput, .projectWebsiteInput, .projectDetailsInput{
 	width:100%;
 }
