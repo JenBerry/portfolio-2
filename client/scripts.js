@@ -96,7 +96,7 @@ $(document).ready(function(){
 	$("#blog-section").on('click', '.show-more-blog', function(){
 		var limit = Session.get('limit') || 5;
 		Session.set('limit',limit+5);
-	})
+	});
 
 	//prevent default action of link
 	$(document).on('click','a.prevent-default',function(event){
@@ -119,5 +119,13 @@ $(document).ready(function(){
 
 	//tooltips on skill list
 	$( '.secondskillslist' ).tooltip();
+
+	//links within projects and blogs will always open in a new tab/window
+	$('#projects-section, #blog-section').on('click', '.projectsummary a, .blogdetails a', function(event){
+		console.log('clicked');
+		event.preventDefault();
+		var href = $(event.target).attr('href');
+		window.open(href,'_blank');
+	});
 
 });
