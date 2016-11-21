@@ -348,7 +348,7 @@
 				{{#if currentUser}}
 					{{> updateBlog}}
 				{{/if}}
-				{{{blogText}}}
+				{{#markdown}}{{blogText}}{{/markdown}}
 			</div>
 		</article>
 </template>
