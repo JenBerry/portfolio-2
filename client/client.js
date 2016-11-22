@@ -38,6 +38,9 @@ UI.registerHelper('datetime', function(date, format){
 		var day = ("0" + date.getDate()).slice(-2);
 		return year+'-'+month+'-'+day;
 	}
+	if (format == 'year'){
+		return date.getFullYear();
+	}
 });
 
 //blog
