@@ -546,6 +546,54 @@ section:nth-child(odd) {
       .homeheading .titletext span:last-child {
         right: -20px; } }
 
+.clients {
+  margin-bottom: 60px; }
+  .clients h2 {
+    color: #525252; }
+  .clients .logo-container, .clients .logo-double-container {
+    width: 200px;
+    height: 200px;
+    display: inline-block;
+    vertical-align: top;
+    margin: 12px;
+    padding: 12px; }
+  .clients .logo-container, .clients .logo-double {
+    background-color: #d5d5d5;
+    border-radius: 5px; }
+  .clients .logo-container img {
+    max-width: 100%;
+    max-height: 200px; }
+  .clients .logo-double-container {
+    position: relative; }
+    .clients .logo-double-container .logo-double {
+      position: absolute;
+      padding: 12px; }
+      .clients .logo-double-container .logo-double:first-child {
+        width: 150px;
+        height: 150px;
+        top: 0;
+        left: 0; }
+      .clients .logo-double-container .logo-double:last-child {
+        width: 150px;
+        height: 55px;
+        right: 0;
+        bottom: 0;
+        padding: 6px 12px; }
+        .clients .logo-double-container .logo-double:last-child img {
+          max-height: 55px; }
+    .clients .logo-double-container img {
+      max-width: 100%;
+      max-height: 100%; }
+  .clients .vertical-center-container {
+    display: table;
+    width: 100%;
+    height: 100%; }
+  .clients .vertical-center-inner {
+    display: table-cell;
+    vertical-align: middle;
+    width: 100%;
+    height: 100%; }
+
 /* blog */
 input, textarea {
   font-size: inherit; }
