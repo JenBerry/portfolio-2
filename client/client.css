@@ -385,13 +385,22 @@ section:nth-child(odd) {
   text-align: left; }
 
 /*about*/
+#about-section {
+  color: #828282; }
+
 .portrait {
   display: block;
-  margin: auto;
-  border-radius: 109px;
+  margin: 60px auto 30px;
+  border-radius: 50%;
   border-style: solid;
   border-width: 8px;
+  width: 400px;
+  max-width: 80%;
   border-color: whitesmoke; }
+
+.univeristy {
+  max-width: 100%;
+  width: 400px; }
 
 /*contact*/
 .googleMap {
