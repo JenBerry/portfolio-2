@@ -22,20 +22,20 @@ $(document).ready(function(){
 		});
 
 	//viewing skill details
-	$('.skillslist').on('click', 'li', function(event) {
-		var $skillstitle = $('.skillstitle');
-		if ($skillstitle.offset().top < window.scrollY)
-			{scrollToTop($skillstitle, 0);}
+	// $('.skillslist').on('click', 'li', function(event) {
+	// 	var $skillstitle = $('.skillstitle');
+	// 	if ($skillstitle.offset().top < window.scrollY)
+	// 		{scrollToTop($skillstitle, 0);}
 
-		var desc = $(this).attr('data-desc');
-		var $skilldesc = $('.skilldesc');
-		var $skilldescp = $skilldesc.find('p');
-		$skillstitle.html($(this).html());
+	// 	var desc = $(this).attr('data-desc');
+	// 	var $skilldesc = $('.skilldesc');
+	// 	var $skilldescp = $skilldesc.find('p');
+	// 	$skillstitle.html($(this).html());
 
-		$skilldesc.css('height',  $skilldescp.height());
-		$skilldescp.html(desc);
-		$skilldesc.css('height',  $skilldescp.height());
-	});
+	// 	$skilldesc.css('height',  $skilldescp.height());
+	// 	$skilldescp.html(desc);
+	// 	$skilldesc.css('height',  $skilldescp.height());
+	// });
 
 	//opening and closing projects & blogs
 	function articleClicked($article, category)
@@ -116,9 +116,6 @@ $(document).ready(function(){
 		});
 	}
 	verticalCenter($('.verticalcenter'));
-
-	//tooltips on skill list
-	$( '.secondskillslist' ).tooltip();
 
 	//links within projects and blogs will always open in a new tab/window
 	$('#projects-section, #blog-section').on('click', '.projectsummary a, .blogdetails a', function(event){
