@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "@babel/runtime": "^7.0.0-beta.39",
     "bcrypt": "^0.8.7"
   },
   "devDependencies": {},
