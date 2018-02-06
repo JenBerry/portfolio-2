@@ -45,11 +45,7 @@
 			transition-delay: 1s;
 			text-align: left;
 			left:-300px;
-		}
-		&.bottom{
-			transition-delay: 2.5s;
-			text-align: right;
-			left:300px;
+			padding-left: 100px;
 		}
 	}
 	@media(max-width: 860px){

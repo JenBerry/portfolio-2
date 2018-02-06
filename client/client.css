@@ -530,8 +530,8 @@ section:nth-child(odd) {
     .homeheading .titletextsmall.top {
       transition-delay: 1s;
       text-align: left;
-      padding-left:100px;
-      left: -300px; }
+      left: -300px;
+      padding-left: 100px; }
   @media (max-width: 860px) {
     .homeheading .titletext {
       font-size: 100px;

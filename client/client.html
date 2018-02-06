@@ -2,7 +2,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="Jen Berry's web development portfolio, skilled in JavaScript, HTML5, CSS3 and more">
+	<meta name="description" content="Jen Berry's web development portfolio, skilled in JavaScript, HTML, CSS, Django & React">
 	<title>Jen Berry, Web Developer</title>
 	<link rel="shortcut icon" href="img/favicon.ico">
 	
@@ -218,15 +218,15 @@
 	<div class="menubutton"><a href="#top" class="scroll">Menu</a></div>
 	<header><h2>Projects</h2></header>
 	<div class="sectioncontent">
+		{{#if currentUser}}
+			{{> addProject}}
+		{{/if}}
 		<ul class="projectlist">
+			{{#each project}}
 			<li>
-				{{#if currentUser}}
-					{{> addProject}}
-				{{/if}}
-				{{#each project}}
-					{{> projectArticle}}
-				{{/each}}
+				{{> projectArticle}}
 			</li>
+			{{/each}}
 		</ul>
 	</div>
 </template>
