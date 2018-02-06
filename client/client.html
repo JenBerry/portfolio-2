@@ -224,11 +224,39 @@
 		<ul class="projectlist">
 			{{#each project}}
 			<li>
-				{{> projectArticle}}
+				{{> projectArticle2}}
 			</li>
 			{{/each}}
 		</ul>
 	</div>
+</template>
+
+<template name="projectArticle2">
+	<article class="projectarticle">
+		{{#if currentUser}}
+			{{> updateProject}}
+		{{/if}}
+		<div class="projectbox">
+			<div class="projectimage">
+				{{#each screenshots}}
+					{{#if this.src}}
+						<img src="{{this.src}}" alt="Screenshot of '{{this.title}}'" title="'{{this.title}}' by Jen Berry">
+					{{/if}}
+				{{/each}}
+			</div>
+			<div class="projectinfo">
+				<h3>{{title}}</h3>
+				{{#markdown}}{{description}}{{/markdown}}
+				{{#if currentUser}}
+					<span class="edit-buttons">
+						<i class="fa fa-trash-o fa-fw deleteProjectForever" title="delete"></i> 
+						<i class="fa fa-edit fa-fw update-project-btn" title="edit"></i>
+						<i class="fa fa-fw fa-check pub{{published}} togglePublishProject" title="published: {{published}}"></i>
+					</span>
+				{{/if}}
+			</div>
+		</div>
+	</article>
 </template>
 
 <template name="projectArticle">

@@ -140,9 +140,85 @@
 		width:100%;
 		height:100%;
 	}
+	@media (max-width: 533px) {
+		.logo-container, .logo-double-container {
+			width: 100px;
+			height: 100px;
+			margin: 11px;
+		}
+		.logo-container img {
+			max-height: 100px;
+		}
+		.logo-double-container {
+			.logo-double{
+				&:first-child{
+					width: 75px;
+					height: 75px;
+				}
+				&:last-child{
+					width: 75px;
+					height: 27px;
+					img {
+						max-height: 27px;
+					}
+				}
+			}
+		}
+	}
 }
 #technology-section {
 	img {
 		max-width: 30%;
+	}
+}
+#projects-section {
+	.projectbox {
+		border-radius: 5px;
+		overflow: hidden;
+		background-color: $mediumgray;
+		@include clearfix();
+		.projectimage {
+			width: 50%;
+			img {
+				max-width: 100%;
+			}
+			&:not(:firstchild) {
+				display: none;
+			}
+		}
+		.projectinfo {
+			width: 50%;
+			padding: 0 26px;
+			box-sizing: border-box;
+			mark {
+				color: $lightergray;
+			}
+			p {
+				color: $lightgray;
+			}
+		}
+		@media (max-width: 700px) {
+			.projectimage, .projectinfo {
+				width: 100%;
+			}
+		}
+	}
+	.projectlist {
+		li:nth-child(odd){
+			.projectbox {
+				text-align: left;
+				.projectimage, .projectinfo {
+					float: left;
+				}
+			}
+		}
+		li:nth-child(even){
+			.projectbox {
+				text-align: right;
+				.projectimage, .projectinfo {
+					float: right;
+				}
+			}
+		}
 	}
 }

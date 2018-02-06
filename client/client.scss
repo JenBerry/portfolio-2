@@ -1,3 +1,11 @@
+@import 'normalize';
+@import 'variables';
+@import 'mixins';
+
+img {
+  vertical-align: bottom;
+}
+
 /* style.scss */
 /**{outline: 1px solid red;}*/
 body {
@@ -23,11 +31,13 @@ h2 {
 
 h3 {
   font-size: 25px;
+  margin: 25px 0 20px;
   font-weight: normal; }
 
 mark {
   background-color: transparent;
-  color: #fc5703; }
+  color: #fc5703;
+}
 
 code {
   display: block;
@@ -39,6 +49,14 @@ ul {
 
 .clear{
   clear:both;
+}
+
+.clearfix:after {
+   content: " "; /* Older browser do not support empty content */
+   visibility: hidden;
+   display: block;
+   height: 0;
+   clear: both;
 }
 
 /*remove list styles from lists*/
