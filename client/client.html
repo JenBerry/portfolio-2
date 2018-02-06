@@ -233,10 +233,10 @@
 
 <template name="projectArticle2">
 	<article class="projectarticle">
-		{{#if currentUser}}
-			{{> updateProject}}
-		{{/if}}
 		<div class="projectbox">
+			{{#if currentUser}}
+				{{> updateProject}}
+			{{/if}}
 			<div class="projectimage">
 				{{#each screenshots}}
 					{{#if this.src}}

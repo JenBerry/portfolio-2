@@ -1039,7 +1039,8 @@ section:nth-child(odd) {
   #projects-section .projectbox .projectinfo {
     width: 50%;
     padding: 0 26px;
-    box-sizing: border-box; }
+    box-sizing: border-box;
+    position: relative; }
     #projects-section .projectbox .projectinfo mark {
       color: #d5d5d5; }
     #projects-section .projectbox .projectinfo p {
