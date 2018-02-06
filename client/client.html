@@ -238,11 +238,11 @@
 				{{> updateProject}}
 			{{/if}}
 			<div class="projectimage">
-				{{#each screenshots}}
-					{{#if this.src}}
-						<img src="{{this.src}}" alt="Screenshot of '{{this.title}}'" title="'{{this.title}}' by Jen Berry">
+				{{#with getItem screenshots 0}}
+					{{#if src}}
+						<img src="{{src}}" alt="Screenshot of '{{title}}'" title="'{{title}}' by Jen Berry">
 					{{/if}}
-				{{/each}}
+				{{/with}}
 			</div>
 			<div class="projectinfo">
 				<h3>{{title}}</h3>

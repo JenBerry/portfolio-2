@@ -1034,8 +1034,6 @@ section:nth-child(odd) {
     width: 50%; }
     #projects-section .projectbox .projectimage img {
       max-width: 100%; }
-      #projects-section .projectbox .projectimage img:not(:first-child) {
-        display: none; }
   #projects-section .projectbox .projectinfo {
     width: 50%;
     padding: 0 26px;

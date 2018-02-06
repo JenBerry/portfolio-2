@@ -43,6 +43,10 @@ UI.registerHelper('datetime', function(date, format){
 	}
 });
 
+UI.registerHelper('getItem', function(list, index) {
+	return list[index];
+});
+
 //blog
 Template.addBlog.events = {
 	'click input#submitBlog' : function () {
