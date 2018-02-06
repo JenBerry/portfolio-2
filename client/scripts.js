@@ -71,9 +71,6 @@ $(document).ready(function(){
 	}
 
 		//detect click on list, since summary elements may be dynamically created
-	$("#projects-section").on('click', '.viewproject', function (){
-		articleClicked($(this).closest('.projectarticle'), "project");
-	});
 	$("#blog-section").on("click", '.blogsummary', function (){
 		articleClicked($(this).parent(), "blog");
 	});
@@ -118,7 +115,7 @@ $(document).ready(function(){
 	verticalCenter($('.verticalcenter'));
 
 	//links within projects and blogs will always open in a new tab/window
-	$('#projects-section, #blog-section').on('click', '.projectsummary a, .blogdetails a', function(event){
+	$('#projects-section, #blog-section').on('click', '.projectinfo a, .blogdetails a', function(event){
 		console.log('clicked');
 		event.preventDefault();
 		var href = $(event.target).attr('href');

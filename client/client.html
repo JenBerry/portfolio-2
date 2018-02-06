@@ -259,60 +259,6 @@
 	</article>
 </template>
 
-<template name="projectArticle">
-	<article class="projectarticle">
-		<header class="projectsummary">
-			<h3>{{title}}</h3>
-			{{#if currentUser}}
-				{{> updateProject}}
-			{{/if}}
-			{{#markdown}}{{description}}{{/markdown}}
-			{{#if currentUser}}
-				<span class="edit-buttons">
-					<i class="fa fa-trash-o fa-fw deleteProjectForever" title="delete"></i> 
-					<i class="fa fa-edit fa-fw update-project-btn" title="edit"></i>
-					<i class="fa fa-fw fa-check pub{{published}} togglePublishProject" title="published: {{published}}"></i>
-				</span>
-			{{/if}}
-		</header>
-		<footer class="projectfooter">
-			<div class="columnskills"><ul class="projectskills">
-				{{#each skills}}
-					<li style="position: relative;">
-						<p class="verticalcenter" style="position: absolute; top: 14px;">{{this}}</p>
-					</li>
-				{{/each}}
-			</ul></div>
-			<div class="columnbutton">
-				<div class="{{hasLive}}viewlive"><a href="{{live_website}}" target="_blank">View live Website</a></div>
-			</div>
-			<div class="columnbutton">
-				<div class="viewproject">
-					<a href="#projects" class="prevent-default">View Screenshots</a>
-					<div class="viewprojectarrow"></div>
-				</div>
-			</div>
-			<div class="clear"></div>
-		</footer>
-		<div class="projectdetails">
-			<div class="flexslider">
-				<ul class="slides">
-				{{#each screenshots}}
-					<li>
-						{{#if this.src}}
-							<img src="{{this.src}}" alt="Screenshot of '{{this.title}}'" title="'{{this.title}}' by Jen Berry">
-						{{/if}}
-						{{#if this.caption}}
-							<p>{{this.caption}}</p>
-						{{/if}}
-					</li>
-				{{/each}}
-				</ul>
-			</div>
-		</div>
-	</article>
-</template>
-
 <template name = "addProject">
 	<article class="projectarticle add">
 		<header class="projectsummary">

@@ -171,7 +171,11 @@
 		max-width: 30%;
 	}
 }
+
 #projects-section {
+	.projectarticle{
+	  margin-bottom: 50px;
+	}
 	.projectbox {
 		border-radius: 5px;
 		overflow: hidden;
