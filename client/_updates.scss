@@ -181,9 +181,9 @@
 			width: 50%;
 			img {
 				max-width: 100%;
-			}
-			&:not(:firstchild) {
-				display: none;
+				&:not(:first-child) {
+					display: none;
+				}
 			}
 		}
 		.projectinfo {
