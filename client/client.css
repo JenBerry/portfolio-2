@@ -477,7 +477,10 @@ ul {
   padding: 0;
   margin: 0;
   list-style-type: none;
-  margin: 0 -10px 0 30px; }
+  margin: 0 30px 0 30px; }
+  @media (minwidth: 794px) {
+    .pagenav > ul {
+      margin-right: -10px; } }
 
 .pagenav li {
   display: inline-block;
@@ -844,9 +847,9 @@ section:nth-child(odd) {
     .homeheading .titletext span {
       position: relative; }
       .homeheading .titletext span:first-child {
-        left: -58px; }
+        left: -50px; }
       .homeheading .titletext span:last-child {
-        right: -58px; }
+        right: -10px; }
   .homeheading .titletextsmall {
     font-size: 14px;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.76);
@@ -857,7 +860,7 @@ section:nth-child(odd) {
       transition-delay: 1s;
       text-align: left;
       left: -300px;
-      padding-left: 100px; }
+      padding-left: 45px; }
   @media (max-width: 860px) {
     .homeheading .titletext {
       font-size: 100px;

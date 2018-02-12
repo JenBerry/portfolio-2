@@ -50,10 +50,10 @@
 		span{
 			position: relative;
 			&:first-child{
-				left: -58px;
+				left: -50px;
 			}
 			&:last-child{
-				right: -58px;
+				right: -10px;
 			}
 		}
 	}
@@ -67,7 +67,7 @@
 			transition-delay: 1s;
 			text-align: left;
 			left:-300px;
-			padding-left: 100px;
+			padding-left: 45px;
 		}
 	}
 	@media(max-width: 860px){
