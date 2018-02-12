@@ -4,10 +4,9 @@
 
 img {
   vertical-align: bottom;
+  max-width: 100%;
 }
 
-/* style.scss */
-/**{outline: 1px solid red;}*/
 body {
   font-family: sans-serif;
   font-size: 18px;
@@ -18,6 +17,7 @@ body {
 
 a {
   text-decoration: none;
+  cursor: pointer;
   color: #fc5703; }
   a:hover {
     text-decoration: underline; }
@@ -53,9 +53,7 @@ ul {
 
 /*remove list styles from lists*/
 .projectlist, .projectskills, .bloglist, .skillslist, .secondskillslist {
-  list-style-type: none;
-  padding: 0;
-  margin: 0; }
+  @include unstylelist();}
 
 .pageheader {
   padding: 10px 3%;
@@ -77,17 +75,16 @@ ul {
     top: -5px; }
 
 .pagenav > ul {
-  list-style-type: none;
+  @include unstylelist();
   padding: 0 30px;
-  margin: 0; }
+  }
 .pagenav li {
   display: inline-block;
   padding: 0 10px; }
 .pagenav li > a {
-  color: #313131;
-  transition: color 0.3s; }
+  @include hover-text-fade($highlightcolor);
+  color: #313131; }
   .pagenav li > a:hover {
-    color: #fc5703;
     font-weight: normal; }
 
 section {
@@ -237,15 +234,13 @@ section {
   margin: 5px 0; }
 
 .blogsummary {
+  @include hover-text-fade($highlightcolor);
   background-color: #313131;
   color: whitesmoke;
   border-radius: 5px;
   text-align: left;
   position: relative;
-  cursor: pointer;
-  transition: color 0.3s; }
-  .blogsummary:hover {
-    color: #fc5703; }
+  cursor: pointer; }
 
 .blogdate {
   position: absolute;

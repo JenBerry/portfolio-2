@@ -390,10 +390,9 @@ template {
   display: none; }
 
 img {
-  vertical-align: bottom; }
+  vertical-align: bottom;
+  max-width: 100%; }
 
-/* style.scss */
-/**{outline: 1px solid red;}*/
 body {
   font-family: sans-serif;
   font-size: 18px;
@@ -404,6 +403,7 @@ body {
 
 a {
   text-decoration: none;
+  cursor: pointer;
   color: #fc5703; }
 
 a:hover {
@@ -438,9 +438,9 @@ ul {
 
 /*remove list styles from lists*/
 .projectlist, .projectskills, .bloglist, .skillslist, .secondskillslist {
-  list-style-type: none;
   padding: 0;
-  margin: 0; }
+  margin: 0;
+  list-style-type: none; }
 
 .pageheader {
   padding: 10px 3%;
@@ -464,20 +464,27 @@ ul {
   top: -5px; }
 
 .pagenav > ul {
+  padding: 0;
+  margin: 0;
   list-style-type: none;
-  padding: 0 30px;
-  margin: 0; }
+  padding: 0 30px; }
 
 .pagenav li {
   display: inline-block;
   padding: 0 10px; }
 
 .pagenav li > a {
-  color: #313131;
-  transition: color 0.3s; }
+  transition: color 0.3s;
+  color: #313131; }
+  .pagenav li > a a {
+    color: inherit; }
+  .pagenav li > a:hover {
+    color: #fc5703;
+    text-decoration: none; }
+    .pagenav li > a:hover a {
+      text-decoration: none; }
 
 .pagenav li > a:hover {
-  color: #fc5703;
   font-weight: normal; }
 
 section {
@@ -635,16 +642,20 @@ section:nth-child(odd) {
   margin: 5px 0; }
 
 .blogsummary {
+  transition: color 0.3s;
   background-color: #313131;
   color: whitesmoke;
   border-radius: 5px;
   text-align: left;
   position: relative;
-  cursor: pointer;
-  transition: color 0.3s; }
-
-.blogsummary:hover {
-  color: #fc5703; }
+  cursor: pointer; }
+  .blogsummary a {
+    color: inherit; }
+  .blogsummary:hover {
+    color: #fc5703;
+    text-decoration: none; }
+    .blogsummary:hover a {
+      text-decoration: none; }
 
 .blogdate {
   position: absolute;
@@ -842,7 +853,6 @@ section:nth-child(odd) {
   background-color: #d5d5d5;
   border-radius: 5px; }
 #clients-section .logo-container img {
-  max-width: 100%;
   max-height: 200px; }
 #clients-section .logo-double-container {
   position: relative; }
@@ -863,7 +873,6 @@ section:nth-child(odd) {
       #clients-section .logo-double-container .logo-double:last-child img {
         max-height: 55px; }
   #clients-section .logo-double-container img {
-    max-width: 100%;
     max-height: 100%; }
 #clients-section .vertical-center-container {
   display: table;
@@ -890,8 +899,32 @@ section:nth-child(odd) {
     #clients-section .logo-double-container .logo-double:last-child img {
       max-height: 27px; } }
 
-#technology-section img {
-  max-width: 30%; }
+#code-sample-section ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  width: 50%;
+  margin: auto; }
+  #code-sample-section ul li {
+    transition: color 0.3s;
+    margin: 5px 0;
+    background-color: #313131;
+    border-radius: 5px;
+    color: whitesmoke;
+    font-size: 25px; }
+    #code-sample-section ul li a {
+      color: inherit; }
+    #code-sample-section ul li:hover {
+      color: #fc5703;
+      text-decoration: none; }
+      #code-sample-section ul li:hover a {
+        text-decoration: none; }
+    #code-sample-section ul li a {
+      display: block;
+      padding: 25px 20px 20px; }
+  @media (max-width: 900px) {
+    #code-sample-section ul {
+      width: 100%; } }
 
 #projects-section .projectarticle {
   margin-bottom: 50px; }
@@ -908,8 +941,6 @@ section:nth-child(odd) {
     clear: both; }
   #projects-section .projectbox .projectimage {
     width: 50%; }
-    #projects-section .projectbox .projectimage img {
-      max-width: 100%; }
   #projects-section .projectbox .projectinfo {
     width: 50%;
     padding: 0 26px;

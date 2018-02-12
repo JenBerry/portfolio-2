@@ -7,3 +7,45 @@
 		clear: both;
 	}
 }
+
+@mixin unstylelist() {
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
+}
+
+@mixin hover-text-fade($color) {
+	transition: color 0.3s;
+	a {
+		color: inherit;
+	}
+	&:hover {
+		color: $color;
+		text-decoration: none;
+		a {
+			text-decoration: none;
+		}
+	}
+}
+
+@mixin blocky-list-of-items($withlink: 'no-link') {
+	@include unstylelist();
+	li {
+		@include hover-text-fade($highlightcolor);
+		margin: 5px 0;
+		background-color: $darkgray;
+		border-radius: 5px;
+		color: $white;
+		font-size: 25px;
+
+		@if $withlink == 'link' {
+			a {
+				display: block;
+				padding: 25px 20px 20px;
+			}
+		} @else {
+			padding: 25px 20px 20px;
+		}
+
+	}
+}
