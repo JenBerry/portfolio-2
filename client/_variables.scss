@@ -1,3 +1,4 @@
+// colors
 $white: whitesmoke;
 $lightergray: #d5d5d5;
 $lightgray: #828282;
@@ -5,3 +6,17 @@ $mediumgray: #525252;
 $darkgray: #313131;
 
 $highlightcolor: #fc5703;
+
+
+// breakpoints
+$xlrg-min: 1680px;
+$lrg-max: $xlrg-min - 1;
+$lrg-min: 1280px;
+$med-max: $lrg-min - 1;
+$med-min: 700px;
+$sml-max: $med-min - 1;
+$sml-min: 420px;
+$xsml-max: $sml-min - 1;
+$xsml-min: 320px;
+
+

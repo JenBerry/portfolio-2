@@ -18,7 +18,7 @@ body {
 a {
   text-decoration: none;
   cursor: pointer;
-  color: #fc5703; }
+  color: $highlightcolor; }
   a:hover {
     text-decoration: underline; }
 
@@ -36,7 +36,7 @@ h3 {
 
 mark {
   background-color: transparent;
-  color: #fc5703;
+  color: $highlightcolor;
 }
 
 code {
@@ -61,11 +61,14 @@ ul {
   box-shadow: 0 2px 4px black;
   z-index: 5;
   position: relative; }
-  .pageheader .left-header, .pageheader > nav {
+  .pageheader .left-header, .pageheader nav {
     display: inline-block;
     vertical-align: middle; }
 .logo {
   display: inline-block;
+  i {
+    font-size: 10px;
+  }
 }
 .socialmedias {
   display: inline-block;
@@ -81,8 +84,11 @@ ul {
 .pagenav > ul {
   @include unstylelist();
   margin: 0 30px 0 30px;
-    @media (minwidth: 794px) {
+  @media (min-width: $lrg-min) {
       margin-right: -10px;
+    }
+  @media (max-width: $med-max) {
+      margin: 0;
     }
   }
 .pagenav li {
@@ -90,21 +96,20 @@ ul {
   padding: 0 10px; }
 .pagenav li > a {
   @include hover-text-fade($highlightcolor);
-  color: #313131; }
+  color: $darkgray; }
   .pagenav li > a:hover {
     font-weight: normal; }
 
 section {
-  padding: 50px 3%;
   position: relative; }
   section:nth-child(even) {
-    background-color: #313131;
-    color: whitesmoke; }
-    section:nth-child(even) > header {
-      color: #525252; }
+    background-color: $darkgray;
+    color: $white; }
+    section:nth-child(even) header {
+      color: $mediumgray; }
   section:nth-child(odd) {
-    background-color: whitesmoke;
-    color: #313131; }
+    background-color: $white;
+    color: $darkgray; }
 
 .sectioncontent {
   max-width: 1000px;
@@ -121,10 +126,8 @@ section {
 }
 
 /*home*/
-#home-section {
-  background-image: url("img/home-background-tile.png"); }
 
-.homeheading {
+.homeheading h2 {
   background: -moz-radial-gradient(center, ellipse cover, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 70%);
   /* FF3.6+ */
   background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(255, 255, 255, 0.2)), color-stop(70%, rgba(255, 255, 255, 0)));
@@ -147,14 +150,16 @@ section {
   opacity: 0; }
 
 .leaddown {
-  height: 80px;
   z-index: 2;
-  position: relative; }
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -50px; }
   .leaddown > div {
     width: 20px;
     height: 20px;
     margin: 40px auto 40px auto;
-    background-color: #fc5703;
+    background-color: $highlightcolor;
     border-radius: 10px;
     position: relative;
     top: -40px;
@@ -180,8 +185,8 @@ section {
   height: 240px;
   border-radius: 240px;
   line-height: 240px;
-  background-color: #fc5703;
-  border: 20px solid #d5d5d5;
+  background-color: $highlightcolor;
+  border: 20px solid $lightergray;
   margin: auto;
   font-size: 24px; }
 
@@ -196,13 +201,13 @@ section {
     line-height: 100px;
     border-radius: 90px;
     margin: 3px;
-    border: 10px solid #d5d5d5;
-    background-color: #313131;
-    color: whitesmoke;
+    border: 10px solid $lightergray;
+    background-color: $darkgray;
+    color: $white;
     cursor: pointer;
     transition: border-color 0.5s; }
     .skillslist li:hover {
-      border-color: #fc5703; }
+      border-color: $highlightcolor; }
 
 .secondskillstitle {
   font-size: 24px;
@@ -212,15 +217,15 @@ section {
   display: inline-block;
   margin: 2px 5px;
   padding: 5px;
-  background-color: #d5d5d5;
+  background-color: $lightergray;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.5s; }
   .secondskillslist li:hover {
-      background-color: #fc5703; }
+      background-color: $highlightcolor; }
 
 .skilldesc{
-  background-color: #d5d5d5;
+  background-color: $lightergray;
   padding: 20px;
   border-radius: 20px;
   max-width:342px;
@@ -242,8 +247,8 @@ section {
 
 .blogsummary {
   @include hover-text-fade($highlightcolor);
-  background-color: #313131;
-  color: whitesmoke;
+  background-color: $darkgray;
+  color: $white;
   border-radius: 5px;
   text-align: left;
   position: relative;
@@ -255,7 +260,7 @@ section {
   width: 70px;
   height: 100%;
   text-align: center;
-  border-right: 1px solid #525252; }
+  border-right: 1px solid $mediumgray; }
 
 .day {
   font-size: 20px;
@@ -279,7 +284,7 @@ section {
 
 /*about*/
 #about-section{
-  color: #828282;
+  color: $lightgray;
 }
 .portrait {
   display: block;
@@ -289,83 +294,15 @@ section {
   border-width: 8px;
   width: 400px;
   max-width: 80%;
-  border-color: whitesmoke; }
+  border-color: $white; }
 .univeristy {
   max-width:100%;
   width:400px; }
 
-/*contact*/
-.googleMap {
-  width: 100%;
-  border: 0;
-  display: block; }
-
-.iconbg {
-  background-color: #fc5703;
-  width: 50px;
-  height: 50px;
-  border-radius: 50px; }
-
-.contactcontainer {
-  background-color: white;
-  box-shadow: 0 0 20px #313131;
-  border-radius: 5px;
-  position: relative; }
-  .contactcontainer p {
-    font-weight: bold;
-    font-size: 24px; }
-
-.call {
-  display: inline-block;
-  padding: 10px 3%;
-  vertical-align: top; }
-
-.phonenumber {
-  border-radius: 5px;
-  padding: 10px 0; }
-
-.email {
-  display: inline-block;
-  padding: 10px 3%;
-  vertical-align: top; }
-
-.form-fieldset, .message-area, .send-button {
-  display: inline-block; }
-
-.form-fieldset > input {
-  display: block;
-  width: 187px; }
-
-.form-fieldset > input, .message-area {
-  padding: 10px;
-  margin: 10px 0;
-  border-radius: 5px;
-  border: 1px solid grey;
-  vertical-align: top; }
-
-.message-area {
-  height: 74px;
-  width: 187px; }
-
-.send-button {
-  background-color: #313131;
-  color: whitesmoke;
-  border: 0;
-  margin: 10px 0 10px 10px;
-  padding: 10px;
-  height: 96px;
-  vertical-align: top;
-  border-radius: 5px;
-  font-size: 18px; }
-  .send-button:active {
-    background-color: #fc5703; }
-  .send-button:hover {
-    cursor: pointer; }
-
 /*footer*/
 .sitefooter {
-  background-color: #313131;
-  color: #828282;
+  background-color: $white;
+  color: $darkgray;
   padding: 10px; }
 
 @import 'updates';

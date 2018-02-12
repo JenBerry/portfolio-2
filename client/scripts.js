@@ -1,7 +1,11 @@
 $(document).ready(function(){
 
+	// set home height to fill the screen
+	var home_height = $( window ).height() - $('.pageheader').outerHeight();
+	$('#home-section').css('min-height', home_height);
+
 	// Start the home animation when the document has loaded
-	$('.homeheading, .titletext, .titletextsmall, .leaddown div').css({
+	$('.homeheading h2, .titletext, .titletextsmall, .leaddown div').css({
 		opacity: 1,
 		left:0,
 		top:0
@@ -20,6 +24,16 @@ $(document).ready(function(){
 			href = href.replace("#","");
 			scrollToTop($('a[name='+href+']'), 50);
 		});
+
+	//flash contacts
+	$('.contact-button').click(function(e){
+		e.preventDefault();
+		var contact = $('.header-contact-info');
+		contact.addClass('flash');
+		window.setTimeout(function() {
+			contact.removeClass('flash');
+		}, 200);
+	});
 
 	//viewing skill details
 	// $('.skillslist').on('click', 'li', function(event) {
@@ -104,19 +118,21 @@ $(document).ready(function(){
 	function verticalCenter($elements)
 	{
 		$elements.each(function(){
-			var elementHeight = $( this ).height();
-			var parentHeight = $( this ).parent().height();
+			var elementHeight = $( this ).outerHeight();
+			var $parent = $( this ).parents('.verticalcenter_container');
+			var parentHeight = $parent.outerHeight();
 			var offset = parentHeight/2 - elementHeight/2;
-			$( this ).parent().css('position', 'relative');
+			$parent.css('position', 'relative');
 			$( this ).css('position','absolute');
 			$( this ).css('top', offset);
+			$( this ).css('left', 0);
+			$( this ).css('right', 0);
 		});
 	}
 	verticalCenter($('.verticalcenter'));
 
 	//links within projects and blogs will always open in a new tab/window
 	$('#projects-section, #blog-section').on('click', '.projectinfo a, .blogdetails a', function(event){
-		console.log('clicked');
 		event.preventDefault();
 		var href = $(event.target).attr('href');
 		window.open(href,'_blank');
