@@ -53,12 +53,14 @@
 <template name="header">
 	<header class="pageheader">
 		<a name="top"></a>
-		<div class="logo"><h1>Jen Berry</h1></div>
-		<div class="socialmedias">
-			  <a href="http://www.linkedin.com/pub/jennifer-berry/1b/240/233" target="_blank">
-				<img src="img/LinkedIn_Logo30px.png" alt="LinkedIn" class="socialmedia"></a>
-			<a href="https://github.com/JenBerry" target="_blank">
-				<img src="img/GitHub-Mark-32px.png" alt="GitHub" class="socialmedia"></a>
+		<div class="left-header">
+			<div class="logo"><h1>Jen Berry</h1></div>
+			<div class="socialmedias">
+				<a href="http://www.linkedin.com/pub/jennifer-berry/1b/240/233" target="_blank">
+					<i class="fa fa-linkedin-square"></i></a>
+				<a href="https://github.com/JenBerry" target="_blank">
+					<i class="fa fa-github"></i></a>
+			</div>
 		</div>
 		<nav class="pagenav">
 			<ul>
@@ -75,6 +77,11 @@
 
 <template name="home">
 	<a name="home"></a>
+	<div class="header-contact-info">
+		<span><i class="fa fa-phone"></i> +44 7999 298 382</span>
+		<span><a href="mailto:jenberrymail+website@gmail.com" target="_blank"><i class="fa fa-envelope"></i> JenBerryMail@gmail.com</a></span>
+		<span><a href="JenBerry-CV.pdf" target="_blank" title="Jen Berry Web Developer CV"><i class="fa fa-file"></i> Download PDF CV</a></span>
+	</div>
 	<header class="homeheading"><h2>
 		<a class="scroll" href="#skills">
 			<span class="titletextsmall top">I am a</span>
@@ -407,12 +414,11 @@
 	<header><h2>About Me</h2></header>
 	<div class="sectioncontent">
 		<img src="img/jenberry.jpg" alt="Picture of Jen Berry" class="portrait">
-		<a href="http://www.linkedin.com/pub/jennifer-berry/1b/240/233" target="_blank">
-			<img src="img/LinkedIn_Logo30px.png" alt="LinkedIn" class="socialmedia"></a>
-		<a href="https://github.com/JenBerry" target="_blank">
-			<img src="img/GitHub-Mark-32px-inverted.png" alt="GitHub" class="socialmedia"></a>
-		<p class="aboutname"><mark>Jennifer Berry</mark></p>
-		<p class="aboutjobtitle"><mark>Web Developer</mark></p>
+		<p class="aboutname">Jennifer Berry - Web Developer</p>
+		<p><a href="http://www.linkedin.com/pub/jennifer-berry/1b/240/233" target="_blank">
+			<i class="fa fa-linkedin-square"></i> My Linked in</a></p>
+		<p><a href="https://github.com/JenBerry" target="_blank">
+			<i class="fa fa-github"></i> My Github</a></p>
 		<p class="mainparagraph">I am a web developer with 7 years experience. My main specialisation is in Front End Development (i.e. HTML/CSS/JavaScript with numerous frameworks, API’s, and libraries). Additionally I have good experience on the back end with Django/Python, and with React.js and Node. I’m looking for short term contracts (from 2 weeks to 2 months), and I'm happy to relocate anywhere to suit your needs.</p>
 		<p class="mainparagraph">When I'm not coding I like to be in nature, travel the world, and listen to psychedelic music.</p>
 		<img class="univeristy" src="img/cambridge-logo-white.png" alt="University of Cambridge">

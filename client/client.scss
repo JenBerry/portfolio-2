@@ -61,22 +61,26 @@ ul {
   box-shadow: 0 2px 4px black;
   z-index: 5;
   position: relative; }
-  .pageheader > div, .pageheader > nav {
+  .pageheader .left-header, .pageheader > nav {
     display: inline-block;
     vertical-align: middle; }
-
-.socialmedia {
-  height: 25px;
-  margin: 5px;
-  position: relative;
-  vertical-align: top;
-  transition: top 0.5s; }
-  .socialmedia:hover {
-    top: -5px; }
+.logo {
+  display: inline-block;
+}
+.socialmedias {
+  display: inline-block;
+  font-size: 20px;
+  color: $mediumgray;
+  margin-left: 7px;
+  a {
+    @include hover-text-fade($highlightcolor);
+    margin: 3px;
+  }
+}
 
 .pagenav > ul {
   @include unstylelist();
-  padding: 0 30px;
+  margin: 0 -10px 0 30px;
   }
 .pagenav li {
   display: inline-block;

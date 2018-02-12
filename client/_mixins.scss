@@ -16,6 +16,7 @@
 
 @mixin hover-text-fade($color) {
 	transition: color 0.3s;
+	color: inherit;
 	a {
 		color: inherit;
 	}
