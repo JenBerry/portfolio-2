@@ -192,7 +192,7 @@ section {
 	}
 	@media (max-width: $med-max) {
 		li {
-			margin: 0 10px;
+			margin: 0 30px;
 		}
 	}
 	@media (max-width: $sml-max) {
@@ -406,11 +406,7 @@ section {
 	border-radius: 5px;
 	overflow: hidden;
 	background-color: $mediumgray;
-	.projectimage {
-		width: 50%;
-	}
 	.projectinfo {
-		width: 50%;
 		padding: 0 26px;
 		box-sizing: border-box;
 		position: relative;
@@ -421,20 +417,16 @@ section {
 			color: $lightgray;
 		}
 	}
-	@media (max-width: $med-max) {
-		.projectimage, .projectinfo {
-			width: 100%;
-		}
-	}
 }
 
 .projectlist {
-	@media (min-width: $med-min) {
+	@media (min-width: $lrg-min) {
 		li:nth-child(odd){
 			.projectbox {
 				text-align: left;
 				.projectimage, .projectinfo {
 					float: left;
+					width: 50%;
 				}
 			}
 		}
@@ -443,6 +435,7 @@ section {
 				text-align: right;
 				.projectimage, .projectinfo {
 					float: right;
+					width: 50%;
 				}
 			}
 		}
