@@ -1,3 +1,20 @@
+@mixin fix-content-width() {
+	max-width: $xlrg-min;
+	margin: 0 auto;
+	@media (max-width: $lrg-max) {
+		max-width: $lrg-min;
+	}
+	@media (max-width: $med-max) {
+		max-width: $med-min;
+	}
+	@media (max-width: $sml-max) {
+		max-width: $sml-min;
+	}
+	@media (max-width: $xsml-max) {
+		max-width: $xsml-min;
+	}
+}
+
 @mixin clearfix() {
 	&:after {
 		content: " "; /* Older browser do not support empty content */
@@ -36,7 +53,7 @@
 		margin: 5px 0;
 		background-color: $darkgray;
 		border-radius: 5px;
-		color: $white;
+		color: $offwhite;
 		font-size: 25px;
 
 		@if $withlink == 'link' {

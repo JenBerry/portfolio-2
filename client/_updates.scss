@@ -3,25 +3,20 @@
     src: url("fonts/ArdleysHand.ttf");
 }
 
-.content {
-	max-width: $xlrg-min;
-	margin: 0 auto;
-	@media (max-width: $lrg-max) {
-		max-width: $lrg-min;
-	}
-	@media (max-width: $med-max) {
-		max-width: $med-min;
-	}
-	@media (max-width: $sml-max) {
-		max-width: $sml-min;
-	}
-	@media (max-width: $xsml-max) {
-		max-width: $xsml-min;
-	}
+.section-inner {
+	@include fix-content-width();
 }
-section > .content {
+
+section > .section-inner {
 	padding: 50px 10px;
 	box-sizing: border-box;
+}
+
+.contact-info {
+	@include unstylelist();
+	li {
+		margin: 18px 0;
+	}
 }
 
 #home-section{
@@ -39,12 +34,15 @@ section > .content {
 		margin-left: -$contact-spacing-lrg;
 		margin-right: -$contact-spacing-lrg;
 		transition: color 3s, font-size 0.2s;
+		.header-contact-info-inner {
+			@include fix-content-width();
+		}
 		&.flash {
 			color: $highlightcolor;
 			font-size: 17px;
 			transition: color 0.1s, font-size 0.2s;
 		}
-		span {
+		li {
 			@include hover-text-fade($highlightcolor);
 			margin: 0 $contact-spacing-lrg;
 			display: inline-block;
@@ -52,13 +50,13 @@ section > .content {
 		@media (max-width: $med-max) {
 			margin-left: -$contact-spacing-med;
 			margin-right: -$contact-spacing-med;
-			span {
+			li {
 				margin: 0 $contact-spacing-med;
 			}
 		}
 		@media (max-width: $sml-max) {
 		margin: 0;
-			span {
+			li {
 				display: block;
 				line-height: 2;
 			}
@@ -241,10 +239,10 @@ section > .content {
 	  margin-bottom: 50px;
 	}
 	.projectbox {
+		@include clearfix();
 		border-radius: 5px;
 		overflow: hidden;
 		background-color: $mediumgray;
-		@include clearfix();
 		.projectimage {
 			width: 50%;
 		}
@@ -266,20 +264,22 @@ section > .content {
 			}
 		}
 	}
-	.projectlist {
-		li:nth-child(odd){
-			.projectbox {
-				text-align: left;
-				.projectimage, .projectinfo {
-					float: left;
+	@media (min-width: $med-min) {
+		.projectlist {
+			li:nth-child(odd){
+				.projectbox {
+					text-align: left;
+					.projectimage, .projectinfo {
+						float: left;
+					}
 				}
 			}
-		}
-		li:nth-child(even){
-			.projectbox {
-				text-align: right;
-				.projectimage, .projectinfo {
-					float: right;
+			li:nth-child(even){
+				.projectbox {
+					text-align: right;
+					.projectimage, .projectinfo {
+						float: right;
+					}
 				}
 			}
 		}
@@ -289,6 +289,6 @@ section > .content {
 #about-section {
 	.aboutname {
 		font-size: 20px;
-		color: $white;
+		color: $offwhite;
 	}
 }

@@ -23,37 +23,37 @@
 	<div>
 		{{> header}}
 		<section id="home-section">
-			<div class="content">
+			<div class="section-inner">
 				{{> home}}
 			</div>
 		</section>
 		<section id="skills-section">
-			<div class="content">
+			<div class="section-inner">
 				{{> skills}}
 			</div>
 		</section>
 		<section id="projects-section">
-			<div class="content">
+			<div class="section-inner">
 				{{> projects}}
 			</div>
 		</section>
 		<section id="code-sample-section">
-			<div class="content">
+			<div class="section-inner">
 				{{> codesample}}
 			</div>
 		</section>
 		<section id="clients-section">
-			<div class="content">
+			<div class="section-inner">
 				{{> clients}}
 			</div>
 		</section>
 		<section id="blog-section">
-			<div class="content">
+			<div class="section-inner">
 				{{> blog}}
 			</div>
 		</section>
 		<section id="about-section">
-			<div class="content">
+			<div class="section-inner">
 				{{> about}}
 			</div>
 		</section>
@@ -61,9 +61,21 @@
 	</div>
 </body>
 
+<template name="menu_button">
+	<div class="menubutton"><a href="#top" class="scroll">Menu</a></div>
+</template>
+
+<template name="contact_details">
+	<ul class="contact-info">
+		<li><a href="tel:+447999298382"><i class="fa fa-phone"></i> +44 7999 298 382</a></li>
+		<li><a href="mailto:jenberrymail+website@gmail.com" target="_blank"><i class="fa fa-envelope"></i> JenBerryMail@gmail.com</a></li>
+		<li><a href="JenBerry-CV.pdf" target="_blank" title="Jen Berry Web Developer CV"><i class="fa fa-file"></i> Download PDF CV</a></li>
+	</ul>
+</template>
+
 <template name="header">
 	<header class="pageheader">
-		<div class="content">
+		<div class="pageheader-inner">
 			<a name="top"></a>
 			<div class="left-header">
 				<div class="logo"><h1>Jen Berry<mark><i class="fa fa-circle"></i></mark></h1></div>
@@ -92,10 +104,8 @@
 <template name="home">
 	<a name="home"></a>
 	<div class="header-contact-info">
-		<div class="content">
-			<span><a href="tel:+447999298382"><i class="fa fa-phone"></i> +44 7999 298 382</a></span>
-			<span><a href="mailto:jenberrymail+website@gmail.com" target="_blank"><i class="fa fa-envelope"></i> JenBerryMail@gmail.com</a></span>
-			<span><a href="JenBerry-CV.pdf" target="_blank" title="Jen Berry Web Developer CV"><i class="fa fa-file"></i> Download PDF CV</a></span>
+		<div class="header-contact-info-inner">
+			{{> contact_details}}
 		</div>
 	</div>
 	<header class="homeheading">
@@ -111,11 +121,11 @@
 
 <template name="skills">
 	<a name="skills"></a>
-	<div class="menubutton"><a href="#top" class="scroll">Menu</a></div>
+	{{>menu_button}}
 	<header><h2>Skills</h2></header>
 	<div class="sectioncontent">
 		<p class="mainparagraph">
-			I am a web developer with 7 years experience. My main specialisation is in Front End Development (i.e. HTML/CSS/JavaScript with numerous frameworks, API’s, and libraries). Additionally I have good experience on the back end with Django/Python, and with React.js and Node. I’m looking for short term contracts (from 2 weeks to 2 months), and I'm happy to relocate anywhere to suit your needs.
+			I am a web developer with 7 years experience. My main specialisation is in Front End Development (i.e. HTML/CSS/JavaScript with numerous frameworks, API’s, and libraries). Additionally I have good experience on the back end with Django/Python, and with React.js and Node. I’m looking for short term contracts (from 2 weeks to 3 months), and I'm happy to relocate anywhere to suit your needs.
 		</p>
 		<p class="skillstitle">
 			Primary Skills
@@ -196,7 +206,7 @@
 
 <template name="clients">
 	<a name="clients"></a>
-	<div class="menubutton"><a href="#top" class="scroll">Menu</a></div>
+	{{>menu_button}}
 	<header><h2>Clients</h2></header>
 	<div class="sectioncontent">
 		<div class="logo-container"><div class="vertical-center-container"><div class="vertical-center-inner">
@@ -238,7 +248,7 @@
 
 <template name="codesample">
 	<a name="code-samples"></a>
-	<div class="menubutton"><a href="#top" class="scroll">Menu</a></div>
+	{{>menu_button}}
 	<header><h2>Code Samples</h2></header>
 	<div class="sectioncontent">
 		<p class="mainparagraph">
@@ -256,7 +266,7 @@
 
 <template name="projects">
 	<a name="projects"></a>
-	<div class="menubutton"><a href="#top" class="scroll">Menu</a></div>
+	{{>menu_button}}
 	<header><h2>Projects</h2></header>
 	<div class="sectioncontent">
 		{{#if currentUser}}
@@ -296,6 +306,104 @@
 					</span>
 				{{/if}}
 			</div>
+		</div>
+	</article>
+</template>
+
+<template name="blog">
+	<a name="blog"></a>
+	{{>menu_button}}
+	<header><h2>Blog</h2></header>
+	<div class="sectioncontent">
+		<ul class="bloglist">
+			{{#if currentUser}}
+				<li>
+					{{> addBlog}}
+				</li>
+			{{/if}}
+			{{#each blog}}
+				<li>
+					{{> blogArticle}}
+				</li>
+			{{/each}}
+		</ul>
+		<a href="#" class="prevent-default show-more-blog">Show More</a>
+	</div>
+</template>
+
+<template name="blogArticle">
+	<article class="blogarticle">
+		<header class="blogsummary">
+			<time pubdate datetime="{{datetime date 'date'}}" class="blogdate">
+				<span class="day">
+					{{datetime date 'day'}}
+				</span><span class="month">{{datetime date 'monthName'}}</span>
+				<span class="year">{{datetime date 'year'}}</span>
+			</time>
+			<h3 class="blogtitle">{{title}}</h3>
+			{{#if currentUser}}
+				<span class="edit-buttons">
+					<i class="fa fa-trash-o fa-fw deleteBlogForever" title="delete"></i> 
+					<i class="fa fa-edit fa-fw update-blog-btn" title="edit"></i>
+					<i class="fa fa-fw fa-check pub{{published}} togglePublishBlog" title="published: {{published}}"></i>
+				</span>
+			{{/if}}
+		</header>
+		<div class="blogdetails">
+			{{#if currentUser}}
+				{{> updateBlog}}
+			{{/if}}
+			{{#markdown}}{{blogText}}{{/markdown}}
+		</div>
+	</article>
+</template>
+
+<template name="about">
+	<a name="about"></a>
+	{{>menu_button}}
+	<header><h2>About Me</h2></header>
+	<div class="sectioncontent">
+		<img src="img/jenberry.jpg" alt="Picture of Jen Berry" class="portrait">
+		<p class="aboutname">Jennifer Berry - Web Developer</p>
+		{{> contact_details}}
+		<p><a href="http://www.linkedin.com/pub/jennifer-berry/1b/240/233" target="_blank">
+			<i class="fa fa-linkedin-square"></i> My Linked in</a></p>
+		<p><a href="https://github.com/JenBerry" target="_blank">
+			<i class="fa fa-github"></i> My Github</a></p>
+		<p class="mainparagraph">When I'm not coding I like to be in nature, travel the world, and listen to psychedelic music.</p>
+		<img class="univeristy" src="img/cambridge-logo-white.png" alt="University of Cambridge">
+		<p>Also I have a 2.1 BA Hons. in Natural Sciences from Cambridge University.</p>
+	</div>
+</template>
+
+<template name="footer">
+	<footer class="sitefooter">Web Development by Jen Berry
+			{{> loginButtons}}</footer>
+</template>
+
+<template name="updateBlog">
+	<div class="update-blog">
+		<p><label>Date: </label><input type="date" id="{{_id}}_date" value="{{datetime date 'date'}}" required></p>
+		<p>
+			<label for='title'>Title:</label>
+			<input type="text" id="{{_id}}_title" class="blogTitleInput" value = "{{title}}" required>
+		</p>
+		<p><label>Blog HTML:</label><textarea id="{{_id}}_text" class="blogTextInput" required>{{blogText}}</textarea></p>
+		<input type="submit" class="updateBlog" value = "Save">
+		<input type="submit" class="update-blog-btn" value = "Close">
+		<hr>
+	</div>
+</template>
+
+<template name = "addBlog">
+	<article class="blogarticle pubfalse">
+		<header class="blogsummary">
+			<h3 class="blogtitle"><i class="fa fa-plus green"></i> Add New Blog Article</h3>
+		</header>
+		<div class="blogdetails">
+			<p><label for="blogTitleInput">Title: </label><input type="text" class="blogTitleInput" id="blogTitleInput" required></p>
+			<p><label for="blogTextInput">Blog HTML: </label><textarea class="blogTextInput" id="blogTextInput" required></textarea></p>
+			<input type="submit" id='submitBlog' value = "Submit new blog article">
 		</div>
 	</article>
 </template>
@@ -353,102 +461,4 @@
 		<input type="submit" class="update-project-btn" value = "Close">
 		<hr>
 	</div>
-</template>
-
-<template name="blog">
-	<a name="blog"></a>
-	<div class="menubutton"><a href="#top" class="scroll">Menu</a></div>
-	<header><h2>Blog</h2></header>
-	<div class="sectioncontent">
-		<ul class="bloglist">
-			{{#if currentUser}}
-				<li>
-					{{> addBlog}}
-				</li>
-			{{/if}}
-			{{#each blog}}
-				<li>
-					{{> blogArticle}}
-				</li>
-			{{/each}}
-		</ul>
-		<a href="#" class="prevent-default show-more-blog">Show More</a>
-	</div>
-</template>
-
-<template name="blogArticle">
-		<article class="blogarticle">
-			<header class="blogsummary">
-				<time pubdate datetime="{{datetime date 'date'}}" class="blogdate">
-					<span class="day">
-						{{datetime date 'day'}}
-					</span><span class="month">{{datetime date 'monthName'}}</span>
-					<span class="year">{{datetime date 'year'}}</span>
-				</time>
-				<h3 class="blogtitle">{{title}}</h3>
-				{{#if currentUser}}
-					<span class="edit-buttons">
-						<i class="fa fa-trash-o fa-fw deleteBlogForever" title="delete"></i> 
-						<i class="fa fa-edit fa-fw update-blog-btn" title="edit"></i>
-						<i class="fa fa-fw fa-check pub{{published}} togglePublishBlog" title="published: {{published}}"></i>
-					</span>
-				{{/if}}
-			</header>
-			<div class="blogdetails">
-				{{#if currentUser}}
-					{{> updateBlog}}
-				{{/if}}
-				{{#markdown}}{{blogText}}{{/markdown}}
-			</div>
-		</article>
-</template>
-
-<template name="updateBlog">
-	<div class="update-blog">
-		<p><label>Date: </label><input type="date" id="{{_id}}_date" value="{{datetime date 'date'}}" required></p>
-		<p>
-			<label for='title'>Title:</label>
-			<input type="text" id="{{_id}}_title" class="blogTitleInput" value = "{{title}}" required>
-		</p>
-		<p><label>Blog HTML:</label><textarea id="{{_id}}_text" class="blogTextInput" required>{{blogText}}</textarea></p>
-		<input type="submit" class="updateBlog" value = "Save">
-		<input type="submit" class="update-blog-btn" value = "Close">
-		<hr>
-	</div>
-</template>
-
-<template name = "addBlog">
-	<article class="blogarticle pubfalse">
-		<header class="blogsummary">
-			<h3 class="blogtitle"><i class="fa fa-plus green"></i> Add New Blog Article</h3>
-		</header>
-		<div class="blogdetails">
-			<p><label for="blogTitleInput">Title: </label><input type="text" class="blogTitleInput" id="blogTitleInput" required></p>
-			<p><label for="blogTextInput">Blog HTML: </label><textarea class="blogTextInput" id="blogTextInput" required></textarea></p>
-			<input type="submit" id='submitBlog' value = "Submit new blog article">
-		</div>
-	</article>
-</template>
-
-<template name="about">
-	<a name="about"></a>
-	<div class="menubutton"><a href="#top" class="scroll">Menu</a></div>
-	<header><h2>About Me</h2></header>
-	<div class="sectioncontent">
-		<img src="img/jenberry.jpg" alt="Picture of Jen Berry" class="portrait">
-		<p class="aboutname">Jennifer Berry - Web Developer</p>
-		<p><a href="http://www.linkedin.com/pub/jennifer-berry/1b/240/233" target="_blank">
-			<i class="fa fa-linkedin-square"></i> My Linked in</a></p>
-		<p><a href="https://github.com/JenBerry" target="_blank">
-			<i class="fa fa-github"></i> My Github</a></p>
-		<p class="mainparagraph">I am a web developer with 7 years experience. My main specialisation is in Front End Development (i.e. HTML/CSS/JavaScript with numerous frameworks, API’s, and libraries). Additionally I have good experience on the back end with Django/Python, and with React.js and Node. I’m looking for short term contracts (from 2 weeks to 2 months), and I'm happy to relocate anywhere to suit your needs.</p>
-		<p class="mainparagraph">When I'm not coding I like to be in nature, travel the world, and listen to psychedelic music.</p>
-		<img class="univeristy" src="img/cambridge-logo-white.png" alt="University of Cambridge">
-		<p>Also I have a 2.1 BA Hons. in Natural Sciences from Cambridge University.</p>
-	</div>
-</template>
-
-<template name="footer">
-	<footer class="sitefooter">Web Development by Jen Berry
-			{{> loginButtons}}</footer>
 </template>

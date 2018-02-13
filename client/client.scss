@@ -62,7 +62,11 @@ ul {
   text-align: center;
   box-shadow: 0 2px 4px black;
   z-index: 5;
-  position: relative; }
+  position: relative;
+  .inner {
+    @include fix-content-width();
+  }
+}
   .pageheader .left-header, .pageheader nav {
     display: inline-block;
     vertical-align: middle; }
