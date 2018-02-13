@@ -452,12 +452,7 @@ section {
 #code-sample-section {
 	ul {
 		@include blocky-list-of-items('link');
-		width: 50%;
 		margin: auto;
-		max-width: 1000px;
-		@media (max-width: $med-max) {
-			width: 100%;
-		}
 	}
 }
 
