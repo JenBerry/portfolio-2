@@ -88,6 +88,11 @@ section {
 	box-sizing: border-box;
 }
 
+.sectioncontent {
+	max-width: 1000px;
+	margin: auto;
+}
+
 .menubutton {
 	position: absolute;
 	top: 10px;
@@ -106,7 +111,7 @@ section {
 	.inner {
 		@include fix-content-width();
 	}
-	.left-inner, nav {
+	.left-header, nav {
 		display: inline-block;
 		vertical-align: middle; 
 	}
@@ -153,6 +158,9 @@ section {
 #home-section{
 	background-image: url("img/home-background-tile.png"); 
 	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }
 
 .header-contact-info {
@@ -248,6 +256,14 @@ section {
 			transition-delay: 1s;
 			text-align: left;
 			left:-300px;
+		}
+	}
+	@media(min-width: $xlrg-min) {
+		.titletext {
+			font-size: 243px;
+			span:first-child{
+				left: -165px;
+			}
 		}
 	}
 	@media(max-width: $med-max) {
@@ -404,7 +420,7 @@ section {
 			color: $lightgray;
 		}
 	}
-	@media (max-width: $sml-max) {
+	@media (max-width: $med-max) {
 		.projectimage, .projectinfo {
 			width: 100%;
 		}
@@ -438,6 +454,7 @@ section {
 		@include blocky-list-of-items('link');
 		width: 50%;
 		margin: auto;
+		max-width: 1000px;
 		@media (max-width: $med-max) {
 			width: 100%;
 		}
@@ -450,8 +467,8 @@ section {
 		color: $mediumgray;
 	}
 	.logo-container, .logo-double-container{
-		width: 200px;
-		height:200px;
+		width: 198px;
+		height:198px;
 		display: inline-block;
 		vertical-align: top;
 		margin: 12px;
@@ -479,12 +496,12 @@ section {
 			}
 			&:last-child{
 				width:150px;
-				height:55px;
+				height:46px;
 				right:0;
 				bottom:0;
 				padding: 6px 12px;
 				img{
-					max-height: 55px;
+					max-height: 46px;
 				}
 			}
 		}
@@ -503,26 +520,75 @@ section {
 		width:100%;
 		height:100%;
 	}
-	@media (max-width: $sml-max) {
+	@media (max-width: $med-max){
 		.logo-container, .logo-double-container {
-			width: 100px;
-			height: 100px;
-			margin: 11px;
+			width: 175px;
+			height: 175px;
 		}
 		.logo-container img {
-			max-height: 100px;
+			max-height: 175px;
 		}
 		.logo-double-container {
 			.logo-double{
 				&:first-child{
-					width: 75px;
-					height: 75px;
+					width: 130px;
+					height: 130px;
 				}
 				&:last-child{
-					width: 75px;
-					height: 27px;
+					width: 130px;
+					height: 40px;
 					img {
-						max-height: 27px;
+						max-height: 40px;
+					}
+				}
+			}
+		}
+	}
+	@media (max-width: $sml-max) {
+		.logo-container, .logo-double-container {
+			width: 151px;
+			height: 151px;
+			margin: 11px;
+		}
+		.logo-container img {
+			max-height: 151px;
+		}
+		.logo-double-container {
+			.logo-double{
+				&:first-child{
+					width: 110px;
+					height: 110px;
+				}
+				&:last-child{
+					width: 110px;
+					height: 40px;
+					img {
+						max-height: 40px;
+					}
+				}
+			}
+		}
+	}
+	@media (max-width: $sml-max) {
+		.logo-container, .logo-double-container {
+			width: 101px;
+			height: 101px;
+			margin: 11px;
+		}
+		.logo-container img {
+			max-height: 101px;
+		}
+		.logo-double-container {
+			.logo-double{
+				&:first-child{
+					width: 70px;
+					height: 70px;
+				}
+				&:last-child{
+					width: 70px;
+					height: 30px;
+					img {
+						max-height: 30px;
 					}
 				}
 			}

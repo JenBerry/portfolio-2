@@ -9,7 +9,6 @@ $(document).ready(function(){
 		if (curr_home_height < home_height) {
 			$home.css('min-height', home_height);
 		}
-		// verticalCenter($('.homeheading'), $home);
 	}
 	setHomeHeight();
 	$(window).on('resize', setHomeHeight);
@@ -125,26 +124,26 @@ $(document).ready(function(){
 	});
 
 	//vertical center
-	function verticalCenter($elements, $parent)
-	{
-		$elements.each(function(){
-			if ($parent === null) {
-				$parent = $( this ).parent();
-			}
-			var elementHeight = $( this ).outerHeight();
-			var parentHeight = $parent.outerHeight();
-			var offset = parentHeight/2 - elementHeight/2;
-			$parent.css('position', 'relative');
-			$( this ).css('position','absolute');
-			$( this ).css('top', offset);
-			$( this ).css('left', 0);
-			$( this ).css('right', 0);
-		});
-	}
-	verticalCenter($('.verticalcenter', null));
-	$(window).on('resize', function(){
-		verticalCenter($('.verticalcenter', null));
-	});
+	// function verticalCenter($elements, $parent)
+	// {
+	// 	$elements.each(function(){
+	// 		if ($parent === null) {
+	// 			$parent = $( this ).parent();
+	// 		}
+	// 		var elementHeight = $( this ).outerHeight();
+	// 		var parentHeight = $parent.outerHeight();
+	// 		var offset = parentHeight/2 - elementHeight/2;
+	// 		$parent.css('position', 'relative');
+	// 		$( this ).css('position','absolute');
+	// 		$( this ).css('top', offset);
+	// 		$( this ).css('left', 0);
+	// 		$( this ).css('right', 0);
+	// 	});
+	// }
+	// verticalCenter($('.verticalcenter', null));
+	// $(window).on('resize', function(){
+	// 	verticalCenter($('.verticalcenter', null));
+	// });
 
 	//links within projects and blogs will always open in a new tab/window
 	$('#projects-section, #blog-section').on('click', '.projectinfo a, .blogdetails a', function(event){
