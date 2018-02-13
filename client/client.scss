@@ -124,7 +124,8 @@ section {
 .menubutton {
   position: absolute;
   top: 10px;
-  left: 10px; }
+  left: 10px;
+  z-index: 2 }
 
 .mainparagraph{
   line-height: 1.8em;
