@@ -1,8 +1,18 @@
 $(document).ready(function(){
 
 	// set home height to fill the screen
-	var home_height = $( window ).height() - $('.pageheader').outerHeight();
-	$('#home-section').css('min-height', home_height);
+	function setHomeHeight() {
+		var $home = $('#home-section');
+		$home.css('min-height', 0);
+		var curr_home_height = $home.outerHeight();
+		var home_height = $( window ).height() - $('.pageheader').outerHeight();
+		if (curr_home_height < home_height) {
+			$home.css('min-height', home_height);
+		}
+		// verticalCenter($('.homeheading'), $home);
+	}
+	setHomeHeight();
+	$(window).on('resize', setHomeHeight);
 
 	// Start the home animation when the document has loaded
 	$('.homeheading h2, .titletext, .titletextsmall, .leaddown div').css({
@@ -115,11 +125,13 @@ $(document).ready(function(){
 	});
 
 	//vertical center
-	function verticalCenter($elements)
+	function verticalCenter($elements, $parent)
 	{
 		$elements.each(function(){
+			if ($parent === null) {
+				$parent = $( this ).parent();
+			}
 			var elementHeight = $( this ).outerHeight();
-			var $parent = $( this ).parents('.verticalcenter_container');
 			var parentHeight = $parent.outerHeight();
 			var offset = parentHeight/2 - elementHeight/2;
 			$parent.css('position', 'relative');
@@ -129,7 +141,10 @@ $(document).ready(function(){
 			$( this ).css('right', 0);
 		});
 	}
-	verticalCenter($('.verticalcenter'));
+	verticalCenter($('.verticalcenter', null));
+	$(window).on('resize', function(){
+		verticalCenter($('.verticalcenter', null));
+	});
 
 	//links within projects and blogs will always open in a new tab/window
 	$('#projects-section, #blog-section').on('click', '.projectinfo a, .blogdetails a', function(event){

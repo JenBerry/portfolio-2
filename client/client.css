@@ -786,12 +786,15 @@ section > .content {
         #home-section .header-contact-info span {
           margin: 0 10px; } }
     @media (max-width: 699px) {
-      #home-section .header-contact-info span {
-        display: block;
-        line-height: 2; } }
+      #home-section .header-contact-info {
+        margin: 0; }
+        #home-section .header-contact-info span {
+          display: block;
+          line-height: 2; } }
 
 .homeheading {
-  padding-bottom: 75px; }
+  padding-bottom: 75px;
+  padding-top: 75px; }
   .homeheading a {
     color: white;
     font-weight: normal; }
@@ -829,10 +832,12 @@ section > .content {
     .homeheading .titletext span:first-child {
       left: -110px; } }
   @media (max-width: 699px) {
-    .homeheading .titletext {
-      font-size: 115px; }
-      .homeheading .titletext span:first-child {
-        left: -70px; } }
+    .homeheading {
+      padding-top: 100px; }
+      .homeheading .titletext {
+        font-size: 115px; }
+        .homeheading .titletext span:first-child {
+          left: -70px; } }
   @media (max-width: 419px) {
     .homeheading .titletext {
       font-size: 90px; }

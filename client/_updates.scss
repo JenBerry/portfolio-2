@@ -57,6 +57,7 @@ section > .content {
 			}
 		}
 		@media (max-width: $sml-max) {
+		margin: 0;
 			span {
 				display: block;
 				line-height: 2;
@@ -66,6 +67,7 @@ section > .content {
 }
 .homeheading{
 	padding-bottom: 75px;
+	padding-top: 75px;
 	a{
 		color: white;
 		font-weight: normal;
@@ -118,6 +120,7 @@ section > .content {
 		}
 	}
 	@media(max-width: $sml-max){
+	padding-top: 100px;
 		.titletext{
 			font-size: 115px;
 			span{
