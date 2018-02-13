@@ -164,16 +164,12 @@ section {
 }
 
 .header-contact-info {
-	$contact-spacing-lrg: 101px;
-	$contact-spacing-med: 10px;
 	position: absolute;
 	top:15px;
 	left:0;
 	right:0;
 	font-size: 15px;
 	color: $lightgray;
-	margin-left: -$contact-spacing-lrg;
-	margin-right: -$contact-spacing-lrg;
 	transition: color 3s, font-size 0.2s;
 	.header-contact-info-inner {
 		@include fix-content-width();
@@ -185,14 +181,18 @@ section {
 	}
 	li {
 		@include hover-text-fade($highlightcolor);
-		margin: 0 $contact-spacing-lrg;
+		margin: 0 101px;
 		display: inline-block;
+		&:first-child{
+			margin-left: 0;
+		}
+		&:last-child{
+			margin-right: 0;
+		}
 	}
 	@media (max-width: $med-max) {
-		margin-left: -$contact-spacing-med;
-		margin-right: -$contact-spacing-med;
 		li {
-			margin: 0 $contact-spacing-med;
+			margin: 0 10px;
 		}
 	}
 	@media (max-width: $sml-max) {
@@ -200,6 +200,7 @@ section {
 		li {
 			display: block;
 			line-height: 2;
+			margin: 0;
 		}
 	}
 }
