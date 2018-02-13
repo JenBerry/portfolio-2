@@ -41,8 +41,10 @@ mark {
 
 code {
   display: block;
-  margin: 0 6%;
-  color: grey; }
+  padding: 5px 10px;
+  color: $mediumgray;
+  overflow: scroll;
+  background-color: $offwhite }
 
 ul {
   padding: 0 0 0 3%; }
@@ -104,11 +106,11 @@ section {
   position: relative; }
   section:nth-child(even) {
     background-color: $darkgray;
-    color: $white; }
+    color: $offwhite; }
     section:nth-child(even) header {
       color: $mediumgray; }
   section:nth-child(odd) {
-    background-color: $white;
+    background-color: $offwhite;
     color: $darkgray; }
 
 .sectioncontent {
@@ -203,7 +205,7 @@ section {
     margin: 3px;
     border: 10px solid $lightergray;
     background-color: $darkgray;
-    color: $white;
+    color: $offwhite;
     cursor: pointer;
     transition: border-color 0.5s; }
     .skillslist li:hover {
@@ -248,7 +250,7 @@ section {
 .blogsummary {
   @include hover-text-fade($highlightcolor);
   background-color: $darkgray;
-  color: $white;
+  color: $offwhite;
   border-radius: 5px;
   text-align: left;
   position: relative;
@@ -277,7 +279,7 @@ section {
   margin-right: 20px; }
 
 .blogdetails {
-  background-color: #fff;
+  background-color: $white;
   padding: 30px 3%;
   display: none;
   text-align: left; }
@@ -294,14 +296,14 @@ section {
   border-width: 8px;
   width: 400px;
   max-width: 80%;
-  border-color: $white; }
+  border-color: $offwhite; }
 .univeristy {
   max-width:100%;
   width:400px; }
 
 /*footer*/
 .sitefooter {
-  background-color: $white;
+  background-color: $offwhite;
   color: $darkgray;
   padding: 10px; }
 

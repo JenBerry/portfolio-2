@@ -427,8 +427,10 @@ mark {
 
 code {
   display: block;
-  margin: 0 6%;
-  color: grey; }
+  padding: 5px 10px;
+  color: #525252;
+  overflow: scroll;
+  background-color: whitesmoke; }
 
 ul {
   padding: 0 0 0 3%; }
@@ -698,7 +700,7 @@ section:nth-child(odd) {
   margin-right: 20px; }
 
 .blogdetails {
-  background-color: #fff;
+  background-color: white;
   padding: 30px 3%;
   display: none;
   text-align: left; }
@@ -915,7 +917,7 @@ section > .content {
     margin: 5px 0;
     background-color: #313131;
     border-radius: 5px;
-    color: whitesmoke;
+    color: white;
     font-size: 25px; }
     #code-sample-section ul li a {
       color: inherit; }
@@ -969,7 +971,7 @@ section > .content {
 
 #about-section .aboutname {
   font-size: 20px;
-  color: whitesmoke; }
+  color: white; }
 
 /* blog */
 input, textarea {
