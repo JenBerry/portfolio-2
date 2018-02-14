@@ -5,3 +5,4 @@ dump/
 public/video/.directory
 *.map
 node_modules
+ignore
