@@ -99,7 +99,7 @@ section {
 	left: 10px;
 	z-index: 2 }
 
-.projectlist, .projectskills, .bloglist, .skillslist, .secondskillslist, .contact-info {
+.projectlist, .projectskills, .bloglist, .skillslist, .secondskillslist, .contact-info, .quotes {
 	@include unstylelist();}
 
 .pageheader {
@@ -327,6 +327,54 @@ section {
 			transform: rotate(45deg);
 			transition-delay: 4s;
 		}
+	}
+}
+
+.quotes {
+	// position: absolute;
+	// top:0;
+	// right:0;
+	color: $darkgray;
+	blockquote{
+		margin: 0;
+		padding: 1em;
+		background-color: $white;
+		border-radius: 10px;
+	}
+	P{
+		position: relative;
+		display: inline-block;
+		margin-top:8px;
+		font-style: italic;
+		&:before{
+			content: '“';
+			left: -18px;
+			top: -33px;
+		}
+		&:after{
+			content: '”';
+			right: -18px;
+			bottom: -65px;
+		}
+		&:before, &:after{
+			position: absolute;
+			color: $highlightcolor;
+			font-size: 4em;
+		}
+		@media (min-width: $med-min){
+			&:before {
+				left: -27px;
+			}
+			&:after {
+				right: -27px;
+			}
+		}
+	}
+	cite{
+		color: $lightgray;
+		font-size: 0.9em;
+		// margin-top: 0.5em;
+		display: block;
 	}
 }
 
