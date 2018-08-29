@@ -336,7 +336,7 @@ section {
 	// right:0;
 	color: $darkgray;
 	blockquote{
-		margin: 0;
+		margin: 0 0 2rem;
 		padding: 1em;
 		background-color: $white;
 		border-radius: 10px;
@@ -353,7 +353,7 @@ section {
 		}
 		&:after{
 			content: '”';
-			right: -18px;
+			right: -2px;
 			bottom: -65px;
 		}
 		&:before, &:after{
@@ -363,7 +363,7 @@ section {
 		}
 		@media (min-width: $med-min){
 			&:before {
-				left: -27px;
+				left: -40px;
 			}
 			&:after {
 				right: -27px;
